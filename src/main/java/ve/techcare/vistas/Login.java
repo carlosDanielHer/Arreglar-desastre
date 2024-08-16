@@ -34,6 +34,7 @@ public class Login extends javax.swing.JFrame {
         registrarse_lb = new javax.swing.JLabel();
         nombreUsuario_txt = new javax.swing.JTextField();
         contreseña_txt = new javax.swing.JTextField();
+        acceder_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,31 +59,49 @@ public class Login extends javax.swing.JFrame {
         registrarse_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         registrarse_lb.setForeground(new java.awt.Color(0, 0, 204));
         registrarse_lb.setText("Registrarse");
+        registrarse_lb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                registrarse_lbMousePressed(evt);
+            }
+        });
 
         contreseña_txt.setPreferredSize(new java.awt.Dimension(64, 24));
+
+        acceder_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        acceder_btt.setForeground(new java.awt.Color(0, 0, 0));
+        acceder_btt.setText("Acceder");
+        acceder_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceder_bttActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelDeFondoLayout = new javax.swing.GroupLayout(panelDeFondo);
         panelDeFondo.setLayout(panelDeFondoLayout);
         panelDeFondoLayout.setHorizontalGroup(
             panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+            .addGroup(panelDeFondoLayout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
                 .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombreUsuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
-                            .addComponent(tituloPrincipal_lb)
-                            .addGap(129, 129, 129))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
-                            .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(nombreUsuario_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(inicioDeSesion_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(contraseña_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(163, 163, 163))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
-                            .addComponent(registrarse_lb)
-                            .addGap(40, 40, 40)))
-                    .addComponent(contreseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(nombreUsuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+                                .addComponent(tituloPrincipal_lb)
+                                .addGap(129, 129, 129))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+                                .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(nombreUsuario_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(inicioDeSesion_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(contraseña_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(163, 163, 163))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+                                .addComponent(registrarse_lb)
+                                .addGap(40, 40, 40)))
+                        .addComponent(contreseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+                        .addComponent(acceder_btt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(131, 131, 131))))
         );
         panelDeFondoLayout.setVerticalGroup(
             panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,7 +120,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(contreseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registrarse_lb)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(acceder_btt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -119,6 +140,14 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
+        
+    }//GEN-LAST:event_acceder_bttActionPerformed
+
+    private void registrarse_lbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMousePressed
+        
+    }//GEN-LAST:event_registrarse_lbMousePressed
 
     /**
      * @param args the command line arguments
@@ -156,6 +185,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceder_btt;
     private javax.swing.JLabel contraseña_lb;
     private javax.swing.JTextField contreseña_txt;
     private javax.swing.JLabel inicioDeSesion_lb;
