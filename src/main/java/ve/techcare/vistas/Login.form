@@ -49,22 +49,26 @@
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace pref="40" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="tituloPrincipal_lb" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="nombreUsuario_lb" min="-2" pref="150" max="-2" attributes="0"/>
-                              <Component id="inicioDeSesion_lb" min="-2" pref="190" max="-2" attributes="0"/>
-                              <Component id="contraseña_lb" min="-2" pref="150" max="-2" attributes="0"/>
+                      <Component id="nombreUsuario_txt" min="-2" pref="313" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="tituloPrincipal_lb" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="nombreUsuario_lb" min="-2" pref="150" max="-2" attributes="0"/>
+                                  <Component id="inicioDeSesion_lb" min="-2" pref="190" max="-2" attributes="0"/>
+                                  <Component id="contraseña_lb" min="-2" pref="150" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="163" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="registrarse_lb" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="registrarse_lb" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="contreseña_txt" alignment="0" min="-2" pref="313" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -78,9 +82,13 @@
                   <Component id="inicioDeSesion_lb" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                   <Component id="nombreUsuario_lb" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="nombreUsuario_txt" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="contraseña_lb" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="contreseña_txt" min="-2" pref="48" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="registrarse_lb" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="127" max="32767" attributes="0"/>
               </Group>
@@ -141,6 +149,15 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Registrarse"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="nombreUsuario_txt">
+        </Component>
+        <Component class="javax.swing.JTextField" name="contrese&#xf1;a_txt">
+          <Properties>
+            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+              <Dimension value="[64, 24]"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>
