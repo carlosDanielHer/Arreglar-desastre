@@ -29,7 +29,7 @@ public class Login extends javax.swing.JFrame {
         panelDeFondo = new javax.swing.JPanel();
         tituloPrincipal_lb = new javax.swing.JLabel();
         inicioDeSesion_lb = new javax.swing.JLabel();
-        nombreUsuario_txt = new javax.swing.JLabel();
+        nombreUsuario_lb = new javax.swing.JLabel();
         contraseña_lb = new javax.swing.JLabel();
         registrarse_lb = new javax.swing.JLabel();
 
@@ -45,9 +45,9 @@ public class Login extends javax.swing.JFrame {
         inicioDeSesion_lb.setForeground(new java.awt.Color(0, 0, 0));
         inicioDeSesion_lb.setText("INICIO DE SESION");
 
-        nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        nombreUsuario_txt.setForeground(new java.awt.Color(0, 0, 0));
-        nombreUsuario_txt.setText("Nombre de Usuario");
+        nombreUsuario_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreUsuario_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreUsuario_lb.setText("Nombre de Usuario");
 
         contraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         contraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -61,20 +61,19 @@ public class Login extends javax.swing.JFrame {
         panelDeFondo.setLayout(panelDeFondoLayout);
         panelDeFondoLayout.setHorizontalGroup(
             panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelDeFondoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                 .addContainerGap(40, Short.MAX_VALUE)
-                .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                         .addComponent(tituloPrincipal_lb)
                         .addGap(129, 129, 129))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                         .addGroup(panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreUsuario_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreUsuario_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(inicioDeSesion_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(contraseña_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(163, 163, 163))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(registrarse_lb)
                         .addGap(40, 40, 40))))
         );
@@ -86,7 +85,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addComponent(inicioDeSesion_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(nombreUsuario_txt)
+                .addComponent(nombreUsuario_lb)
                 .addGap(72, 72, 72)
                 .addComponent(contraseña_lb)
                 .addGap(66, 66, 66)
@@ -148,7 +147,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contraseña_lb;
     private javax.swing.JLabel inicioDeSesion_lb;
-    private javax.swing.JLabel nombreUsuario_txt;
+    private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JPanel panelDeFondo;
     private javax.swing.JLabel registrarse_lb;
     private javax.swing.JLabel tituloPrincipal_lb;
