@@ -8,8 +8,13 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -23,8 +28,9 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        setIcon(); // Establece el icono en la interfaz
+
+        setIcon();  // Establece el icono en la interfaz
+        mostrarOcultarLabelRegistrarseLB(); // Muestra o no la etiqueta de registrarse_lb
     }
 
     /**
@@ -164,7 +170,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarse_lbMousePressed
 
     private void registrarse_lbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMouseEntered
-        registrarse_lb.setForeground(new Color(0,102,255));
+        registrarse_lb.setForeground(new Color(0, 102, 255));
     }//GEN-LAST:event_registrarse_lbMouseEntered
 
     private void registrarse_lbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMouseExited
@@ -218,14 +224,50 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel tituloPrincipal_lb;
     // End of variables declaration//GEN-END:variables
 
-    private void setIcon(){
+    private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
             this.setIconImage(scaledImage);
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    /*
+    * Metodo que se encarga de ocultar o mostrar la etiqueta registrarse_lb.
+    * La muestra si No existe ningun usuario con rol de administrador en la base de datos
+    * No la muestra SI existe algun usuario con rol de adminstrador en la base de datos
+     */
+    private void mostrarOcultarLabelRegistrarseLB() {
+
+        try (Connection cn = ConexionBaseDatos.conectar();
+                PreparedStatement psr = cn.prepareStatement(
+                "SELECT COUNT(*) FROM users WHERE role = 'admin' AND status = 'activo'");
+                
+                ResultSet rsr = psr.executeQuery()) {
+
+            if (rsr.next()) {
+                int c = rsr.getInt(1);
+
+                if (c > 0) {
+                    registrarse_lb.setEnabled(false);
+                    registrarse_lb.setText("");
+                } else {
+                    registrarse_lb.setEnabled(true);
+                    registrarse_lb.setText("Registrarse");
+                }
+            } else {
+                registrarse_lb.setEnabled(true);
+                registrarse_lb.setText("Registrarse");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error en determinar si existe Administrador en la base de datos: ");
+            System.out.println(e);
+            System.out.println("Clase: Login");
+        }
+    }
+
 }
