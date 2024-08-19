@@ -4,10 +4,12 @@
  */
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -68,12 +70,16 @@ public class Login extends javax.swing.JFrame {
         registrarse_lb.setForeground(new java.awt.Color(0, 0, 204));
         registrarse_lb.setText("Registrarse");
         registrarse_lb.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                registrarse_lbMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                registrarse_lbMouseExited(evt);
+            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 registrarse_lbMousePressed(evt);
             }
         });
-
-        contreseña_txt.setPreferredSize(new java.awt.Dimension(64, 24));
 
         acceder_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         acceder_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -150,12 +156,20 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-        
+        JOptionPane.showMessageDialog(null, "Interfaces de Usuarios (Administrador, Capturista, Tecnico)");
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     private void registrarse_lbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMousePressed
-        
+        JOptionPane.showMessageDialog(null, "Interfaz para el registro del Primer Usuario");
     }//GEN-LAST:event_registrarse_lbMousePressed
+
+    private void registrarse_lbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMouseEntered
+        registrarse_lb.setForeground(new Color(0,102,255));
+    }//GEN-LAST:event_registrarse_lbMouseEntered
+
+    private void registrarse_lbMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMouseExited
+        registrarse_lb.setForeground(new Color(0, 0, 204));
+    }//GEN-LAST:event_registrarse_lbMouseExited
 
     /**
      * @param args the command line arguments
