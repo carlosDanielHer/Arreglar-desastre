@@ -4,6 +4,11 @@
  */
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Carlos Hernandez
@@ -15,6 +20,9 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        setIcon(); // Establece el icono en la interfaz
     }
 
     /**
@@ -195,4 +203,15 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel registrarse_lb;
     private javax.swing.JLabel tituloPrincipal_lb;
     // End of variables declaration//GEN-END:variables
+
+    private void setIcon(){
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+            
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
