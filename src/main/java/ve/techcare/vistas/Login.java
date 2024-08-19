@@ -5,6 +5,7 @@
 package ve.techcare.vistas;
 
 import java.awt.Color;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -49,7 +50,7 @@ public class Login extends javax.swing.JFrame {
         contraseña_lb = new javax.swing.JLabel();
         registrarse_lb = new javax.swing.JLabel();
         nombreUsuario_txt = new javax.swing.JTextField();
-        contreseña_txt = new javax.swing.JTextField();
+        contraseña_txt = new javax.swing.JTextField();
         acceder_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,7 +119,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                                 .addComponent(registrarse_lb)
                                 .addGap(40, 40, 40)))
-                        .addComponent(contreseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                         .addComponent(acceder_btt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(131, 131, 131))))
@@ -137,7 +138,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(contraseña_lb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(contreseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registrarse_lb)
                 .addGap(18, 18, 18)
@@ -162,7 +163,69 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-        JOptionPane.showMessageDialog(null, "Interfaces de Usuarios (Administrador, Capturista, Tecnico)");
+        String username= nombreUsuario_txt.getText().trim();
+        String contraseña= contraseña_txt.getText().trim();
+        
+        if(!username.isEmpty() && !contraseña.isEmpty()){
+            try {
+                Connection conexion = ConexionBaseDatos.conectar();
+                PreparedStatement ps = conexion.prepareStatement("SELECT role,"
+                        + " status FROM users WHERE username = ? and password = ?");
+
+                ps.setString(1, username);
+                ps.setString(2, contraseña);
+
+                ResultSet resultados = ps.executeQuery();
+
+                if (resultados.next()) {
+                    String role = resultados.getString("role");
+                    String status = resultados.getString("status");
+
+                    conexion.close();
+                    ps.close();
+                    resultados.close();
+
+                    switch (role) {
+                        case "admin" -> {
+                            if (status.equals("activo")) {
+                                JOptionPane.showMessageDialog(null, "Administrador");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+                            
+                        case "captu" -> {
+                            if (status.equals("activo")) {
+                                JOptionPane.showMessageDialog(null, "Capturista");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+                            
+                        case "tec" -> {
+                            if (status.equals("activo")) {
+                                JOptionPane.showMessageDialog(null, "Tecnico");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+                            
+                        default -> {
+                        }
+                    }
+                    
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales Icorrectas");
+                }
+
+            } catch (HeadlessException | SQLException e) {
+                System.out.println("Errro en el Boton Acceder de  la clase Login: " + e);
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
+        }
+   
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     private void registrarse_lbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMousePressed
@@ -215,7 +278,7 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceder_btt;
     private javax.swing.JLabel contraseña_lb;
-    private javax.swing.JTextField contreseña_txt;
+    private javax.swing.JTextField contraseña_txt;
     private javax.swing.JLabel inicioDeSesion_lb;
     private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JTextField nombreUsuario_txt;
@@ -245,7 +308,7 @@ public class Login extends javax.swing.JFrame {
         try (Connection cn = ConexionBaseDatos.conectar();
                 PreparedStatement psr = cn.prepareStatement(
                 "SELECT COUNT(*) FROM users WHERE role = 'admin' AND status = 'activo'");
-                
+            
                 ResultSet rsr = psr.executeQuery()) {
 
             if (rsr.next()) {
