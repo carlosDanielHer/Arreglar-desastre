@@ -1,10 +1,14 @@
 package ve.techcare.vistas;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
@@ -20,6 +24,7 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     public RegistrarPrimerUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        setIcon();
         fechaFooter();
     }
 
@@ -251,6 +256,17 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
             nombreUsuario_lb.setForeground(new Color(148, 23, 25));
             contraseña_lb.setForeground(new Color(148, 23, 25));
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+        }
+    }
+    
+     private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
