@@ -29,6 +29,12 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
         contraseña_txt = new javax.swing.JTextField();
         nombreUsuario_txt = new javax.swing.JTextField();
         nombreCompleto_txt = new javax.swing.JTextField();
+        dni_lb = new javax.swing.JLabel();
+        correo_lb = new javax.swing.JLabel();
+        telefono_lb = new javax.swing.JLabel();
+        nombreUsuario_lb = new javax.swing.JLabel();
+        contraseña_lb = new javax.swing.JLabel();
+        nombreCompleto_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,6 +63,36 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
 
         nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 370, 60));
+
+        dni_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dni_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dni_lb.setText("DNI (Cedula, Identificacion Nacional)");
+        panelFondo.add(dni_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, -1, -1));
+
+        correo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        correo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        correo_lb.setText("Correo Electronico");
+        panelFondo.add(correo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 370, -1, -1));
+
+        telefono_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        telefono_lb.setForeground(new java.awt.Color(0, 0, 0));
+        telefono_lb.setText("Número de Telefono");
+        panelFondo.add(telefono_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, -1, -1));
+
+        nombreUsuario_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreUsuario_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreUsuario_lb.setText("Nombre de Usuario");
+        panelFondo.add(nombreUsuario_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 240, -1, -1));
+
+        contraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        contraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
+        contraseña_lb.setText("Contraseña");
+        panelFondo.add(contraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, -1, -1));
+
+        nombreCompleto_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreCompleto_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCompleto_lb.setText("Nombre Completo");
+        panelFondo.add(nombreCompleto_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,12 +144,18 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel contraseña_lb;
     private javax.swing.JTextField contraseña_txt;
+    private javax.swing.JLabel correo_lb;
     private javax.swing.JTextField correo_txt;
+    private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
+    private javax.swing.JLabel nombreCompleto_lb;
     private javax.swing.JTextField nombreCompleto_txt;
+    private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JTextField nombreUsuario_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel telefono_lb;
     private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
