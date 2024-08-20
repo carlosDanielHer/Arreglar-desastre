@@ -22,31 +22,51 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        dni_txt = new javax.swing.JTextField();
+        correo_txt = new javax.swing.JTextField();
+        telefono_txt = new javax.swing.JTextField();
+        contraseña_txt = new javax.swing.JTextField();
+        nombreUsuario_txt = new javax.swing.JTextField();
+        nombreCompleto_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
-        panelFondo.setLayout(panelFondoLayout);
-        panelFondoLayout.setHorizontalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
-        );
-        panelFondoLayout.setVerticalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 665, Short.MAX_VALUE)
-        );
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Registro Nuevo Administrador");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 360, 40));
+
+        dni_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(dni_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 370, 60));
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 390, 370, 60));
+
+        telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 130, 370, 60));
+
+        contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, 370, 60));
+
+        nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 260, 370, 60));
+
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 130, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1040, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
         );
 
         pack();
@@ -88,7 +108,14 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField contraseña_txt;
+    private javax.swing.JTextField correo_txt;
+    private javax.swing.JTextField dni_txt;
+    private javax.swing.JTextField nombreCompleto_txt;
+    private javax.swing.JTextField nombreUsuario_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JTextField telefono_txt;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
