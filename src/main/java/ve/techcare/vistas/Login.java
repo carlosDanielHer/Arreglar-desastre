@@ -229,7 +229,8 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     private void registrarse_lbMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMousePressed
-        JOptionPane.showMessageDialog(null, "Interfaz para el registro del Primer Usuario");
+        this.dispose();
+        new RegistrarPrimerUsuario().setVisible(true);
     }//GEN-LAST:event_registrarse_lbMousePressed
 
     private void registrarse_lbMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registrarse_lbMouseEntered
