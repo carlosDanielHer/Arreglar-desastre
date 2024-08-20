@@ -35,6 +35,8 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
         nombreUsuario_lb = new javax.swing.JLabel();
         contraseña_lb = new javax.swing.JLabel();
         nombreCompleto_lb = new javax.swing.JLabel();
+        registrar_btt = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -94,6 +96,16 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
         nombreCompleto_lb.setText("Nombre Completo");
         panelFondo.add(nombreCompleto_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, -1, -1));
 
+        registrar_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        registrar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        registrar_btt.setText("Registrar");
+        panelFondo.add(registrar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 240, 80));
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("TechCare® System ");
+        panelFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 630, 240, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,11 +162,13 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel nombreCompleto_lb;
     private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JTextField nombreUsuario_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JButton registrar_btt;
     private javax.swing.JLabel telefono_lb;
     private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
