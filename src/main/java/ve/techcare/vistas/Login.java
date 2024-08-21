@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    public static String usuario;
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -87,6 +88,10 @@ public class Login extends javax.swing.JFrame {
                 registrarse_lbMousePressed(evt);
             }
         });
+
+        nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+
+        contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
 
         acceder_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         acceder_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -165,6 +170,7 @@ public class Login extends javax.swing.JFrame {
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
         String username= nombreUsuario_txt.getText().trim();
         String contraseña= contraseña_txt.getText().trim();
+        usuario=username;
         
         if(!username.isEmpty() && !contraseña.isEmpty()){
             try {
@@ -188,7 +194,7 @@ public class Login extends javax.swing.JFrame {
                     switch (role) {
                         case "admin" -> {
                             if (status.equals("activo")) {
-                                JOptionPane.showMessageDialog(null, "Administrador");
+                                new Administrador().setVisible(true);
                             } else {
                                 JOptionPane.showMessageDialog(null, "Usuario inactivo");
                             }
