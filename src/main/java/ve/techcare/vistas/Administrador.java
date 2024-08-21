@@ -39,6 +39,10 @@ public class Administrador extends javax.swing.JFrame {
         horaActual_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
         fechaActual_lb = new javax.swing.JLabel();
+        gestionUsuarios_btt = new javax.swing.JButton();
+        registrarUsuario_btt = new javax.swing.JButton();
+        capturista_btt = new javax.swing.JButton();
+        tecnico_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1040, 665));
@@ -72,6 +76,46 @@ public class Administrador extends javax.swing.JFrame {
         fechaActual_lb.setText("Hoy es: ");
         panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 150, -1));
 
+        gestionUsuarios_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        gestionUsuarios_btt.setForeground(new java.awt.Color(0, 0, 0));
+        gestionUsuarios_btt.setText("GESTIONAR USUARIOS");
+        gestionUsuarios_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                gestionUsuarios_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(gestionUsuarios_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 240, 110));
+
+        registrarUsuario_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        registrarUsuario_btt.setForeground(new java.awt.Color(0, 0, 0));
+        registrarUsuario_btt.setText("REGISTRAR USUARIOS");
+        registrarUsuario_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarUsuario_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(registrarUsuario_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 240, 110));
+
+        capturista_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        capturista_btt.setForeground(new java.awt.Color(0, 0, 0));
+        capturista_btt.setText("VISTA CAPTURISTA");
+        capturista_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                capturista_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(capturista_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 240, 110));
+
+        tecnico_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        tecnico_btt.setForeground(new java.awt.Color(0, 0, 0));
+        tecnico_btt.setText("VISTA TECNICO");
+        tecnico_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tecnico_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(tecnico_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 240, 110));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,6 +129,22 @@ public class Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registrarUsuario_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarUsuario_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarUsuario_bttActionPerformed
+
+    private void gestionUsuarios_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuarios_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gestionUsuarios_bttActionPerformed
+
+    private void tecnico_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecnico_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tecnico_bttActionPerformed
+
+    private void capturista_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capturista_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_capturista_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,10 +183,14 @@ public class Administrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenido_lb;
+    private javax.swing.JButton capturista_btt;
     private javax.swing.JLabel fechaActual_lb;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JButton gestionUsuarios_btt;
     private javax.swing.JLabel horaActual_lb;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JButton registrarUsuario_btt;
+    private javax.swing.JButton tecnico_btt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
