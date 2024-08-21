@@ -23,10 +23,12 @@ public class Administrador extends javax.swing.JFrame {
      */
     public Administrador() {
         initComponents();
+        this.setLocationRelativeTo(null);
         fechaFooter();
         fechaActal();
         horaActual();
         setIcon();
+        setMensajeBienvenida();
     }
 
     /**
@@ -69,7 +71,7 @@ public class Administrador extends javax.swing.JFrame {
         horaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         horaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
         horaActual_lb.setText("|");
-        panelFondo.add(horaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 40, 110, -1));
+        panelFondo.add(horaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 110, -1));
 
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -79,7 +81,7 @@ public class Administrador extends javax.swing.JFrame {
         fechaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         fechaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
         fechaActual_lb.setText("Hoy es: ");
-        panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 150, -1));
+        panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, -1));
 
         gestionUsuarios_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         gestionUsuarios_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -238,5 +240,10 @@ public class Administrador extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void setMensajeBienvenida(){
+        String username=Login.usuario;
+        bienvenido_lb.setText("Bienvenido: "+username);
     }
 }
