@@ -1,6 +1,8 @@
 
 package ve.techcare.vistas;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Carlos Hernandez
@@ -10,6 +12,7 @@ public class Administrador extends javax.swing.JFrame {
     /** Creates new form Administrador */
     public Administrador() {
         initComponents();
+        fechaFooter();
     }
 
     /** This method is called from within the constructor to
@@ -111,4 +114,11 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+     private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
 }
