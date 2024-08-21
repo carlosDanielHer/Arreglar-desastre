@@ -1,11 +1,15 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
@@ -22,6 +26,7 @@ public class Administrador extends javax.swing.JFrame {
         fechaFooter();
         fechaActal();
         horaActual();
+        setIcon();
     }
 
     /**
@@ -69,7 +74,7 @@ public class Administrador extends javax.swing.JFrame {
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
-        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 600, 240, 20));
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 240, 20));
 
         fechaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         fechaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -206,12 +211,12 @@ public class Administrador extends javax.swing.JFrame {
         LocalDateTime fechaHora = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaHora.format(formato);
-        fechaActual_lb.setText("Hoy es: "+fechaFormateada);
+        fechaActual_lb.setText("Hoy es: " + fechaFormateada);
     }
-    
-    private void horaActual(){
-        
-         Timer horaActual = new Timer(1000, new ActionListener() {
+
+    private void horaActual() {
+
+        Timer horaActual = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 horaActual_lb.setText("| " + new SimpleDateFormat("hh:mm:ss").format(new Date()));
@@ -222,5 +227,16 @@ public class Administrador extends javax.swing.JFrame {
         horaActual.setInitialDelay(0);
         horaActual.start();
 
+    }
+
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
