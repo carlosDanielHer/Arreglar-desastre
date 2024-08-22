@@ -216,12 +216,12 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         String telefono = telefono_txt.getText().trim();
         String nombreUsuario = nombreUsuario_txt.getText().trim();
         String contraseña = contraseña_txt.getText().trim();
-        String rol ="";
+        String rol = getRoles(roles_cbx);
         String status = "activo";
         String ultimoIngreso = "Sin Historial";
 
         if (!nombreCompleto.isEmpty() && !dni.isEmpty() && !correo.isEmpty() && !telefono.isEmpty()
-                && !nombreUsuario.isEmpty() && !contraseña.isEmpty()) {
+                && !nombreUsuario.isEmpty() && !contraseña.isEmpty() && !rol.equals("Selecciona")) {
 
             try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement(
                     "INSERT INTO users(full_name,dni,email,phone,username,password,role,status,registered_by,last_login) "
@@ -260,5 +260,23 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             roles_lb.setForeground(new Color(148, 23, 25));
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
         }
+    }
+
+    private String getRoles(JComboBox<String> rolesBox) {
+        String roles = (String) rolesBox.getSelectedItem();
+
+        if (roles.equals("Administrador")) {
+            return "admin";
+
+        } else if (roles.equals("Capturista")) {
+            return "captu";
+
+        } else if (roles.equals("Tecnico")) {
+            return "tec";
+
+        } else {
+            return roles;
+        }
+
     }
 }
