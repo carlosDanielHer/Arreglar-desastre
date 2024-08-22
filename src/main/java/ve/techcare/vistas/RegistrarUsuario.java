@@ -31,6 +31,12 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         contraseña_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
         roles_lb = new javax.swing.JLabel();
+        nombreCompleto_txt = new javax.swing.JTextField();
+        dni_txt = new javax.swing.JTextField();
+        correo_txt = new javax.swing.JTextField();
+        telefono_txt = new javax.swing.JTextField();
+        nombreUsuario_txt = new javax.swing.JTextField();
+        contraseña_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -82,6 +88,24 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         roles_lb.setForeground(new java.awt.Color(0, 0, 0));
         roles_lb.setText("Roles");
         jPanel1.add(roles_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
+
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+
+        dni_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(dni_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 370, 60));
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 370, 60));
+
+        telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 370, 60));
+
+        nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
+
+        contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -138,14 +162,20 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contraseña_lb;
+    private javax.swing.JTextField contraseña_txt;
     private javax.swing.JLabel correo_lb;
+    private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
+    private javax.swing.JTextField dni_txt;
     private javax.swing.JLabel footer_lb;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel nombreUsuario_lb;
+    private javax.swing.JTextField nombreUsuario_txt;
     private javax.swing.JLabel roles_lb;
     private javax.swing.JLabel telefono_lb;
+    private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
