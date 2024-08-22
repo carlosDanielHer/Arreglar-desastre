@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -22,7 +23,9 @@ public class RegistrarUsuario extends javax.swing.JFrame {
      */
     public RegistrarUsuario() {
         initComponents();
+        this.setLocationRelativeTo(null);
         setIcon();
+        fechaFooter();
     }
 
     /**
@@ -97,7 +100,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
-        jPanel1.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 240, 20));
+        jPanel1.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
 
         roles_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         roles_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,5 +314,12 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
