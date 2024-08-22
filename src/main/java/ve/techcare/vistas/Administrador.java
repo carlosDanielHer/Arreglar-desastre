@@ -138,7 +138,7 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarUsuario_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarUsuario_bttActionPerformed
-        // TODO add your handling code here:
+        new RegistrarUsuario().setVisible(true);
     }//GEN-LAST:event_registrarUsuario_bttActionPerformed
 
     private void gestionUsuarios_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuarios_bttActionPerformed
