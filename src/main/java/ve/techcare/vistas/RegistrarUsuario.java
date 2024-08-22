@@ -100,13 +100,13 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jPanel1.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, 370, 60));
 
         telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jPanel1.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 370, 60));
+        jPanel1.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 370, 60));
 
         nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jPanel1.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
         contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jPanel1.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 370, 60));
+        jPanel1.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 260, 370, 60));
 
         jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Capturista", "Tecnico" }));
