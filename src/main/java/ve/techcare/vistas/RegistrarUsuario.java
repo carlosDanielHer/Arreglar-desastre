@@ -279,4 +279,22 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         }
 
     }
+    
+     private void limpiar() {
+        nombreCompleto_txt.setText("");
+        nombreUsuario_txt.setText("");
+        correo_txt.setText("");
+        telefono_txt.setText("");
+        contraseña_txt.setText("");
+        dni_txt.setText("");
+        roles_cbx.setSelectedIndex(0);
+
+        nombreCompleto_lb.setForeground(Color.BLACK);
+        dni_lb.setForeground(Color.BLACK);
+        correo_lb.setForeground(Color.BLACK);
+        telefono_lb.setForeground(Color.BLACK);
+        nombreUsuario_lb.setForeground(Color.BLACK);
+        contraseña_lb.setForeground(Color.BLACK);
+        roles_lb.setForeground(Color.BLACK);
+    }
 }
