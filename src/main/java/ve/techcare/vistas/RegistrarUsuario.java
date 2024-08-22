@@ -21,17 +21,81 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        nombreCompleto_lb = new javax.swing.JLabel();
+        dni_lb = new javax.swing.JLabel();
+        correo_lb = new javax.swing.JLabel();
+        telefono_lb = new javax.swing.JLabel();
+        nombreUsuario_lb = new javax.swing.JLabel();
+        contraseña_lb = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
+        roles_lb = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1040, 665));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Registro Nuevo Usuario");
+        jPanel1.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 290, 40));
+
+        nombreCompleto_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreCompleto_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCompleto_lb.setText("Nombre Completo");
+        jPanel1.add(nombreCompleto_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, -1, -1));
+
+        dni_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dni_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dni_lb.setText("DNI (Cedula, Identificacion Nacional)");
+        jPanel1.add(dni_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, -1, -1));
+
+        correo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        correo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        correo_lb.setText("Correo Electronico");
+        jPanel1.add(correo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 370, -1, -1));
+
+        telefono_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        telefono_lb.setForeground(new java.awt.Color(0, 0, 0));
+        telefono_lb.setText("Número de Telefono");
+        jPanel1.add(telefono_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 500, -1, -1));
+
+        nombreUsuario_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreUsuario_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreUsuario_lb.setText("Nombre de Usuario");
+        jPanel1.add(nombreUsuario_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, -1, -1));
+
+        contraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        contraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
+        contraseña_lb.setText("Contraseña");
+        jPanel1.add(contraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 240, -1, -1));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        jPanel1.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 640, 240, 20));
+
+        roles_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        roles_lb.setForeground(new java.awt.Color(0, 0, 0));
+        roles_lb.setText("Roles");
+        jPanel1.add(roles_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 370, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -73,6 +137,16 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel contraseña_lb;
+    private javax.swing.JLabel correo_lb;
+    private javax.swing.JLabel dni_lb;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JLabel nombreUsuario_lb;
+    private javax.swing.JLabel roles_lb;
+    private javax.swing.JLabel telefono_lb;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
