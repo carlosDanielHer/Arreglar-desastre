@@ -38,6 +38,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         nombreUsuario_txt = new javax.swing.JTextField();
         contraseña_txt = new javax.swing.JTextField();
         jComboBox1 = new javax.swing.JComboBox<>();
+        registrar_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +113,16 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Capturista", "Tecnico" }));
         jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 370, 60));
 
+        registrar_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        registrar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        registrar_btt.setText("Registrar");
+        registrar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrar_bttActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 240, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -129,6 +140,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
+      
+    }//GEN-LAST:event_registrar_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -179,6 +194,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JTextField nombreUsuario_txt;
+    private javax.swing.JButton registrar_btt;
     private javax.swing.JLabel roles_lb;
     private javax.swing.JLabel telefono_lb;
     private javax.swing.JTextField telefono_txt;
