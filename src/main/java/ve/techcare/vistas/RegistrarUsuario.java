@@ -1,8 +1,12 @@
 package ve.techcare.vistas;
 
 import java.awt.Color;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
@@ -18,6 +22,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
      */
     public RegistrarUsuario() {
         initComponents();
+        setIcon();
     }
 
     /**
@@ -295,5 +300,16 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         nombreUsuario_lb.setForeground(Color.BLACK);
         contraseña_lb.setForeground(Color.BLACK);
         roles_lb.setForeground(Color.BLACK);
+    }
+    
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
