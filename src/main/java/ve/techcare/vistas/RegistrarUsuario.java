@@ -150,7 +150,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
-
+        registrarUsuario();
     }//GEN-LAST:event_registrar_bttActionPerformed
 
     /**
@@ -242,8 +242,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
                 if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Registrado Exitosamente");
-                    this.dispose();
-                    new Login().setVisible(true);
+                    limpiar();
                 }
 
             } catch (Exception e) {
@@ -279,8 +278,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         }
 
     }
-    
-     private void limpiar() {
+
+    private void limpiar() {
         nombreCompleto_txt.setText("");
         nombreUsuario_txt.setText("");
         correo_txt.setText("");
