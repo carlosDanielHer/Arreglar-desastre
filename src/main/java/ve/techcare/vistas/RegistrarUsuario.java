@@ -37,6 +37,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         telefono_txt = new javax.swing.JTextField();
         nombreUsuario_txt = new javax.swing.JTextField();
         contraseña_txt = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,6 +108,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jPanel1.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 270, 370, 60));
 
+        jComboBox1.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Capturista", "Tecnico" }));
+        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 370, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -168,6 +173,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreCompleto_lb;
     private javax.swing.JTextField nombreCompleto_txt;
