@@ -1,13 +1,17 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
@@ -23,8 +27,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
      */
     public GestionUsuarios() {
         initComponents();
+        this.setLocationRelativeTo(null);
         llenarTabla();
         hacerCliqueableTabla();
+        setIcon();
     }
 
     /**
@@ -42,7 +48,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         listaUsuarios_tbl = new javax.swing.JTable();
         footer_lb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
@@ -231,5 +237,16 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+     private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
