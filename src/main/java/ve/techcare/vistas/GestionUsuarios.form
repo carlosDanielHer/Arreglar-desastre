@@ -94,7 +94,7 @@
                     <Column editable="false" title="Nro" type="java.lang.Object"/>
                     <Column editable="false" title="Nombres" type="java.lang.Object"/>
                     <Column editable="false" title="DNI" type="java.lang.Object"/>
-                    <Column editable="false" title="Status" type="java.lang.Object"/>
+                    <Column editable="false" title="Estatus" type="java.lang.Object"/>
                     <Column editable="false" title="Roles" type="java.lang.Object"/>
                   </Table>
                 </Property>
