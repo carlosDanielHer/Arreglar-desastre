@@ -25,6 +25,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         titulo_lb = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaUsuarios_tbl = new javax.swing.JTable();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +86,11 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 940, 440));
 
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 240, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -139,6 +145,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel footer_lb;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaUsuarios_tbl;
     private javax.swing.JPanel panelFondo;
