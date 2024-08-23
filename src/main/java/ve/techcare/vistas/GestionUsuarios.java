@@ -182,7 +182,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }
 
     /* Este metodo se encarga de llenar la tabla con los
-    *  desde la base de datos
+    *  desde la base de datos.
+    *  
+    *  Esta tabla que aqui se usa tiene columnas que son redimencionables,
+    *  es decir, que se les pueden cambiar el tamaño con el cursor del mouse
     */
     private void llenarTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
