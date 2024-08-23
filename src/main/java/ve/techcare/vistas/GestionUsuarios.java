@@ -21,26 +21,82 @@ public class GestionUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaUsuarios_tbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1040, 665));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Gestion de Usuarios Registrados");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, 370, 40));
+
+        listaUsuarios_tbl.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        listaUsuarios_tbl.setForeground(new java.awt.Color(0, 0, 0));
+        listaUsuarios_tbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Nro", "Nombres", "DNI", "Status", "Roles"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listaUsuarios_tbl.setRowHeight(28);
+        jScrollPane1.setViewportView(listaUsuarios_tbl);
+        if (listaUsuarios_tbl.getColumnModel().getColumnCount() > 0) {
+            listaUsuarios_tbl.getColumnModel().getColumn(0).setResizable(false);
+            listaUsuarios_tbl.getColumnModel().getColumn(0).setPreferredWidth(1);
+            listaUsuarios_tbl.getColumnModel().getColumn(1).setResizable(false);
+            listaUsuarios_tbl.getColumnModel().getColumn(1).setPreferredWidth(190);
+            listaUsuarios_tbl.getColumnModel().getColumn(2).setResizable(false);
+            listaUsuarios_tbl.getColumnModel().getColumn(2).setPreferredWidth(40);
+            listaUsuarios_tbl.getColumnModel().getColumn(3).setResizable(false);
+            listaUsuarios_tbl.getColumnModel().getColumn(3).setPreferredWidth(5);
+            listaUsuarios_tbl.getColumnModel().getColumn(4).setResizable(false);
+            listaUsuarios_tbl.getColumnModel().getColumn(4).setPreferredWidth(9);
+        }
+
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 940, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -83,7 +139,10 @@ public class GestionUsuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable listaUsuarios_tbl;
+    private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
