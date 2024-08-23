@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,6 +24,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     public GestionUsuarios() {
         initComponents();
         llenarTabla();
+        hacerCliqueableTabla();
     }
 
     /**
@@ -206,5 +209,27 @@ public class GestionUsuarios extends javax.swing.JFrame {
             System.out.println("Error en el metodo llenar modelo ");
             System.out.println("en la clase SQL :" + e);
         }
+    }
+    
+    /*
+    * Este metodo permite que la tabla sea cliqueble, es decir,
+    * que al dar clic en una de sus filas esta pueda ejecutar una accion.
+    */
+    private void hacerCliqueableTabla(){
+        
+         listaUsuarios_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                int fila = listaUsuarios_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+
+                if (fila > -1) {
+                    int id = (int) listaUsuarios_tbl.getModel().getValueAt(fila, columna);
+                   
+                    JOptionPane.showMessageDialog(null, "Informacion del Usuario: "+ id);
+                }
+            }
+        });
     }
 }
