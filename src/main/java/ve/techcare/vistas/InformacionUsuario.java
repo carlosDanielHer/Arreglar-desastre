@@ -276,7 +276,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-
+    
     private void traerInfoUsuario() {
 
         String nombreCompleto = "", dni = "", correo = "", telefono = "", usuario = "", rol = "", estatus = "", registradoPor = "";
@@ -347,6 +347,23 @@ public class InformacionUsuario extends javax.swing.JFrame {
         }
     }
 
+    private String getRoles(JComboBox<String> rolesBox) {
+        String roles = (String) rolesBox.getSelectedItem();
+
+        if (roles.equals("Administrador")) {
+            return "admin";
+
+        } else if (roles.equals("Capturista")) {
+            return "captu";
+
+        } else if (roles.equals("Tecnico")) {
+            return "tec";
+
+        } else {
+            return roles;
+        }
+
+    }
     public void setId(int id) {
         this.id = id;
     }
