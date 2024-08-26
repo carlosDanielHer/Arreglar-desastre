@@ -25,6 +25,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     /**
      * Creates new form GestionUsuarios
      */
+    public static int id;
     public GestionUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -234,9 +235,9 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 int columna = 0;
 
                 if (fila > -1) {
-                    int id = (int) listaUsuarios_tbl.getModel().getValueAt(fila, columna);
-                   
-                    JOptionPane.showMessageDialog(null, "Informacion del Usuario: "+ id);
+                    id = (int) listaUsuarios_tbl.getModel().getValueAt(fila, columna);
+                    
+                    new InformacionUsuario().setVisible(true);
                 }
             }
         });

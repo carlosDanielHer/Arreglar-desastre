@@ -19,9 +19,10 @@ public class CambioContraseña extends javax.swing.JFrame {
     /**
      * Creates new form CambioContraseña
      */
-    private int id;
+    private static int id;
     public CambioContraseña() {
         initComponents();
+        id= InformacionUsuario.id;
         this.setLocationRelativeTo(null);
         setIcon();
     }

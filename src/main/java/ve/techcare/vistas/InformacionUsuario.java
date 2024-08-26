@@ -19,12 +19,13 @@ import ve.techcare.servicios.utilidades.ConexionBaseDatos;
  */
 public class InformacionUsuario extends javax.swing.JFrame {
 
-    private int id;
+    public static int id;
 
     public InformacionUsuario() {
         initComponents();
         registradoPor_txt.setEditable(false);
         this.setLocationRelativeTo(null);
+        id= GestionUsuarios.id;
         setIcon();
         fechaFooter();
         traerInfoUsuario();
@@ -186,7 +187,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void cambiarContraseña_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseña_bttActionPerformed
-        new CambioContraseña().setId(id).setVisible(true);
+        new CambioContraseña().setVisible(true);
     }//GEN-LAST:event_cambiarContraseña_bttActionPerformed
 
     /**
