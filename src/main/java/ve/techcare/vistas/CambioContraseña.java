@@ -85,70 +85,7 @@ public class CambioContraseña extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void restablecer_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecer_bttActionPerformed
-        String username= nombreUsuario_txt.getText().trim();
-        String contraseña= contraseña_txt.getText().trim();
-        usuario=username;
-
-        if(!username.isEmpty() && !contraseña.isEmpty()){
-            try {
-                Connection conexion = ConexionBaseDatos.conectar();
-                PreparedStatement ps = conexion.prepareStatement("SELECT role,"
-                    + " status FROM users WHERE username = ? and password = ?");
-
-                ps.setString(1, username);
-                ps.setString(2, contraseña);
-
-                ResultSet resultados = ps.executeQuery();
-
-                if (resultados.next()) {
-                    String role = resultados.getString("role");
-                    String status = resultados.getString("status");
-
-                    conexion.close();
-                    ps.close();
-                    resultados.close();
-
-                    switch (role) {
-                        case "admin" -> {
-                            if (status.equals("activo")) {
-                                new Administrador().setVisible(true);
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
-                            }
-                        }
-
-                        case "captu" -> {
-                            if (status.equals("activo")) {
-                                JOptionPane.showMessageDialog(null, "Capturista");
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
-                            }
-                        }
-
-                        case "tec" -> {
-                            if (status.equals("activo")) {
-                                JOptionPane.showMessageDialog(null, "Tecnico");
-                            } else {
-                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
-                            }
-                        }
-
-                        default -> {
-                        }
-                    }
-
-                } else {
-                    JOptionPane.showMessageDialog(null, "Credenciales Icorrectas");
-                }
-
-            } catch (HeadlessException | SQLException e) {
-                System.out.println("Errro en el Boton Acceder de  la clase Login: " + e);
-            }
-
-        }else{
-            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
-        }
-
+     
     }//GEN-LAST:event_restablecer_bttActionPerformed
 
     /**
