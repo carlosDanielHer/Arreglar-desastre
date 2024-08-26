@@ -25,6 +25,8 @@ public class CambioContraseña extends javax.swing.JFrame {
         titulo_lb = new javax.swing.JLabel();
         confirmaContraseña_lb = new javax.swing.JLabel();
         nuevaContraseña_lb = new javax.swing.JLabel();
+        confirmarContraseña_txt = new javax.swing.JTextField();
+        nuevaContraseña_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +48,12 @@ public class CambioContraseña extends javax.swing.JFrame {
         nuevaContraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
         nuevaContraseña_lb.setText("Nueva Contraseña");
         jPanel1.add(nuevaContraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
+
+        confirmarContraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(confirmarContraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 340, 70));
+
+        nuevaContraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        jPanel1.add(nuevaContraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 340, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,8 +110,10 @@ public class CambioContraseña extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel confirmaContraseña_lb;
+    private javax.swing.JTextField confirmarContraseña_txt;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nuevaContraseña_lb;
+    private javax.swing.JTextField nuevaContraseña_txt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
