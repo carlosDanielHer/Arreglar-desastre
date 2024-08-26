@@ -10,6 +10,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
     /** Creates new form InformacionUsuario */
     public InformacionUsuario() {
         initComponents();
+        registradoPor_txt.setEditable(false);
     }
 
     /** This method is called from within the constructor to
@@ -33,6 +34,15 @@ public class InformacionUsuario extends javax.swing.JFrame {
         roles_lb = new javax.swing.JLabel();
         registradoPor_lb = new javax.swing.JLabel();
         estatus_lb = new javax.swing.JLabel();
+        nombreCompleto_txt = new javax.swing.JTextField();
+        dni_txt = new javax.swing.JTextField();
+        correo_txt = new javax.swing.JTextField();
+        telefono_txt = new javax.swing.JTextField();
+        registradoPor_txt = new javax.swing.JTextField();
+        nombreUsuario_txt = new javax.swing.JTextField();
+        contraseña_txt = new javax.swing.JTextField();
+        roles_cbx = new javax.swing.JComboBox<>();
+        estatus_cbx = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -95,6 +105,35 @@ public class InformacionUsuario extends javax.swing.JFrame {
         estatus_lb.setText("Estatus");
         panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
 
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+
+        dni_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(dni_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 370, 60));
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 370, 60));
+
+        telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 60));
+
+        registradoPor_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 530, 370, 60));
+
+        nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
+
+        contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 370, 60));
+
+        roles_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        roles_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Capturista", "Tecnico" }));
+        panelFondo.add(roles_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 370, 60));
+
+        estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 370, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,16 +189,25 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel contraseña_lb;
+    private javax.swing.JTextField contraseña_txt;
     private javax.swing.JLabel correo_lb;
+    private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
+    private javax.swing.JTextField dni_txt;
+    private javax.swing.JComboBox<String> estatus_cbx;
     private javax.swing.JLabel estatus_lb;
     private javax.swing.JLabel footer_lb;
     private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel nombreUsuario_lb;
+    private javax.swing.JTextField nombreUsuario_txt;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JLabel registradoPor_lb;
+    private javax.swing.JTextField registradoPor_txt;
+    private javax.swing.JComboBox<String> roles_cbx;
     private javax.swing.JLabel roles_lb;
     private javax.swing.JLabel telefono_lb;
+    private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
