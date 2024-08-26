@@ -276,7 +276,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
+
     private void traerInfoUsuario() {
 
         String nombreCompleto = "", dni = "", correo = "", telefono = "", usuario = "", rol = "", estatus = "", registradoPor = "";
@@ -347,6 +347,24 @@ public class InformacionUsuario extends javax.swing.JFrame {
         }
     }
 
+    private String getEstatus(JComboBox<String> statusBox) {
+        int estatus = statusBox.getSelectedIndex();
+
+        switch (estatus) {
+            case 1 -> {
+                return "activo";
+            }
+            case 2 -> {
+                return "inactivo";
+            }
+
+            default -> {
+                return "Selecciona";
+            }
+
+        }
+    }
+
     private String getRoles(JComboBox<String> rolesBox) {
         String roles = (String) rolesBox.getSelectedItem();
 
@@ -364,6 +382,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
         }
 
     }
+
     public void setId(int id) {
         this.id = id;
     }
