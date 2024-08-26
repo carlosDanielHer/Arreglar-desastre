@@ -175,6 +175,7 @@ public class CambioContraseña extends javax.swing.JFrame {
                     
                     if(respuesta>0){
                         JOptionPane.showMessageDialog(null, "Restablecida Correctamente");
+                        this.dispose();
                     }
                     
                 } catch (Exception e) {
