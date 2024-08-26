@@ -142,7 +142,7 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarUsuario_bttActionPerformed
 
     private void gestionUsuarios_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuarios_bttActionPerformed
-        // TODO add your handling code here:
+        new GestionUsuarios().setVisible(true);
     }//GEN-LAST:event_gestionUsuarios_bttActionPerformed
 
     private void tecnico_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecnico_bttActionPerformed
