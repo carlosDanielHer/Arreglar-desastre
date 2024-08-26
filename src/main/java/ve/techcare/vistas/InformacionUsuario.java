@@ -22,12 +22,78 @@ public class InformacionUsuario extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
+        nombreCompleto_lb = new javax.swing.JLabel();
+        dni_lb = new javax.swing.JLabel();
+        correo_lb = new javax.swing.JLabel();
+        telefono_lb = new javax.swing.JLabel();
+        nombreUsuario_lb = new javax.swing.JLabel();
+        contraseña_lb = new javax.swing.JLabel();
+        roles_lb = new javax.swing.JLabel();
+        registradoPor_lb = new javax.swing.JLabel();
+        estatus_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Informacion del Usuario");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 280, 40));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
+
+        nombreCompleto_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreCompleto_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCompleto_lb.setText("Nombre Completo");
+        panelFondo.add(nombreCompleto_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        dni_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dni_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dni_lb.setText("DNI (Cedula, Identificacion Nacional)");
+        panelFondo.add(dni_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        correo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        correo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        correo_lb.setText("Correo Electronico");
+        panelFondo.add(correo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
+
+        telefono_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        telefono_lb.setForeground(new java.awt.Color(0, 0, 0));
+        telefono_lb.setText("Número de Telefono");
+        panelFondo.add(telefono_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
+
+        nombreUsuario_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreUsuario_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreUsuario_lb.setText("Nombre de Usuario");
+        panelFondo.add(nombreUsuario_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+
+        contraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        contraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
+        contraseña_lb.setText("Contraseña");
+        panelFondo.add(contraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
+
+        roles_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        roles_lb.setForeground(new java.awt.Color(0, 0, 0));
+        roles_lb.setText("Roles");
+        panelFondo.add(roles_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, -1, -1));
+
+        registradoPor_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        registradoPor_lb.setForeground(new java.awt.Color(0, 0, 0));
+        registradoPor_lb.setText("Registrado / modificado por");
+        panelFondo.add(registradoPor_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, -1, -1));
+
+        estatus_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        estatus_lb.setForeground(new java.awt.Color(0, 0, 0));
+        estatus_lb.setText("Estatus");
+        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +149,18 @@ public class InformacionUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel contraseña_lb;
+    private javax.swing.JLabel correo_lb;
+    private javax.swing.JLabel dni_lb;
+    private javax.swing.JLabel estatus_lb;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel registradoPor_lb;
+    private javax.swing.JLabel roles_lb;
+    private javax.swing.JLabel telefono_lb;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
