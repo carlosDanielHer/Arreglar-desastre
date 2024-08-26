@@ -306,14 +306,14 @@ public class InformacionUsuario extends javax.swing.JFrame {
             telefono_txt.setText(telefono);
             registradoPor_txt.setText(registradoPor);
             nombreUsuario_txt.setText(usuario);
-            roles_cbx.setSelectedIndex(1);
-            estatus_cbx.setSelectedIndex(1);
+            roles_cbx.setSelectedItem(getRoles(rol));
+            estatus_cbx.setSelectedIndex(getEstatusIndex(estatus));
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario), contacte al desarrollador::traerInfoUsuario");
         }
     }
-    
+
     private String getRoles(String roles) {
 
         if (roles.equals("admin")) {
@@ -329,6 +329,22 @@ public class InformacionUsuario extends javax.swing.JFrame {
             return roles;
         }
 
+    }
+
+    private int getEstatusIndex(String estatus) {
+
+        switch (estatus) {
+            case "activo" -> {
+                return 1;
+            }
+
+            case "inactivo" -> {
+                return 2;
+            }
+            default -> {
+                return 0;
+            }
+        }
     }
 
     public void setId(int id) {
