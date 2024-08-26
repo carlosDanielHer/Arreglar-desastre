@@ -1,5 +1,6 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -190,7 +191,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
-
+        actualizarUsuario();
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void cambiarContraseña_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseña_bttActionPerformed
@@ -312,6 +313,54 @@ public class InformacionUsuario extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario), contacte al desarrollador::traerInfoUsuario");
         }
+    }
+    
+    private void actualizarUsuario(){
+        String nombreCompleto = nombreCompleto_txt.getText().trim(),
+                dni = dni_txt.getText().trim(),
+                correo = correo_txt.getText().trim(),
+                telefono = telefono_txt.getText().trim(), 
+                usuario = nombreUsuario_txt.getText().trim(),
+                rol = getRoles(roles_cbx),
+                estatus = getEstatus(estatus_cbx);
+        
+        if(!nombreCompleto.isEmpty() && !dni.isEmpty() && !correo.isEmpty() && !telefono.isEmpty() 
+                && !usuario.isEmpty() && !rol.equals("Selecciona") && !estatus.equals("Selecciona")){
+            
+            try (Connection con = ConexionBaseDatos.conectar();
+                 PreparedStatement ps = con.prepareStatement(
+         "UPDATE users SET full_name = ?, dni = ?, email = ?, phone = ?, username = ?, role = ?, status = ? WHERE id =?");){
+                
+                ps.setString(1, nombreCompleto);
+                ps.setString(2,dni );
+                ps.setString(3,correo);
+                ps.setString(4, telefono);
+                ps.setString(5, usuario);
+                ps.setString(6,rol);
+                ps.setString(7,estatus);
+                ps.setInt(8,id);
+                
+                int respuesta = ps.executeUpdate();
+                
+                if(respuesta >0){
+                    JOptionPane.showMessageDialog(null, "Usuario actualizado con exito");
+                }
+                
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario):actualizarUsuario, contacte al desarrollador");
+            }
+        }else{
+            nombreCompleto_lb.setForeground(new Color(148, 23, 25));
+            dni_lb.setForeground(new Color(148, 23, 25));
+            correo_lb.setForeground(new Color(148, 23, 25));
+            telefono_lb.setForeground(new Color(148, 23, 25));
+            nombreUsuario_lb.setForeground(new Color(148, 23, 25));
+            contraseña_lb.setForeground(new Color(148, 23, 25));
+            roles_lb.setForeground(new Color(148, 23, 25));
+            estatus_lb.setForeground(new Color(148, 23, 25));
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+        }
+                
     }
 
     private String getRoles(String roles) {
