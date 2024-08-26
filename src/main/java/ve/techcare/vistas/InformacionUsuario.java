@@ -24,6 +24,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
     public InformacionUsuario() {
         initComponents();
         registradoPor_txt.setEditable(false);
+        this.setLocationRelativeTo(null);
         setIcon();
         fechaFooter();
         traerInfoUsuario();
@@ -185,7 +186,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void cambiarContraseña_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseña_bttActionPerformed
-        // TODO add your handling code here:
+        new CambioContraseña().setId(id).setVisible(true);
     }//GEN-LAST:event_cambiarContraseña_bttActionPerformed
 
     /**
@@ -299,7 +300,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
             estatus_cbx.setSelectedIndex(getEstatusIndex(estatus));
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario), contacte al desarrollador::traerInfoUsuario");
+            JOptionPane.showMessageDialog(null, "Ocurrio un error al Traer Info del usuario(InformacionUsuario), contacte al desarrollador");
         }
     }
     
@@ -335,7 +336,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
                 }
                 
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario):actualizarUsuario, contacte al desarrollador");
+                JOptionPane.showMessageDialog(null, "Ocurrio un error al Actualizar usuario(InformacionUsuario), contacte al desarrollador");
             }
         }else{
             nombreCompleto_lb.setForeground(new Color(148, 23, 25));
@@ -419,7 +420,8 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
     }
 
-    public void setId(int id) {
+    public InformacionUsuario setId(int id) {
         this.id = id;
+        return this;
     }
 }
