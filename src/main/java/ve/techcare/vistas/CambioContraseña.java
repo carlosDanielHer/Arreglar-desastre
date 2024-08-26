@@ -27,6 +27,7 @@ public class CambioContraseña extends javax.swing.JFrame {
         nuevaContraseña_lb = new javax.swing.JLabel();
         confirmarContraseña_txt = new javax.swing.JTextField();
         nuevaContraseña_txt = new javax.swing.JTextField();
+        restablecer_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -55,6 +56,16 @@ public class CambioContraseña extends javax.swing.JFrame {
         nuevaContraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jPanel1.add(nuevaContraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 340, 70));
 
+        restablecer_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        restablecer_btt.setForeground(new java.awt.Color(0, 0, 0));
+        restablecer_btt.setText("Restablecer");
+        restablecer_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restablecer_bttActionPerformed(evt);
+            }
+        });
+        jPanel1.add(restablecer_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 410, 190, 80));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -72,6 +83,73 @@ public class CambioContraseña extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void restablecer_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecer_bttActionPerformed
+        String username= nombreUsuario_txt.getText().trim();
+        String contraseña= contraseña_txt.getText().trim();
+        usuario=username;
+
+        if(!username.isEmpty() && !contraseña.isEmpty()){
+            try {
+                Connection conexion = ConexionBaseDatos.conectar();
+                PreparedStatement ps = conexion.prepareStatement("SELECT role,"
+                    + " status FROM users WHERE username = ? and password = ?");
+
+                ps.setString(1, username);
+                ps.setString(2, contraseña);
+
+                ResultSet resultados = ps.executeQuery();
+
+                if (resultados.next()) {
+                    String role = resultados.getString("role");
+                    String status = resultados.getString("status");
+
+                    conexion.close();
+                    ps.close();
+                    resultados.close();
+
+                    switch (role) {
+                        case "admin" -> {
+                            if (status.equals("activo")) {
+                                new Administrador().setVisible(true);
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+
+                        case "captu" -> {
+                            if (status.equals("activo")) {
+                                JOptionPane.showMessageDialog(null, "Capturista");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+
+                        case "tec" -> {
+                            if (status.equals("activo")) {
+                                JOptionPane.showMessageDialog(null, "Tecnico");
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Usuario inactivo");
+                            }
+                        }
+
+                        default -> {
+                        }
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Credenciales Icorrectas");
+                }
+
+            } catch (HeadlessException | SQLException e) {
+                System.out.println("Errro en el Boton Acceder de  la clase Login: " + e);
+            }
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Ingrese sus credenciales");
+        }
+
+    }//GEN-LAST:event_restablecer_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,6 +192,7 @@ public class CambioContraseña extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nuevaContraseña_lb;
     private javax.swing.JTextField nuevaContraseña_txt;
+    private javax.swing.JButton restablecer_btt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
