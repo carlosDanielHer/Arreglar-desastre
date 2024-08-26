@@ -23,32 +23,29 @@ public class CambioContraseña extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         titulo_lb = new javax.swing.JLabel();
+        confirmaContraseña_lb = new javax.swing.JLabel();
+        nuevaContraseña_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(495, 524));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
         titulo_lb.setText("Cambiar Contraseña");
+        jPanel1.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(131, 6, -1, 40));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(131, 131, 131)
-                .addComponent(titulo_lb)
-                .addContainerGap(133, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(titulo_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(478, Short.MAX_VALUE))
-        );
+        confirmaContraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        confirmaContraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
+        confirmaContraseña_lb.setText("Confirma la Nueva Contraseña");
+        jPanel1.add(confirmaContraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, -1, -1));
+
+        nuevaContraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nuevaContraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nuevaContraseña_lb.setText("Nueva Contraseña");
+        jPanel1.add(nuevaContraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,7 +101,9 @@ public class CambioContraseña extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel confirmaContraseña_lb;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel nuevaContraseña_lb;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
