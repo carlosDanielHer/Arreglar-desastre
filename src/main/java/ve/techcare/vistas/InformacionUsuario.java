@@ -43,6 +43,8 @@ public class InformacionUsuario extends javax.swing.JFrame {
         contraseña_txt = new javax.swing.JTextField();
         roles_cbx = new javax.swing.JComboBox<>();
         estatus_cbx = new javax.swing.JComboBox<>();
+        actualizar_btt = new javax.swing.JButton();
+        cambiarContraseña_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +136,26 @@ public class InformacionUsuario extends javax.swing.JFrame {
         estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
         panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 370, 60));
 
+        actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        actualizar_btt.setText("ACTUALIZAR");
+        actualizar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 170, 70));
+
+        cambiarContraseña_btt.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        cambiarContraseña_btt.setForeground(new java.awt.Color(0, 0, 0));
+        cambiarContraseña_btt.setText("CAMBIAR CONTRASEÑA");
+        cambiarContraseña_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cambiarContraseña_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(cambiarContraseña_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 520, 170, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -151,6 +173,14 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
+       
+    }//GEN-LAST:event_actualizar_bttActionPerformed
+
+    private void cambiarContraseña_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cambiarContraseña_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cambiarContraseña_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,6 +218,8 @@ public class InformacionUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_btt;
+    private javax.swing.JButton cambiarContraseña_btt;
     private javax.swing.JLabel contraseña_lb;
     private javax.swing.JTextField contraseña_txt;
     private javax.swing.JLabel correo_lb;
