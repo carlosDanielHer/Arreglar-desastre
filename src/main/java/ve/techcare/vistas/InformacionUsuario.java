@@ -46,7 +46,6 @@ public class InformacionUsuario extends javax.swing.JFrame {
         correo_lb = new javax.swing.JLabel();
         telefono_lb = new javax.swing.JLabel();
         nombreUsuario_lb = new javax.swing.JLabel();
-        contraseña_lb = new javax.swing.JLabel();
         roles_lb = new javax.swing.JLabel();
         registradoPor_lb = new javax.swing.JLabel();
         estatus_lb = new javax.swing.JLabel();
@@ -56,7 +55,6 @@ public class InformacionUsuario extends javax.swing.JFrame {
         telefono_txt = new javax.swing.JTextField();
         registradoPor_txt = new javax.swing.JTextField();
         nombreUsuario_txt = new javax.swing.JTextField();
-        contraseña_txt = new javax.swing.JTextField();
         roles_cbx = new javax.swing.JComboBox<>();
         estatus_cbx = new javax.swing.JComboBox<>();
         actualizar_btt = new javax.swing.JButton();
@@ -103,15 +101,10 @@ public class InformacionUsuario extends javax.swing.JFrame {
         nombreUsuario_lb.setText("Nombre de Usuario");
         panelFondo.add(nombreUsuario_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
 
-        contraseña_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        contraseña_lb.setForeground(new java.awt.Color(0, 0, 0));
-        contraseña_lb.setText("Contraseña");
-        panelFondo.add(contraseña_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
-
         roles_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         roles_lb.setForeground(new java.awt.Color(0, 0, 0));
         roles_lb.setText("Roles");
-        panelFondo.add(roles_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, -1, -1));
+        panelFondo.add(roles_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, -1, -1));
 
         registradoPor_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         registradoPor_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -121,7 +114,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
         estatus_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         estatus_lb.setForeground(new java.awt.Color(0, 0, 0));
         estatus_lb.setText("Estatus");
-        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 410, -1, -1));
+        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, -1, -1));
 
         nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
@@ -141,16 +134,13 @@ public class InformacionUsuario extends javax.swing.JFrame {
         nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
-        contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(contraseña_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 370, 60));
-
         roles_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         roles_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Administrador", "Capturista", "Tecnico" }));
-        panelFondo.add(roles_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 370, 60));
+        panelFondo.add(roles_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 230, 370, 60));
 
         estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Activo", "Inactivo" }));
-        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 430, 370, 60));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 370, 60));
 
         actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -160,7 +150,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
                 actualizar_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 520, 170, 70));
+        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 480, 170, 70));
 
         cambiarContraseña_btt.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
         cambiarContraseña_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -170,7 +160,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
                 cambiarContraseña_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(cambiarContraseña_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 520, 170, 70));
+        panelFondo.add(cambiarContraseña_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 170, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -236,8 +226,6 @@ public class InformacionUsuario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actualizar_btt;
     private javax.swing.JButton cambiarContraseña_btt;
-    private javax.swing.JLabel contraseña_lb;
-    private javax.swing.JTextField contraseña_txt;
     private javax.swing.JLabel correo_lb;
     private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
@@ -355,7 +343,6 @@ public class InformacionUsuario extends javax.swing.JFrame {
             correo_lb.setForeground(new Color(148, 23, 25));
             telefono_lb.setForeground(new Color(148, 23, 25));
             nombreUsuario_lb.setForeground(new Color(148, 23, 25));
-            contraseña_lb.setForeground(new Color(148, 23, 25));
             roles_lb.setForeground(new Color(148, 23, 25));
             estatus_lb.setForeground(new Color(148, 23, 25));
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
