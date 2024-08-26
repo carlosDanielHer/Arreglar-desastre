@@ -313,6 +313,23 @@ public class InformacionUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ocurrio un error al registrar(InformacionUsuario), contacte al desarrollador::traerInfoUsuario");
         }
     }
+    
+    private String getRoles(String roles) {
+
+        if (roles.equals("admin")) {
+            return "Administrador";
+
+        } else if (roles.equals("captu")) {
+            return "Capturista";
+
+        } else if (roles.equals("tec")) {
+            return "Tecnico";
+
+        } else {
+            return roles;
+        }
+
+    }
 
     public void setId(int id) {
         this.id = id;
