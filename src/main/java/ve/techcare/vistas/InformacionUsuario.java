@@ -420,9 +420,4 @@ public class InformacionUsuario extends javax.swing.JFrame {
         }
 
     }
-
-    public InformacionUsuario setId(int id) {
-        this.id = id;
-        return this;
-    }
 }

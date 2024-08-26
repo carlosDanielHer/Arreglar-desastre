@@ -194,9 +194,4 @@ public class CambioContraseña extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Llene todos los campos");
         }
     }
-    
-    public CambioContraseña setId(int id){
-        this.id= id;
-        return this;
-    }
 }
