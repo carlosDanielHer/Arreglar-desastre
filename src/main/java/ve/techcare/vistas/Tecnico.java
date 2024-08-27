@@ -1,11 +1,16 @@
 package ve.techcare.vistas;
 
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.imageio.ImageIO;
+import javax.swing.Timer;
 
 /**
  *
@@ -23,6 +28,7 @@ public class Tecnico extends javax.swing.JFrame {
         setMensajeBienvenida();
         fechaFooter();
         fechaActal();
+        horaActual();
     }
 
     /**
@@ -227,5 +233,20 @@ public class Tecnico extends javax.swing.JFrame {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaHora.format(formato);
         fechaActual_lb.setText("Hoy es: " + fechaFormateada);
+    }
+    
+    private void horaActual() {
+
+        Timer horaActual = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                horaActual_lb.setText("| " + new SimpleDateFormat("hh:mm:ss").format(new Date()));
+            }
+        });
+        horaActual.setRepeats(true);
+        horaActual.setCoalesce(true);
+        horaActual.setInitialDelay(0);
+        horaActual.start();
+
     }
 }
