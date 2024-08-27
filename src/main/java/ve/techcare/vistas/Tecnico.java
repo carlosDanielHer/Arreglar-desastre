@@ -21,14 +21,18 @@ public class Tecnico extends javax.swing.JFrame {
     /**
      * Creates new form Tecnico
      */
+    
+    private int bandera=0;
     public Tecnico() {
         initComponents();
         this.setLocationRelativeTo(null);
+        bandera= Administrador.bandera;
         setIcon();
         setMensajeBienvenida();
         fechaFooter();
         fechaActal();
         horaActual();
+        setFormaCerrar();
     }
 
     /**
@@ -248,5 +252,11 @@ public class Tecnico extends javax.swing.JFrame {
         horaActual.setInitialDelay(0);
         horaActual.start();
 
+    }
+    
+    private void setFormaCerrar(){
+        if(bandera > 0){
+            this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        }
     }
 }
