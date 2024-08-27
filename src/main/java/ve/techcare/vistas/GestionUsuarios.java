@@ -26,12 +26,14 @@ public class GestionUsuarios extends javax.swing.JFrame {
      * Creates new form GestionUsuarios
      */
     public static int id;
+
     public GestionUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
         llenarTabla();
         hacerCliqueableTabla();
         setIcon();
+        setNoEditableTabla();
     }
 
     /**
@@ -187,7 +189,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
     *  
     *  Esta tabla que aqui se usa tiene columnas que son redimencionables,
     *  es decir, que se les pueden cambiar el tamaño con el cursor del mouse
-    */
+     */
     private void llenarTabla() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nro");
@@ -210,7 +212,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
                 }
                 modelo.addRow(filas);
-                
+
                 listaUsuarios_tbl.setModel(modelo);
             }
 
@@ -220,14 +222,14 @@ public class GestionUsuarios extends javax.swing.JFrame {
             System.out.println("en la clase SQL :" + e);
         }
     }
-    
+
     /*
     * Este metodo permite que la tabla sea cliqueble, es decir,
     * que al dar clic en una de sus filas esta pueda ejecutar una accion.
-    */
-    private void hacerCliqueableTabla(){
-        
-         listaUsuarios_tbl.addMouseListener(new MouseAdapter() {
+     */
+    private void hacerCliqueableTabla() {
+
+        listaUsuarios_tbl.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
@@ -236,14 +238,14 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
                 if (fila > -1) {
                     id = (int) listaUsuarios_tbl.getModel().getValueAt(fila, columna);
-                    
+
                     new InformacionUsuario().setVisible(true);
                 }
             }
         });
     }
-    
-     private void setIcon() {
+
+    private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
@@ -253,4 +255,37 @@ public class GestionUsuarios extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
+    private void setNoEditableTabla() {
+        // Obtener el modelo actual de la tabla
+        DefaultTableModel currentModel = (DefaultTableModel) listaUsuarios_tbl.getModel();
+
+        // Obtener los datos y nombres de las columnas del modelo actual
+        int rowCount = currentModel.getRowCount();
+        int columnCount = currentModel.getColumnCount();
+        Object[][] data = new Object[rowCount][columnCount];
+        String[] columnNames = new String[columnCount];
+
+        for (int i = 0; i < rowCount; i++) {
+            for (int j = 0; j < columnCount; j++) {
+                data[i][j] = currentModel.getValueAt(i, j);
+            }
+        }
+
+        for (int i = 0; i < columnCount; i++) {
+            columnNames[i] = currentModel.getColumnName(i);
+        }
+
+        // Crear un nuevo modelo de tabla no editable
+        DefaultTableModel model = new DefaultTableModel(data, columnNames) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Todas las celdas no son editables
+            }
+        };
+
+        // Asignar el nuevo modelo a la tabla
+        listaUsuarios_tbl.setModel(model);
+    }
+
 }
