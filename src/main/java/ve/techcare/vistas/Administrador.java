@@ -21,6 +21,7 @@ public class Administrador extends javax.swing.JFrame {
     /**
      * Creates new form Administrador
      */
+    public static int bandera=0;
     public Administrador() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -146,7 +147,8 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionUsuarios_bttActionPerformed
 
     private void tecnico_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecnico_bttActionPerformed
-        // TODO add your handling code here:
+        bandera=1;
+        new Tecnico().setVisible(true);
     }//GEN-LAST:event_tecnico_bttActionPerformed
 
     private void capturista_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capturista_bttActionPerformed
