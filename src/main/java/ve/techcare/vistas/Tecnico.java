@@ -1,6 +1,11 @@
 
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Carlos Hernandez
@@ -10,6 +15,8 @@ public class Tecnico extends javax.swing.JFrame {
     /** Creates new form Tecnico */
     public Tecnico() {
         initComponents();
+        
+        setIcon();
     }
 
     /** This method is called from within the constructor to
@@ -185,4 +192,14 @@ public class Tecnico extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
