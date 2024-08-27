@@ -4,6 +4,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 
 /**
@@ -21,6 +22,7 @@ public class Tecnico extends javax.swing.JFrame {
         setIcon();
         setMensajeBienvenida();
         fechaFooter();
+        fechaActal();
     }
 
     /**
@@ -218,5 +220,12 @@ public class Tecnico extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+    
+    private void fechaActal() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String fechaFormateada = fechaHora.format(formato);
+        fechaActual_lb.setText("Hoy es: " + fechaFormateada);
     }
 }
