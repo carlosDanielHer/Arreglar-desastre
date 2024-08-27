@@ -23,7 +23,7 @@ public class Tecnico extends javax.swing.JFrame {
      */
     public Tecnico() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         setIcon();
         setMensajeBienvenida();
         fechaFooter();
