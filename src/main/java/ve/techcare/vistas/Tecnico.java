@@ -3,6 +3,7 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 
 /**
@@ -19,6 +20,7 @@ public class Tecnico extends javax.swing.JFrame {
 
         setIcon();
         setMensajeBienvenida();
+        fechaFooter();
     }
 
     /**
@@ -208,5 +210,13 @@ public class Tecnico extends javax.swing.JFrame {
     private void setMensajeBienvenida() {
         String username = Login.usuario;
         bienvenido_lb.setText("Bienvenido: " + username);
+    }
+    
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
