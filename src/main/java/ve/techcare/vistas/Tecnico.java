@@ -16,20 +16,23 @@ import javax.swing.Timer;
  *
  * @author Carlos Hernandez
  */
-public class Administrador extends javax.swing.JFrame {
+public class Tecnico extends javax.swing.JFrame {
 
     /**
-     * Creates new form Administrador
+     * Creates new form Tecnico
      */
-    public static int bandera=0;
-    public Administrador() {
+    
+    private int bandera=0;
+    public Tecnico() {
         initComponents();
         this.setLocationRelativeTo(null);
+        bandera= Administrador.bandera;
+        setIcon();
+        setMensajeBienvenida();
         fechaFooter();
         fechaActal();
         horaActual();
-        setIcon();
-        setMensajeBienvenida();
+        setFormaCerrar();
     }
 
     /**
@@ -44,30 +47,34 @@ public class Administrador extends javax.swing.JFrame {
         panelFondo = new javax.swing.JPanel();
         titulo_lb = new javax.swing.JLabel();
         bienvenido_lb = new javax.swing.JLabel();
+        fechaActual_lb = new javax.swing.JLabel();
         horaActual_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
-        fechaActual_lb = new javax.swing.JLabel();
-        gestionUsuarios_btt = new javax.swing.JButton();
-        registrarUsuario_btt = new javax.swing.JButton();
-        capturista_btt = new javax.swing.JButton();
-        tecnico_btt = new javax.swing.JButton();
+        gestionarEquipos_btt = new javax.swing.JButton();
+        graficaEstatus_btt = new javax.swing.JButton();
+        graficaMarcas_btt = new javax.swing.JButton();
+        graficaTipos_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1040, 665));
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
-        panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
+        panelFondo.setPreferredSize(new java.awt.Dimension(1040, 655));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
-        titulo_lb.setText("TechCare: Panel de Administracion");
+        titulo_lb.setText("TechCare: Panel Tecnico");
         panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 420, 40));
 
         bienvenido_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         bienvenido_lb.setForeground(new java.awt.Color(0, 0, 0));
         bienvenido_lb.setText("Bienvenido: ");
         panelFondo.add(bienvenido_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, -1));
+
+        fechaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        fechaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
+        fechaActual_lb.setText("Hoy es: ");
+        panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, -1));
 
         horaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         horaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -79,81 +86,79 @@ public class Administrador extends javax.swing.JFrame {
         footer_lb.setText("TechCare® System ");
         panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 240, 20));
 
-        fechaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
-        fechaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
-        fechaActual_lb.setText("Hoy es: ");
-        panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, -1));
-
-        gestionUsuarios_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        gestionUsuarios_btt.setForeground(new java.awt.Color(0, 0, 0));
-        gestionUsuarios_btt.setText("GESTIONAR USUARIOS");
-        gestionUsuarios_btt.addActionListener(new java.awt.event.ActionListener() {
+        gestionarEquipos_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        gestionarEquipos_btt.setForeground(new java.awt.Color(0, 0, 0));
+        gestionarEquipos_btt.setText("GESTIONAR EQUIPOS");
+        gestionarEquipos_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                gestionUsuarios_bttActionPerformed(evt);
+                gestionarEquipos_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(gestionUsuarios_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 240, 110));
+        panelFondo.add(gestionarEquipos_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 240, 110));
 
-        registrarUsuario_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        registrarUsuario_btt.setForeground(new java.awt.Color(0, 0, 0));
-        registrarUsuario_btt.setText("REGISTRAR USUARIOS");
-        registrarUsuario_btt.addActionListener(new java.awt.event.ActionListener() {
+        graficaEstatus_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        graficaEstatus_btt.setForeground(new java.awt.Color(0, 0, 0));
+        graficaEstatus_btt.setText("GRAFICA ESTATUS");
+        graficaEstatus_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarUsuario_bttActionPerformed(evt);
+                graficaEstatus_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(registrarUsuario_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, 240, 110));
+        panelFondo.add(graficaEstatus_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 240, 110));
 
-        capturista_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        capturista_btt.setForeground(new java.awt.Color(0, 0, 0));
-        capturista_btt.setText("VISTA CAPTURISTA");
-        capturista_btt.addActionListener(new java.awt.event.ActionListener() {
+        graficaMarcas_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        graficaMarcas_btt.setForeground(new java.awt.Color(0, 0, 0));
+        graficaMarcas_btt.setText("GRAFICA MARCAS");
+        graficaMarcas_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                capturista_bttActionPerformed(evt);
+                graficaMarcas_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(capturista_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 240, 110));
+        panelFondo.add(graficaMarcas_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 240, 110));
 
-        tecnico_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
-        tecnico_btt.setForeground(new java.awt.Color(0, 0, 0));
-        tecnico_btt.setText("VISTA TECNICO");
-        tecnico_btt.addActionListener(new java.awt.event.ActionListener() {
+        graficaTipos_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
+        graficaTipos_btt.setForeground(new java.awt.Color(0, 0, 0));
+        graficaTipos_btt.setText("GRAFICA TIPOS");
+        graficaTipos_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tecnico_bttActionPerformed(evt);
+                graficaTipos_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(tecnico_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 160, 240, 110));
+        panelFondo.add(graficaTipos_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 390, 240, 110));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registrarUsuario_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarUsuario_bttActionPerformed
-        new RegistrarUsuario().setVisible(true);
-    }//GEN-LAST:event_registrarUsuario_bttActionPerformed
+    private void gestionarEquipos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarEquipos_bttActionPerformed
 
-    private void gestionUsuarios_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionUsuarios_bttActionPerformed
-        new GestionUsuarios().setVisible(true);
-    }//GEN-LAST:event_gestionUsuarios_bttActionPerformed
+    }//GEN-LAST:event_gestionarEquipos_bttActionPerformed
 
-    private void tecnico_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecnico_bttActionPerformed
-        bandera=1;
-        new Tecnico().setVisible(true);
-    }//GEN-LAST:event_tecnico_bttActionPerformed
-
-    private void capturista_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capturista_bttActionPerformed
+    private void graficaEstatus_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaEstatus_bttActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_capturista_bttActionPerformed
+    }//GEN-LAST:event_graficaEstatus_bttActionPerformed
+
+    private void graficaMarcas_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaMarcas_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_graficaMarcas_bttActionPerformed
+
+    private void graficaTipos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaTipos_bttActionPerformed
+
+    }//GEN-LAST:event_graficaTipos_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,37 +177,53 @@ public class Administrador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Administrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tecnico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Administrador().setVisible(true);
+                new Tecnico().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bienvenido_lb;
-    private javax.swing.JButton capturista_btt;
     private javax.swing.JLabel fechaActual_lb;
     private javax.swing.JLabel footer_lb;
-    private javax.swing.JButton gestionUsuarios_btt;
+    private javax.swing.JButton gestionarEquipos_btt;
+    private javax.swing.JButton graficaEstatus_btt;
+    private javax.swing.JButton graficaMarcas_btt;
+    private javax.swing.JButton graficaTipos_btt;
     private javax.swing.JLabel horaActual_lb;
     private javax.swing.JPanel panelFondo;
-    private javax.swing.JButton registrarUsuario_btt;
-    private javax.swing.JButton tecnico_btt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setMensajeBienvenida() {
+        String username = Login.usuario;
+        bienvenido_lb.setText("Bienvenido: " + username);
+    }
+    
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
@@ -210,14 +231,14 @@ public class Administrador extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-
+    
     private void fechaActal() {
         LocalDateTime fechaHora = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaHora.format(formato);
         fechaActual_lb.setText("Hoy es: " + fechaFormateada);
     }
-
+    
     private void horaActual() {
 
         Timer horaActual = new Timer(1000, new ActionListener() {
@@ -232,20 +253,10 @@ public class Administrador extends javax.swing.JFrame {
         horaActual.start();
 
     }
-
-    private void setIcon() {
-        try {
-            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
-            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
-            this.setIconImage(scaledImage);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     
-    private void setMensajeBienvenida(){
-        String username=Login.usuario;
-        bienvenido_lb.setText("Bienvenido: "+username);
+    private void setFormaCerrar(){
+        if(bandera > 0){
+            this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        }
     }
 }

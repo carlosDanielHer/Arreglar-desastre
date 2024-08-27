@@ -210,7 +210,7 @@ public class Login extends javax.swing.JFrame {
                             
                         case "tec" -> {
                             if (status.equals("activo")) {
-                                JOptionPane.showMessageDialog(null, "Tecnico");
+                                new Tecnico().setVisible(true);
                             } else {
                                 JOptionPane.showMessageDialog(null, "Usuario inactivo");
                             }
