@@ -24,6 +24,8 @@ public class GestionEquipos extends javax.swing.JFrame {
         panelFondo = new javax.swing.JPanel();
         titulo_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaEquipos_tbl = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +42,48 @@ public class GestionEquipos extends javax.swing.JFrame {
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
         panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 240, 20));
+
+        listaEquipos_tbl.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        listaEquipos_tbl.setForeground(new java.awt.Color(0, 0, 0));
+        listaEquipos_tbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nro", "Tipos", "Marcas", "Estatus"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listaEquipos_tbl.setRowHeight(28);
+        jScrollPane1.setViewportView(listaEquipos_tbl);
+        if (listaEquipos_tbl.getColumnModel().getColumnCount() > 0) {
+            listaEquipos_tbl.getColumnModel().getColumn(0).setResizable(false);
+            listaEquipos_tbl.getColumnModel().getColumn(1).setResizable(false);
+            listaEquipos_tbl.getColumnModel().getColumn(2).setResizable(false);
+            listaEquipos_tbl.getColumnModel().getColumn(3).setResizable(false);
+        }
+
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 940, 440));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,6 +140,8 @@ public class GestionEquipos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable listaEquipos_tbl;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
