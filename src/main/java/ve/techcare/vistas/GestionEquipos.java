@@ -27,6 +27,7 @@ public class GestionEquipos extends javax.swing.JFrame {
     /** Creates new form GestionEquipos */
     public GestionEquipos() {
         initComponents();
+        this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
         hacerCliqueableTabla();
