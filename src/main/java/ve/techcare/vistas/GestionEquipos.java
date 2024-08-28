@@ -2,10 +2,14 @@
 package ve.techcare.vistas;
 
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import static ve.techcare.vistas.GestionUsuarios.id;
 
 /**
  *
@@ -18,6 +22,7 @@ public class GestionEquipos extends javax.swing.JFrame {
         initComponents();
         fechaFooter();
         setIcon();
+        hacerCliqueableTabla();
     }
 
     /** This method is called from within the constructor to
@@ -171,5 +176,23 @@ public class GestionEquipos extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void hacerCliqueableTabla() {
+
+        listaEquipos_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                int fila = listaEquipos_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+
+                if (fila > -1) {
+                    id = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
+
+                    JOptionPane.showMessageDialog(null, "Informacion del Equipos: " +id);
+                }
+            }
+        });
     }
 }
