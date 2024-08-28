@@ -46,10 +46,12 @@ public class GestionEquipos extends javax.swing.JFrame {
         panelFondo = new javax.swing.JPanel();
         titulo_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
+        estatus_cbx = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEquipos_tbl = new javax.swing.JTable();
+        buscar_btt = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
@@ -64,6 +66,10 @@ public class GestionEquipos extends javax.swing.JFrame {
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
         panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 240, 20));
+
+        estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona Estatus", "Nuevo Ingreso", "En Revision", "Reparado", "No Reparado", "Entregado" }));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 370, 40));
 
         listaEquipos_tbl.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         listaEquipos_tbl.setForeground(new java.awt.Color(0, 0, 0));
@@ -105,7 +111,17 @@ public class GestionEquipos extends javax.swing.JFrame {
             listaEquipos_tbl.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 130, 940, 440));
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 940, 440));
+
+        buscar_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        buscar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        buscar_btt.setText("Buscar");
+        buscar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscar_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(buscar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 110, -1, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -124,6 +140,10 @@ public class GestionEquipos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void buscar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_bttActionPerformed
+           
+    }//GEN-LAST:event_buscar_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +181,8 @@ public class GestionEquipos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscar_btt;
+    private javax.swing.JComboBox<String> estatus_cbx;
     private javax.swing.JLabel footer_lb;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaEquipos_tbl;
