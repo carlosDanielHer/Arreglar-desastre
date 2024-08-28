@@ -6,9 +6,16 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 import static ve.techcare.vistas.GestionUsuarios.id;
 
 /**
@@ -23,6 +30,7 @@ public class GestionEquipos extends javax.swing.JFrame {
         fechaFooter();
         setIcon();
         hacerCliqueableTabla();
+        llenarTabla();
     }
 
     /** This method is called from within the constructor to
@@ -194,5 +202,34 @@ public class GestionEquipos extends javax.swing.JFrame {
                 }
             }
         });
+    }
+    
+    private void llenarTabla() {
+        DefaultTableModel modelo= (DefaultTableModel) listaEquipos_tbl.getModel();
+        modelo.setRowCount(0);
+        
+
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement("SELECT id, type, brand, status FROM equipments"); ResultSet rs = ps.executeQuery();) {
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int cantidadDeColumnas = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadDeColumnas];
+
+                for (int i = 0; i < cantidadDeColumnas; i++) {
+
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelo.addRow(filas);
+
+                listaEquipos_tbl.setModel(modelo);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
+           
+        }
     }
 }
