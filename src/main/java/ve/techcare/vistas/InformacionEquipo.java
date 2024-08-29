@@ -10,12 +10,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     /** Creates new form InformacionEquipo */
     public InformacionEquipo() {
         initComponents();
-        cliente_txt.setEditable(false);
-        ultimoModificar_txt.setEditable(false);
-        fechaIngreso_txt.setEditable(false);
-        ultimaModification_txt.setEditable(false);
-        dañosReportados_txa.setLineWrap(true);
-        comentariosTecnicos_txa.setLineWrap(true);
+        this.setLocationRelativeTo(null);
     }
 
     /** This method is called from within the constructor to
@@ -77,6 +72,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         cliente_lb.setText("Cliente");
         panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
+        cliente_txt.setEditable(false);
         cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 370, 60));
 
@@ -119,6 +115,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimoModificar_lb.setText("Ultimo en modificar");
         panelFondo.add(ultimoModificar_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, -1));
 
+        ultimoModificar_txt.setEditable(false);
         ultimoModificar_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(ultimoModificar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 370, 60));
 
@@ -127,6 +124,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         fechaIngreso_lb.setText("Fecha de Ingreso");
         panelFondo.add(fechaIngreso_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
+        fechaIngreso_txt.setEditable(false);
         fechaIngreso_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 370, 40));
 
@@ -135,6 +133,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimaModificacion_lb.setText("Ultima Modificacion");
         panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
+        ultimaModification_txt.setEditable(false);
         ultimaModification_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 370, 40));
 
