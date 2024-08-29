@@ -54,6 +54,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         dañosReportados_txa = new javax.swing.JTextArea();
         comentariosTecnicos_lb = new javax.swing.JLabel();
+        actualizar_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -147,6 +148,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 370, 40));
 
         comentariosTecnicos_txa.setColumns(20);
+        comentariosTecnicos_txa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         comentariosTecnicos_txa.setRows(5);
         jScrollPane1.setViewportView(comentariosTecnicos_txa);
 
@@ -159,6 +161,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         dañosReportados_txa.setEditable(false);
         dañosReportados_txa.setColumns(20);
+        dañosReportados_txa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         dañosReportados_txa.setRows(5);
         jScrollPane2.setViewportView(dañosReportados_txa);
 
@@ -168,6 +171,16 @@ public class InformacionEquipo extends javax.swing.JFrame {
         comentariosTecnicos_lb.setForeground(new java.awt.Color(0, 0, 0));
         comentariosTecnicos_lb.setText("Comentarios Tecnicos");
         panelFondo.add(comentariosTecnicos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, -1, -1));
+
+        actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        actualizar_btt.setText("ACTUALIZAR");
+        actualizar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, 170, 70));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,6 +199,10 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
+      
+    }//GEN-LAST:event_actualizar_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,6 +240,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_btt;
     private javax.swing.JLabel cliente_lb;
     private javax.swing.JTextField cliente_txt;
     private javax.swing.JLabel comentariosTecnicos_lb;
