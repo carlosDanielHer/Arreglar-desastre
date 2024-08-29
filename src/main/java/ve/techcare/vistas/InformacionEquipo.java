@@ -1,6 +1,11 @@
 
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Carlos Hernandez
@@ -13,6 +18,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        
+        setIcon();
     }
 
     /** This method is called from within the constructor to
@@ -271,4 +278,14 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JTextField ultimoModificar_txt;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
