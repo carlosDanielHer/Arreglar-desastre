@@ -11,6 +11,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     public InformacionEquipo() {
         initComponents();
         cliente_txt.setEditable(false);
+        ultimoModificar_txt.setEditable(false);
     }
 
     /** This method is called from within the constructor to
@@ -35,6 +36,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         modelo_txt = new javax.swing.JTextField();
         numeroSerie_lb = new javax.swing.JLabel();
         numeroSerie_txt = new javax.swing.JTextField();
+        ultimoModificar_lb = new javax.swing.JLabel();
+        ultimoModificar_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +96,14 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         numeroSerie_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(numeroSerie_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 370, 60));
+
+        ultimoModificar_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ultimoModificar_lb.setForeground(new java.awt.Color(0, 0, 0));
+        ultimoModificar_lb.setText("Ultimo en modificar");
+        panelFondo.add(ultimoModificar_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, -1, -1));
+
+        ultimoModificar_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(ultimoModificar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -161,6 +172,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> tipoEquipos_cbx;
     private javax.swing.JLabel tipoEquipos_lb;
     private javax.swing.JLabel titulo_lb;
+    private javax.swing.JLabel ultimoModificar_lb;
+    private javax.swing.JTextField ultimoModificar_txt;
     // End of variables declaration//GEN-END:variables
 
 }
