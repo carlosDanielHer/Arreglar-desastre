@@ -10,6 +10,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
     /** Creates new form InformacionEquipo */
     public InformacionEquipo() {
         initComponents();
+        dañosReportados_txa.setLineWrap(true);
+        comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
     }
 
