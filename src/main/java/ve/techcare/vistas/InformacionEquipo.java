@@ -14,6 +14,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimoModificar_txt.setEditable(false);
         fechaIngreso_txt.setEditable(false);
         ultimaModification_txt.setEditable(false);
+        dañosReportados_txa.setLineWrap(true);
+        comentariosTecnicos_txa.setLineWrap(true);
     }
 
     /** This method is called from within the constructor to
@@ -125,46 +127,47 @@ public class InformacionEquipo extends javax.swing.JFrame {
         panelFondo.add(fechaIngreso_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
         fechaIngreso_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 370, 60));
+        panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 370, 40));
 
         ultimaModificacion_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ultimaModificacion_lb.setForeground(new java.awt.Color(0, 0, 0));
         ultimaModificacion_lb.setText("Ultima Modificacion");
-        panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
+        panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, -1, -1));
 
         ultimaModification_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 370, 60));
+        panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, 370, 40));
 
         estatus_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         estatus_lb.setForeground(new java.awt.Color(0, 0, 0));
         estatus_lb.setText("Estatus");
-        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
+        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 190, -1, -1));
 
         estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Nuevo Ingreso", "En Revision", "Reparado", "No Reparado", "Entregado" }));
-        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 370, 60));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, 370, 40));
 
         comentariosTecnicos_txa.setColumns(20);
         comentariosTecnicos_txa.setRows(5);
         jScrollPane1.setViewportView(comentariosTecnicos_txa);
 
-        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 370, 110));
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 390, 370, 110));
 
         dañosReportados_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         dañosReportados_lb.setForeground(new java.awt.Color(0, 0, 0));
         dañosReportados_lb.setText("Daños Reportados");
-        panelFondo.add(dañosReportados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, -1, -1));
+        panelFondo.add(dañosReportados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, -1, -1));
 
+        dañosReportados_txa.setEditable(false);
         dañosReportados_txa.setColumns(20);
         dañosReportados_txa.setRows(5);
         jScrollPane2.setViewportView(dañosReportados_txa);
 
-        panelFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 370, 100));
+        panelFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 370, 100));
 
         comentariosTecnicos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         comentariosTecnicos_lb.setForeground(new java.awt.Color(0, 0, 0));
         comentariosTecnicos_lb.setText("Comentarios Tecnicos");
-        panelFondo.add(comentariosTecnicos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
+        panelFondo.add(comentariosTecnicos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 370, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
