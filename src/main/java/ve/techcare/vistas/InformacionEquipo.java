@@ -46,6 +46,12 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimaModification_txt = new javax.swing.JTextField();
         estatus_lb = new javax.swing.JLabel();
         estatus_cbx = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        comentariosTecnicos_txa = new javax.swing.JTextArea();
+        dañosReportados_lb = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dañosReportados_txa = new javax.swing.JTextArea();
+        comentariosTecnicos_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,77 +72,99 @@ public class InformacionEquipo extends javax.swing.JFrame {
         cliente_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         cliente_lb.setForeground(new java.awt.Color(0, 0, 0));
         cliente_lb.setText("Cliente");
-        panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+        panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
 
         cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 370, 60));
+        panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 370, 60));
 
         marcas_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         marcas_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
-        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 370, 60));
+        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 370, 60));
 
         marca_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         marca_lb.setForeground(new java.awt.Color(0, 0, 0));
         marca_lb.setText("Marcas");
-        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
+        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 250, -1, -1));
 
         tipoEquipos_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tipoEquipos_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
-        panelFondo.add(tipoEquipos_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 370, 60));
+        panelFondo.add(tipoEquipos_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 370, 60));
 
         tipoEquipos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
         tipoEquipos_lb.setText("Tipo de Equipos");
-        panelFondo.add(tipoEquipos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+        panelFondo.add(tipoEquipos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, -1));
 
         modelo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         modelo_lb.setForeground(new java.awt.Color(0, 0, 0));
         modelo_lb.setText("Modelo");
-        panelFondo.add(modelo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+        panelFondo.add(modelo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
 
         modelo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(modelo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 370, 60));
+        panelFondo.add(modelo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 370, 60));
 
         numeroSerie_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         numeroSerie_lb.setForeground(new java.awt.Color(0, 0, 0));
         numeroSerie_lb.setText("Numero de Serie");
-        panelFondo.add(numeroSerie_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+        panelFondo.add(numeroSerie_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 410, -1, -1));
 
         numeroSerie_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(numeroSerie_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 370, 60));
+        panelFondo.add(numeroSerie_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 430, 370, 60));
 
         ultimoModificar_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ultimoModificar_lb.setForeground(new java.awt.Color(0, 0, 0));
         ultimoModificar_lb.setText("Ultimo en modificar");
-        panelFondo.add(ultimoModificar_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 520, -1, -1));
+        panelFondo.add(ultimoModificar_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, -1, -1));
 
         ultimoModificar_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(ultimoModificar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 540, 370, 60));
+        panelFondo.add(ultimoModificar_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 370, 60));
 
         fechaIngreso_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         fechaIngreso_lb.setForeground(new java.awt.Color(0, 0, 0));
         fechaIngreso_lb.setText("Fecha de Ingreso");
-        panelFondo.add(fechaIngreso_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, -1, -1));
+        panelFondo.add(fechaIngreso_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 70, -1, -1));
 
         fechaIngreso_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 370, 60));
+        panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 90, 370, 60));
 
         ultimaModificacion_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         ultimaModificacion_lb.setForeground(new java.awt.Color(0, 0, 0));
         ultimaModificacion_lb.setText("Ultima Modificacion");
-        panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
+        panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 150, -1, -1));
 
         ultimaModification_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 370, 60));
+        panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, 370, 60));
 
         estatus_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         estatus_lb.setForeground(new java.awt.Color(0, 0, 0));
         estatus_lb.setText("Estatus");
-        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
 
         estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Nuevo Ingreso", "En Revision", "Reparado", "No Reparado", "Entregado" }));
-        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 370, 60));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 370, 60));
+
+        comentariosTecnicos_txa.setColumns(20);
+        comentariosTecnicos_txa.setRows(5);
+        jScrollPane1.setViewportView(comentariosTecnicos_txa);
+
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 450, 370, 110));
+
+        dañosReportados_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dañosReportados_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dañosReportados_lb.setText("Daños Reportados");
+        panelFondo.add(dañosReportados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, -1, -1));
+
+        dañosReportados_txa.setColumns(20);
+        dañosReportados_txa.setRows(5);
+        jScrollPane2.setViewportView(dañosReportados_txa);
+
+        panelFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 330, 370, 100));
+
+        comentariosTecnicos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        comentariosTecnicos_lb.setForeground(new java.awt.Color(0, 0, 0));
+        comentariosTecnicos_lb.setText("Comentarios Tecnicos");
+        panelFondo.add(comentariosTecnicos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 430, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,11 +222,17 @@ public class InformacionEquipo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cliente_lb;
     private javax.swing.JTextField cliente_txt;
+    private javax.swing.JLabel comentariosTecnicos_lb;
+    private javax.swing.JTextArea comentariosTecnicos_txa;
+    private javax.swing.JLabel dañosReportados_lb;
+    private javax.swing.JTextArea dañosReportados_txa;
     private javax.swing.JComboBox<String> estatus_cbx;
     private javax.swing.JLabel estatus_lb;
     private javax.swing.JLabel fechaIngreso_lb;
     private javax.swing.JTextField fechaIngreso_txt;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel marca_lb;
     private javax.swing.JComboBox<String> marcas_cbx;
     private javax.swing.JLabel modelo_lb;
