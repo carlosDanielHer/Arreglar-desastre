@@ -10,6 +10,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     /** Creates new form InformacionEquipo */
     public InformacionEquipo() {
         initComponents();
+        cliente_txt.setEditable(false);
     }
 
     /** This method is called from within the constructor to
@@ -24,6 +25,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         panelFondo = new javax.swing.JPanel();
         titulo_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
+        cliente_lb = new javax.swing.JLabel();
+        cliente_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +43,14 @@ public class InformacionEquipo extends javax.swing.JFrame {
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
         panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
+
+        cliente_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cliente_lb.setForeground(new java.awt.Color(0, 0, 0));
+        cliente_lb.setText("Cliente");
+        panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 100, -1, -1));
+
+        cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,6 +106,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel cliente_lb;
+    private javax.swing.JTextField cliente_txt;
     private javax.swing.JLabel footer_lb;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JLabel titulo_lb;
