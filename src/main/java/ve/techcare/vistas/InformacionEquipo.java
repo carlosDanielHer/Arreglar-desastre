@@ -27,6 +27,10 @@ public class InformacionEquipo extends javax.swing.JFrame {
         footer_lb = new javax.swing.JLabel();
         cliente_lb = new javax.swing.JLabel();
         cliente_txt = new javax.swing.JTextField();
+        marcas_cbx = new javax.swing.JComboBox<>();
+        marca_lb = new javax.swing.JLabel();
+        tipoEquipos_cbx = new javax.swing.JComboBox<>();
+        tipoEquipos_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,6 +55,24 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 370, 60));
+
+        marcas_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        marcas_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
+        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 370, 60));
+
+        marca_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        marca_lb.setForeground(new java.awt.Color(0, 0, 0));
+        marca_lb.setText("Marcas");
+        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+
+        tipoEquipos_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        tipoEquipos_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
+        panelFondo.add(tipoEquipos_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, 370, 60));
+
+        tipoEquipos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
+        tipoEquipos_lb.setText("Tipo de Equipos");
+        panelFondo.add(tipoEquipos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,7 +131,11 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JLabel cliente_lb;
     private javax.swing.JTextField cliente_txt;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JLabel marca_lb;
+    private javax.swing.JComboBox<String> marcas_cbx;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JComboBox<String> tipoEquipos_cbx;
+    private javax.swing.JLabel tipoEquipos_lb;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
