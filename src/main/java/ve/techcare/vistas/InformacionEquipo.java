@@ -31,6 +31,10 @@ public class InformacionEquipo extends javax.swing.JFrame {
         marca_lb = new javax.swing.JLabel();
         tipoEquipos_cbx = new javax.swing.JComboBox<>();
         tipoEquipos_lb = new javax.swing.JLabel();
+        modelo_lb = new javax.swing.JLabel();
+        modelo_txt = new javax.swing.JTextField();
+        numeroSerie_lb = new javax.swing.JLabel();
+        numeroSerie_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,12 +62,12 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         marcas_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         marcas_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
-        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 310, 370, 60));
+        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 300, 370, 60));
 
         marca_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         marca_lb.setForeground(new java.awt.Color(0, 0, 0));
         marca_lb.setText("Marcas");
-        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, -1, -1));
+        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, -1, -1));
 
         tipoEquipos_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         tipoEquipos_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
@@ -73,6 +77,22 @@ public class InformacionEquipo extends javax.swing.JFrame {
         tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
         tipoEquipos_lb.setText("Tipo de Equipos");
         panelFondo.add(tipoEquipos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        modelo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        modelo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        modelo_lb.setText("Modelo");
+        panelFondo.add(modelo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 360, -1, -1));
+
+        modelo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(modelo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 380, 370, 60));
+
+        numeroSerie_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        numeroSerie_lb.setForeground(new java.awt.Color(0, 0, 0));
+        numeroSerie_lb.setText("Numero de Serie");
+        panelFondo.add(numeroSerie_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, -1, -1));
+
+        numeroSerie_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(numeroSerie_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -133,6 +153,10 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JLabel footer_lb;
     private javax.swing.JLabel marca_lb;
     private javax.swing.JComboBox<String> marcas_cbx;
+    private javax.swing.JLabel modelo_lb;
+    private javax.swing.JTextField modelo_txt;
+    private javax.swing.JLabel numeroSerie_lb;
+    private javax.swing.JTextField numeroSerie_txt;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JComboBox<String> tipoEquipos_cbx;
     private javax.swing.JLabel tipoEquipos_lb;
