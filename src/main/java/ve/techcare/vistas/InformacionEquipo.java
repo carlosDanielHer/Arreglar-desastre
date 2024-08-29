@@ -13,6 +13,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         cliente_txt.setEditable(false);
         ultimoModificar_txt.setEditable(false);
         fechaIngreso_txt.setEditable(false);
+        ultimaModification_txt.setEditable(false);
     }
 
     /** This method is called from within the constructor to
@@ -41,6 +42,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimoModificar_txt = new javax.swing.JTextField();
         fechaIngreso_lb = new javax.swing.JLabel();
         fechaIngreso_txt = new javax.swing.JTextField();
+        ultimaModificacion_lb = new javax.swing.JLabel();
+        ultimaModification_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -116,6 +119,14 @@ public class InformacionEquipo extends javax.swing.JFrame {
         fechaIngreso_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(fechaIngreso_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, 370, 60));
 
+        ultimaModificacion_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        ultimaModificacion_lb.setForeground(new java.awt.Color(0, 0, 0));
+        ultimaModificacion_lb.setText("Ultima Modificacion");
+        panelFondo.add(ultimaModificacion_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 180, -1, -1));
+
+        ultimaModification_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 370, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -185,6 +196,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> tipoEquipos_cbx;
     private javax.swing.JLabel tipoEquipos_lb;
     private javax.swing.JLabel titulo_lb;
+    private javax.swing.JLabel ultimaModificacion_lb;
+    private javax.swing.JTextField ultimaModification_txt;
     private javax.swing.JLabel ultimoModificar_lb;
     private javax.swing.JTextField ultimoModificar_txt;
     // End of variables declaration//GEN-END:variables
