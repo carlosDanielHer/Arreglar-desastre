@@ -222,7 +222,7 @@ public class GestionEquipos extends javax.swing.JFrame {
                 if (fila > -1) {
                     id = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
 
-                    JOptionPane.showMessageDialog(null, "Informacion del Equipos: " + id);
+                    new InformacionEquipo().setVisible(true);
                 }
             }
         });
