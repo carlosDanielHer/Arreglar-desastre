@@ -44,6 +44,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         fechaIngreso_txt = new javax.swing.JTextField();
         ultimaModificacion_lb = new javax.swing.JLabel();
         ultimaModification_txt = new javax.swing.JTextField();
+        estatus_lb = new javax.swing.JLabel();
+        estatus_cbx = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,6 +129,15 @@ public class InformacionEquipo extends javax.swing.JFrame {
         ultimaModification_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(ultimaModification_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 370, 60));
 
+        estatus_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        estatus_lb.setForeground(new java.awt.Color(0, 0, 0));
+        estatus_lb.setText("Estatus");
+        panelFondo.add(estatus_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
+
+        estatus_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        estatus_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona", "Nuevo Ingreso", "En Revision", "Reparado", "No Reparado", "Entregado" }));
+        panelFondo.add(estatus_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, 370, 60));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,6 +194,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel cliente_lb;
     private javax.swing.JTextField cliente_txt;
+    private javax.swing.JComboBox<String> estatus_cbx;
+    private javax.swing.JLabel estatus_lb;
     private javax.swing.JLabel fechaIngreso_lb;
     private javax.swing.JTextField fechaIngreso_txt;
     private javax.swing.JLabel footer_lb;
