@@ -4,8 +4,13 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -14,14 +19,19 @@ import javax.imageio.ImageIO;
 public class InformacionEquipo extends javax.swing.JFrame {
 
     /** Creates new form InformacionEquipo */
+    
+    private int id;
     public InformacionEquipo() {
         initComponents();
+        
+        this.id= GestionEquipos.id;
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
         
         setIcon();
         fechaFooter();
+        llenarInformacion();
     }
 
     /** This method is called from within the constructor to
@@ -297,5 +307,58 @@ public class InformacionEquipo extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+    
+    private void llenarInformacion(){
+        
+        String sql = "SELECT e.id, " +
+               "c.full_name, " +
+               "t.name AS type_nane, " +
+               "b.name AS brand_name, " +
+               "e.model, " +
+               "e.serial, " +
+               "e.date_entry, " +
+               "e.observations, " +
+               "e.tecnical_observations, " +
+               "e.status, " +
+               "u.full_name AS user_name, " +
+               "e.last_date_modified " +
+               "FROM equipments e " +
+               "INNER JOIN types t ON e.type = t.id " +
+               "INNER JOIN clients c ON c.id = e.id_client " +
+               "INNER JOIN brands b ON b.id = e.brand " +
+               "INNER JOIN users u ON u.id = e.person_modified "+
+                " WHERE e.id= ?";
+
+        
+        try (Connection con = ConexionBaseDatos.conectar();
+               PreparedStatement ps = con.prepareStatement(sql) ){
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs= ps.executeQuery();
+            
+            if(rs.next()){
+                cliente_txt.setText(rs.getString("full_name"));
+                tipoEquipos_cbx.setSelectedItem(rs.getString("type_nane"));
+                marcas_cbx.setSelectedItem(rs.getString("brand_name"));
+                modelo_txt.setText(rs.getString("model"));
+                numeroSerie_txt.setText(rs.getString("serial"));
+                ultimoModificar_txt.setText(rs.getString("user_name"));
+                fechaIngreso_txt.setText(rs.getString("date_entry"));
+                ultimaModification_txt.setText(rs.getString("last_date_modified"));
+                estatus_cbx.setSelectedItem(rs.getString("status"));
+                dañosReportados_txa.setText(rs.getString("observations"));
+                comentariosTecnicos_txa.setText(rs.getString("tecnical_observations"));
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Sin registros, Agregue al menos un equipo");
+                this.dispose();
+            }
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en llenar informacion de los equipos, contacte el desarrolador");
+        }
     }
 }
