@@ -234,7 +234,10 @@ public class GestionEquipos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
         modelo.setRowCount(0);
 
-        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement("SELECT id, type, brand, status FROM equipments"); ResultSet rs = ps.executeQuery();) {
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT e.id, t.name, b.name, status FROM equipments e "
+                + "INNER JOIN types t ON t.id=e.type "
+                + "INNER JOIN brands b ON b.id=e.brand"); ResultSet rs = ps.executeQuery();) {
 
             ResultSetMetaData metaData = rs.getMetaData();
             int cantidadDeColumnas = metaData.getColumnCount();
@@ -264,30 +267,64 @@ public class GestionEquipos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
         modelo.setRowCount(0);
 
-        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
-                "SELECT id, type, brand, status FROM equipments WHERE status = ?");) {
+        if (estatus.equals("Selecciona Estatus")) {
 
-            ps.setString(1, estatus);
+            try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                    "SELECT e.id, t.name, b.name, status FROM equipments e "
+                    + "INNER JOIN types t ON t.id=e.type "
+                    + "INNER JOIN brands b ON b.id=e.brand ");) {
 
-            ResultSet rs = ps.executeQuery();
-            ResultSetMetaData metaData = rs.getMetaData();
-            int cantidadDeColumnas = metaData.getColumnCount();
+                ResultSet rs = ps.executeQuery();
+                ResultSetMetaData metaData = rs.getMetaData();
+                int cantidadDeColumnas = metaData.getColumnCount();
 
-            while (rs.next()) {
-                Object[] filas = new Object[cantidadDeColumnas];
+                while (rs.next()) {
+                    Object[] filas = new Object[cantidadDeColumnas];
 
-                for (int i = 0; i < cantidadDeColumnas; i++) {
+                    for (int i = 0; i < cantidadDeColumnas; i++) {
 
-                    filas[i] = rs.getObject(i + 1);
+                        filas[i] = rs.getObject(i + 1);
 
+                    }
+                    modelo.addRow(filas);
+
+                    listaEquipos_tbl.setModel(modelo);
                 }
-                modelo.addRow(filas);
 
-                listaEquipos_tbl.setModel(modelo);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al llenar tabla con los estatus: en GestionEquipos, contacte al desarrollador");
             }
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al llenar tabla con los estatus: en GestionEquipos, contacte al desarrollador");
+        } else {
+            try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                    "SELECT e.id, t.name, b.name, status FROM equipments e "
+                    + "INNER JOIN types t ON t.id=e.type "
+                    + "INNER JOIN brands b ON b.id=e.brand "
+                    + "WHERE status = ?");) {
+
+                ps.setString(1, estatus);
+
+                ResultSet rs = ps.executeQuery();
+                ResultSetMetaData metaData = rs.getMetaData();
+                int cantidadDeColumnas = metaData.getColumnCount();
+
+                while (rs.next()) {
+                    Object[] filas = new Object[cantidadDeColumnas];
+
+                    for (int i = 0; i < cantidadDeColumnas; i++) {
+
+                        filas[i] = rs.getObject(i + 1);
+
+                    }
+                    modelo.addRow(filas);
+
+                    listaEquipos_tbl.setModel(modelo);
+                }
+
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al llenar tabla con los estatus: en GestionEquipos, contacte al desarrollador");
+
+            }
 
         }
     }
