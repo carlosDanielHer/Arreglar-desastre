@@ -22,10 +22,12 @@ public class InformacionEquipo extends javax.swing.JFrame {
      * Creates new form InformacionEquipo
      */
     private int id;
+    private String username;
 
     public InformacionEquipo() {
         initComponents();
 
+        username = Login.usuario;
         this.id = GestionEquipos.id;
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
@@ -224,7 +226,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
-
+        actualizarEquipo();
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     /**
@@ -387,4 +389,57 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
     }
 
+    private void actualizarEquipo() {
+        int tipo = tipoEquipos_cbx.getSelectedIndex(),
+                marca = marcas_cbx.getSelectedIndex();
+
+        String modelo = modelo_txt.getText().trim(),
+                serie = numeroSerie_txt.getText().trim(),
+                ultimaModificacion = "hoy",
+                estatus = (String) estatus_cbx.getSelectedItem(),
+                comentariosTecnicos = comentariosTecnicos_txa.getText().trim();
+
+        if (tipo != 0 && marca != 0 && !modelo.isEmpty() && !serie.isEmpty()
+                && !ultimaModificacion.isEmpty() && !estatus.equals("Selecciona") && !comentariosTecnicos.isEmpty()) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement("SELECT id FROM users WHERE username= ?");
+                    PreparedStatement ps2 = con.prepareStatement(
+                    "UPDATE equipments SET type= ?, brand= ?, model=?, serial =?, tecnical_observations =?, status = ?,"
+                    + " person_modified= ?, last_date_modified= ? WHERE id=?");) {
+
+                ps1.setString(1, username);
+
+                ResultSet rs = ps1.executeQuery();
+
+                if (rs.next()) {
+                    
+                    int idUsuario= rs.getInt("id");
+
+                    ps2.setInt(1, tipo);
+                    ps2.setInt(2, marca);
+                    ps2.setString(3, modelo);
+                    ps2.setString(4, serie);
+                    ps2.setString(5, comentariosTecnicos);
+                    ps2.setString(6, estatus);
+                    ps2.setInt(7, idUsuario);
+                    ps2.setString(8, ultimaModificacion);
+                    ps2.setInt(9, id);
+
+                    int respuesta = ps2.executeUpdate();
+
+                    if (respuesta > 0) {
+                        JOptionPane.showMessageDialog(null, "Actualizado exitosamente");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe ningun Usuario con este Nombre de Usuario");
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al actualizar equipo, contacte al desarrollador");
+                System.out.println(e);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+        }
+    }
 }
