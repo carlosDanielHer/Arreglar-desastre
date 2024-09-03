@@ -234,7 +234,10 @@ public class GestionEquipos extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
         modelo.setRowCount(0);
 
-        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement("SELECT id, type, brand, status FROM equipments"); ResultSet rs = ps.executeQuery();) {
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT e.id, t.name, b.name, status FROM equipments e "
+                + "INNER JOIN types t ON t.id=e.type "
+                + "INNER JOIN brands b ON b.id=e.brand"); ResultSet rs = ps.executeQuery();) {
 
             ResultSetMetaData metaData = rs.getMetaData();
             int cantidadDeColumnas = metaData.getColumnCount();
@@ -265,7 +268,10 @@ public class GestionEquipos extends javax.swing.JFrame {
         modelo.setRowCount(0);
 
         try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
-                "SELECT id, type, brand, status FROM equipments WHERE status = ?");) {
+                "SELECT e.id, t.name, b.name, status FROM equipments e "
+                + "INNER JOIN types t ON t.id=e.type "
+                + "INNER JOIN brands b ON b.id=e.brand "
+                + "WHERE status = ?");) {
 
             ps.setString(1, estatus);
 
