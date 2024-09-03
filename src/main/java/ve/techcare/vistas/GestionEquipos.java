@@ -23,6 +23,8 @@ import static ve.techcare.vistas.GestionUsuarios.id;
  */
 public class GestionEquipos extends javax.swing.JFrame {
 
+    static int id;
+
     /**
      * Creates new form GestionEquipos
      */
