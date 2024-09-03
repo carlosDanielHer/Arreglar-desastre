@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
@@ -395,7 +396,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
         String modelo = modelo_txt.getText().trim(),
                 serie = numeroSerie_txt.getText().trim(),
-                ultimaModificacion = "hoy",
+                ultimaModificacion = getFechaYHora(),
                 estatus = (String) estatus_cbx.getSelectedItem(),
                 comentariosTecnicos = comentariosTecnicos_txa.getText().trim();
 
@@ -441,5 +442,13 @@ public class InformacionEquipo extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
         }
+    }
+    
+    private String getFechaYHora(){
+        String fechaHoraString= "";
+        LocalDateTime fechaHora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        fechaHoraString=fechaHora.format(formato);
+        return  fechaHoraString;
     }
 }
