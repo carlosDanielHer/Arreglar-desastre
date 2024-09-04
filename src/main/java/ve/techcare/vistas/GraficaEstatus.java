@@ -1,10 +1,20 @@
 package ve.techcare.vistas;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
+import org.jfree.data.category.DefaultCategoryDataset;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -110,7 +120,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
-    private static void graficarEstatus() {
+    private void graficarEstatus() {
 
         // OBTENCION DEL CONTEO DE LOS ESTATUS DESDE LA BASE DE DATOS.
         int nuevoIngreso = 0, enRevision = 0, reparado = 0, noReparado = 0, entregado = 0;
@@ -119,7 +129,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
                 "SELECT status, COUNT(*) AS cantidad FROM equipments GROUP BY status"); ResultSet rs = ps.executeQuery();) {
 
             while (rs.next()) {
-                String estatus = rs.getString("estatus");
+                String estatus = rs.getString("status");
                 int cantidad = rs.getInt("cantidad");
 
                 switch (estatus) {
@@ -152,8 +162,44 @@ public class GraficaEstatus extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al obtener el conteo de los estatus para graficar.");
             System.out.println("Error en Obtener Cantidades de equipos segun su estatus");
             System.out.println(e);
-
         }
+  // CREACION DEL GRAFICO DE BARRAS
+        DefaultCategoryDataset datosGraficos = new DefaultCategoryDataset();
+
+        // Establecer los datos traidos desde la base de datos al data set
+        datosGraficos.setValue(nuevoIngreso, "Nuevo Ingreso", "Nuevo Ingreso");
+        datosGraficos.setValue(enRevision, "En Revision", "En Revision");
+        datosGraficos.setValue(reparado, "Reparado", "Reparado");
+        datosGraficos.setValue(noReparado, "No Reparado", "No Reparado");
+        datosGraficos.setValue(entregado, "Entregado", "Entregado");
+        
+        JFreeChart grafico = ChartFactory.createBarChart(
+                "Grafica de Estatus",
+                "Valores",
+                "Cantidades",
+                datosGraficos);
+        
+        BarRenderer renderer = (BarRenderer) grafico.getCategoryPlot()
+                .getRenderer();
+
+        renderer.setShadowVisible(false);
+        renderer.setBarPainter(new StandardBarPainter());
+        renderer.setItemMargin(-1.5);
+        renderer.setMaximumBarWidth(1.0);
+
+        grafico.getPlot().setBackgroundPaint(Color.WHITE);
+        grafico.getCategoryPlot().setRangeGridlinePaint(new Color(150, 150, 150));
+        grafico.getCategoryPlot().setDomainGridlinePaint(new Color(150, 150, 150));
+
+        NumberAxis rangeAxis = (NumberAxis) grafico.getCategoryPlot().getRangeAxis();
+        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+        
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setPreferredSize(new Dimension(980, 520));
+
+        panelFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 98, 980, 520));
+        panelFondo.revalidate();
+        panelFondo.repaint();
 
     }
 }
