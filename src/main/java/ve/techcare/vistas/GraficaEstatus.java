@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -28,8 +29,9 @@ public class GraficaEstatus extends javax.swing.JFrame {
      */
     public GraficaEstatus() {
         initComponents();
-
+        this.setLocationRelativeTo(null);
         graficarEstatus();
+        fechaFooter();
     }
 
     /**
@@ -45,7 +47,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
         titulo_lb = new javax.swing.JLabel();
         footer_lb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
@@ -201,5 +203,13 @@ public class GraficaEstatus extends javax.swing.JFrame {
         panelFondo.revalidate();
         panelFondo.repaint();
 
+    }
+    
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
