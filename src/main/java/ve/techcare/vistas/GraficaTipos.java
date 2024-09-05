@@ -3,6 +3,7 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 
 /**
@@ -17,6 +18,7 @@ public class GraficaTipos extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         
         setIcon();
+        fechaFooter();
     }
 
     /** This method is called from within the constructor to
@@ -116,5 +118,13 @@ public class GraficaTipos extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
