@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -11,6 +13,12 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -142,7 +150,7 @@ public class GraficaTipos extends javax.swing.JFrame {
 
         List<Integer> datos = new ArrayList<>();
         List<String> nombres = new ArrayList<>();
-        
+
         try (Connection cn = ConexionBaseDatos.conectar(); PreparedStatement ps = cn.prepareStatement(
                 "SELECT id, name FROM types"); ResultSet rs = ps.executeQuery();) {
 
@@ -150,31 +158,50 @@ public class GraficaTipos extends javax.swing.JFrame {
 
                 String tipo = rs.getString("name");
                 int idTipo = rs.getInt("id");
-                
+
                 if (!tipo.isEmpty()) {
                     nombres.add(tipo);
-                    
+
                     String query2 = "SELECT COUNT(*) AS cantidad FROM equipments WHERE type= ?";
 
-                    try(PreparedStatement ps2 = cn.prepareStatement(query2);){
-                    ps2.setInt(1, idTipo);
-                    ResultSet rs2 = ps2.executeQuery();
-                    
-                    int cantidad = rs2.getInt("cantidad");
-                    datos.add(cantidad);
-                    
-                    }catch(Exception e){
-                        System.out.println("Error en segundo query GraficaTipos: "+e);
+                    try (PreparedStatement ps2 = cn.prepareStatement(query2);) {
+                        ps2.setInt(1, idTipo);
+                        ResultSet rs2 = ps2.executeQuery();
+
+                        int cantidad = rs2.getInt("cantidad");
+                        datos.add(cantidad);
+
+                    } catch (Exception e) {
+                        System.out.println("Error en segundo query GraficaTipos: " + e);
                     }
                 }
 
             }
-            
-          datos.stream().forEach(dato -> System.out.println(dato));
-          nombres.stream().forEach(nombre -> System.out.println(nombre));
-          
+
+            datos.stream().forEach(dato -> System.out.println(dato));
+            nombres.stream().forEach(nombre -> System.out.println(nombre));
+
         } catch (SQLException e) {
             System.out.println("Error en obtener tipos y sus cantidades: " + e);
         }
+
+        //CREACION DE GRAFICO 
+        DefaultPieDataset dato = new DefaultPieDataset();
+
+        for (int i = 0; i < datos.size(); i++) {
+            dato.setValue(nombres.get(i), datos.get(i));
+        }
+
+        JFreeChart grafico = ChartFactory.createPieChart("Grafica de Tipos",
+                dato, true, true, false);
+        grafico.getPlot().setBackgroundPaint(Color.WHITE);
+
+        PiePlot plot = (PiePlot) grafico.getPlot();
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0} = {1} ({2})"));
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setPreferredSize(new Dimension(980, 520));
+        panelFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 98, 980, 520));
+        panelFondo.revalidate();
+        panelFondo.repaint();
     }
 }
