@@ -153,7 +153,7 @@ public class Tecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_graficaEstatus_bttActionPerformed
 
     private void graficaMarcas_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaMarcas_bttActionPerformed
-        // TODO add your handling code here:
+        new GraficaMarca().setVisible(true);
     }//GEN-LAST:event_graficaMarcas_bttActionPerformed
 
     private void graficaTipos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaTipos_bttActionPerformed
