@@ -1,5 +1,10 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Carlos Hernandez
@@ -9,6 +14,9 @@ public class GraficaTipos extends javax.swing.JFrame {
     /** Creates new form GraficaTipos */
     public GraficaTipos() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        setIcon();
     }
 
     /** This method is called from within the constructor to
@@ -99,4 +107,14 @@ public class GraficaTipos extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
