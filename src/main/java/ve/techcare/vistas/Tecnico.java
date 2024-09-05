@@ -157,7 +157,7 @@ public class Tecnico extends javax.swing.JFrame {
     }//GEN-LAST:event_graficaMarcas_bttActionPerformed
 
     private void graficaTipos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaTipos_bttActionPerformed
-
+        new GraficaTipos().setVisible(true);
     }//GEN-LAST:event_graficaTipos_bttActionPerformed
 
     /**
