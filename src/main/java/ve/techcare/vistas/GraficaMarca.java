@@ -22,26 +22,38 @@ public class GraficaMarca extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1040, 665));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelFondo.setBackground(new java.awt.Color(255, 255, 255));
+        panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Grafica de los Equipos según su Marca");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 450, 40));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(panelFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -84,7 +96,9 @@ public class GraficaMarca extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
