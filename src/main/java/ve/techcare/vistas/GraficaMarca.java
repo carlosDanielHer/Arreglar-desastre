@@ -3,8 +3,15 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -21,6 +28,7 @@ public class GraficaMarca extends javax.swing.JFrame {
 
         setIcon();
         fechaFooter();
+        graficarMarcas();
     }
 
     /**
@@ -128,5 +136,44 @@ public class GraficaMarca extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+    
+    private void graficarMarcas(){
+         List<Integer> datos = new ArrayList<>();
+        List<String> nombres = new ArrayList<>();
+
+        try (Connection cn = ConexionBaseDatos.conectar(); PreparedStatement ps = cn.prepareStatement(
+                "SELECT id, name FROM brands"); ResultSet rs = ps.executeQuery();) {
+
+            while (rs.next()) {
+
+                String tipo = rs.getString("name");
+                int idMarca = rs.getInt("id");
+
+                if (!tipo.isEmpty()) {
+                    nombres.add(tipo);
+
+                    String query2 = "SELECT COUNT(*) AS cantidad FROM equipments WHERE brand= ?";
+
+                    try (PreparedStatement ps2 = cn.prepareStatement(query2);) {
+                        ps2.setInt(1, idMarca);
+                        ResultSet rs2 = ps2.executeQuery();
+
+                        int cantidad = rs2.getInt("cantidad");
+                        datos.add(cantidad);
+
+                    } catch (Exception e) {
+                        System.out.println("Error en segundo query GraficaTipos: " + e);
+                    }
+                }
+
+            }
+
+            datos.stream().forEach(dato -> System.out.println(dato));
+            nombres.stream().forEach(nombre -> System.out.println(nombre));
+
+        } catch (SQLException e) {
+            System.out.println("Error en obtener Marcas y sus cantidades: " + e);
+        }
     }
 }
