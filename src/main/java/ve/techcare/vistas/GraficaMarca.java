@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -11,6 +13,13 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.imageio.ImageIO;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.chart.renderer.category.StandardBarPainter;
+import org.jfree.data.category.DefaultCategoryDataset;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -169,11 +178,44 @@ public class GraficaMarca extends javax.swing.JFrame {
 
             }
 
-            datos.stream().forEach(dato -> System.out.println(dato));
-            nombres.stream().forEach(nombre -> System.out.println(nombre));
-
         } catch (SQLException e) {
             System.out.println("Error en obtener Marcas y sus cantidades: " + e);
         }
+        
+        // CREACION DEL GRAFICO
+        
+        DefaultCategoryDataset datosGraficos = new DefaultCategoryDataset();
+
+        for (int i = 0; i < datos.size(); i++) {
+            datosGraficos.setValue(datos.get(i),
+                    nombres.get(i), nombres.get(i));
+        }
+        JFreeChart grafico = ChartFactory.createBarChart(
+                "Grafica de Marcas",
+                "Valores",
+                "Cantidades",
+                datosGraficos);
+
+        BarRenderer renderer = (BarRenderer) grafico.getCategoryPlot()
+                .getRenderer();
+
+        renderer.setShadowVisible(false);
+        renderer.setBarPainter(new StandardBarPainter());
+        renderer.setItemMargin(-1.5);
+        renderer.setMaximumBarWidth(1.0);
+
+        grafico.getPlot().setBackgroundPaint(Color.WHITE);
+        grafico.getCategoryPlot().setRangeGridlinePaint(new Color(150, 150, 150));
+        grafico.getCategoryPlot().setDomainGridlinePaint(new Color(150, 150, 150));
+
+        NumberAxis rangeAxis = (NumberAxis) grafico.getCategoryPlot().getRangeAxis();
+        rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+
+        ChartPanel panel = new ChartPanel(grafico);
+        panel.setPreferredSize(new Dimension(980, 520));
+
+        panelFondo.add(panel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 98, 980, 520));
+        panelFondo.revalidate();
+        panelFondo.repaint();
     }
 }
