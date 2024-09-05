@@ -178,9 +178,6 @@ public class GraficaTipos extends javax.swing.JFrame {
 
             }
 
-            datos.stream().forEach(dato -> System.out.println(dato));
-            nombres.stream().forEach(nombre -> System.out.println(nombre));
-
         } catch (SQLException e) {
             System.out.println("Error en obtener tipos y sus cantidades: " + e);
         }
