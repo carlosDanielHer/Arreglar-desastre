@@ -99,7 +99,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 registrar_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(registrar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 240, 80));
+        panelFondo.add(registrar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 240, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
