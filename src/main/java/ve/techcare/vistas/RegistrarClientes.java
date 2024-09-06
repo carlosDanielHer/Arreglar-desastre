@@ -8,6 +8,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
     public RegistrarClientes() {
         initComponents();
+        this.setLocationRelativeTo(null);
 
     }
 

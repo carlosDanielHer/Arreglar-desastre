@@ -143,7 +143,7 @@ public class Capturista extends javax.swing.JFrame {
     }//GEN-LAST:event_imprimirClientes_bttActionPerformed
 
     private void registrarClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarClientes_bttActionPerformed
-
+          new RegistrarClientes().setVisible(true);
     }//GEN-LAST:event_registrarClientes_bttActionPerformed
 
     /**
