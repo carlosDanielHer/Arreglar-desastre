@@ -27,6 +27,10 @@ public class RegistrarClientes extends javax.swing.JFrame {
         correo_lb = new javax.swing.JLabel();
         telefono_lb = new javax.swing.JLabel();
         footer_lb1 = new javax.swing.JLabel();
+        nombreCompleto_txt = new javax.swing.JTextField();
+        dni_txt = new javax.swing.JTextField();
+        correo_txt = new javax.swing.JTextField();
+        telefono_txt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -63,6 +67,18 @@ public class RegistrarClientes extends javax.swing.JFrame {
         footer_lb1.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb1.setText("TechCare® System ");
         panelFondo.add(footer_lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
+
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+
+        dni_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(dni_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 370, 60));
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 130, 370, 60));
+
+        telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 300, 370, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,11 +136,15 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel correo_lb;
+    private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
+    private javax.swing.JTextField dni_txt;
     private javax.swing.JLabel footer_lb1;
     private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JPanel panelFondo;
     private javax.swing.JLabel telefono_lb;
+    private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
