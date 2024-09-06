@@ -1,11 +1,15 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import javax.imageio.ImageIO;
 import javax.swing.Timer;
 
 /**
@@ -28,6 +32,7 @@ public class Capturista extends javax.swing.JFrame {
         fechaFooter();
         fechaActal();
         horaActual();
+        setIcon();
     }
 
     /**
@@ -187,6 +192,17 @@ public class Capturista extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    
     private void setFormaCerrar() {
         if (bandera > 0) {
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
