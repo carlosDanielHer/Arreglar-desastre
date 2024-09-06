@@ -3,6 +3,7 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 
 /**
@@ -14,8 +15,9 @@ public class RegistrarClientes extends javax.swing.JFrame {
     public RegistrarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         setIcon();
+        fechaFooter();
 
     }
 
@@ -34,7 +36,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
         dni_lb = new javax.swing.JLabel();
         correo_lb = new javax.swing.JLabel();
         telefono_lb = new javax.swing.JLabel();
-        footer_lb1 = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
         nombreCompleto_txt = new javax.swing.JTextField();
         dni_txt = new javax.swing.JTextField();
         correo_txt = new javax.swing.JTextField();
@@ -72,10 +74,10 @@ public class RegistrarClientes extends javax.swing.JFrame {
         telefono_lb.setText("Número de Telefono");
         panelFondo.add(telefono_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 280, -1, -1));
 
-        footer_lb1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        footer_lb1.setForeground(new java.awt.Color(0, 0, 0));
-        footer_lb1.setText("TechCare® System ");
-        panelFondo.add(footer_lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
 
         nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
@@ -118,7 +120,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
-        
+
     }//GEN-LAST:event_registrar_bttActionPerformed
 
     /**
@@ -162,7 +164,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
-    private javax.swing.JLabel footer_lb1;
+    private javax.swing.JLabel footer_lb;
     private javax.swing.JLabel nombreCompleto_lb;
     private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JPanel panelFondo;
@@ -172,7 +174,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
-     private void setIcon() {
+    private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
@@ -181,5 +183,13 @@ public class RegistrarClientes extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
