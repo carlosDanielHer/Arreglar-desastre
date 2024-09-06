@@ -152,7 +152,8 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_tecnico_bttActionPerformed
 
     private void capturista_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capturista_bttActionPerformed
-        // TODO add your handling code here:
+        bandera= 1;
+        new Capturista().setVisible(true);
     }//GEN-LAST:event_capturista_bttActionPerformed
 
     /**

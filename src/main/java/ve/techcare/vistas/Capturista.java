@@ -25,6 +25,7 @@ public class Capturista extends javax.swing.JFrame {
 
     public Capturista() {
         initComponents();
+        bandera= Administrador.bandera;
 
         this.setLocationRelativeTo(null);
         setFormaCerrar();
