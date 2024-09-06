@@ -75,7 +75,7 @@ public class Capturista extends javax.swing.JFrame {
 
         imprimirClientes_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         imprimirClientes_btt.setForeground(new java.awt.Color(0, 0, 0));
-        imprimirClientes_btt.setText("REGISTRAR USUARIOS");
+        imprimirClientes_btt.setText("IMPRIMIR CLIENTES");
         imprimirClientes_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 imprimirClientes_bttActionPerformed(evt);
