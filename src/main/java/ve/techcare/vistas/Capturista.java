@@ -1,7 +1,12 @@
 package ve.techcare.vistas;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
+import javax.swing.Timer;
 
 /**
  *
@@ -12,15 +17,17 @@ public class Capturista extends javax.swing.JFrame {
     /**
      * Creates new form Capturista
      */
-     private int bandera=0;
+    private int bandera = 0;
+
     public Capturista() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         setFormaCerrar();
         setMensajeBienvenida();
         fechaFooter();
         fechaActal();
+        horaActual();
     }
 
     /**
@@ -180,17 +187,17 @@ public class Capturista extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
-    private void setFormaCerrar(){
-        if(bandera > 0){
+    private void setFormaCerrar() {
+        if (bandera > 0) {
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         }
     }
-    
+
     private void setMensajeBienvenida() {
         String username = Login.usuario;
         bienvenido_lb.setText("Bienvenido: " + username);
     }
-    
+
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
@@ -198,11 +205,26 @@ public class Capturista extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
+
     private void fechaActal() {
         LocalDateTime fechaHora = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaHora.format(formato);
         fechaActual_lb.setText("Hoy es: " + fechaFormateada);
+    }
+
+    private void horaActual() {
+
+        Timer horaActual = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                horaActual_lb.setText("| " + new SimpleDateFormat("hh:mm:ss").format(new Date()));
+            }
+        });
+        horaActual.setRepeats(true);
+        horaActual.setCoalesce(true);
+        horaActual.setInitialDelay(0);
+        horaActual.start();
+
     }
 }
