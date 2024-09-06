@@ -9,8 +9,12 @@ public class Capturista extends javax.swing.JFrame {
     /**
      * Creates new form Capturista
      */
+     private int bandera=0;
     public Capturista() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        setFormaCerrar();
     }
 
     /**
@@ -170,4 +174,9 @@ public class Capturista extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setFormaCerrar(){
+        if(bandera > 0){
+            this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        }
+    }
 }
