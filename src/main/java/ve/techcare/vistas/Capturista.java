@@ -15,6 +15,7 @@ public class Capturista extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         setFormaCerrar();
+        setMensajeBienvenida();
     }
 
     /**
@@ -178,5 +179,10 @@ public class Capturista extends javax.swing.JFrame {
         if(bandera > 0){
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         }
+    }
+    
+    private void setMensajeBienvenida() {
+        String username = Login.usuario;
+        bienvenido_lb.setText("Bienvenido: " + username);
     }
 }
