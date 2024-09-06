@@ -1,6 +1,7 @@
 package ve.techcare.vistas;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -19,6 +20,7 @@ public class Capturista extends javax.swing.JFrame {
         setFormaCerrar();
         setMensajeBienvenida();
         fechaFooter();
+        fechaActal();
     }
 
     /**
@@ -195,5 +197,12 @@ public class Capturista extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+    
+    private void fechaActal() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        String fechaFormateada = fechaHora.format(formato);
+        fechaActual_lb.setText("Hoy es: " + fechaFormateada);
     }
 }
