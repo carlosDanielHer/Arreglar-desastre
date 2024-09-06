@@ -22,22 +22,42 @@ public class Capturista extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        bienvenido_lb = new javax.swing.JLabel();
+        fechaActual_lb = new javax.swing.JLabel();
+        horaActual_lb = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 655));
+        panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout panelFondoLayout = new javax.swing.GroupLayout(panelFondo);
-        panelFondo.setLayout(panelFondoLayout);
-        panelFondoLayout.setHorizontalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1040, Short.MAX_VALUE)
-        );
-        panelFondoLayout.setVerticalGroup(
-            panelFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 655, Short.MAX_VALUE)
-        );
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("TechCare: Panel de Administracion");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 420, 40));
+
+        bienvenido_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        bienvenido_lb.setForeground(new java.awt.Color(0, 0, 0));
+        bienvenido_lb.setText("Bienvenido: ");
+        panelFondo.add(bienvenido_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 260, -1));
+
+        fechaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        fechaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
+        fechaActual_lb.setText("Hoy es: ");
+        panelFondo.add(fechaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 150, -1));
+
+        horaActual_lb.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
+        horaActual_lb.setForeground(new java.awt.Color(0, 0, 0));
+        horaActual_lb.setText("|");
+        panelFondo.add(horaActual_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 110, -1));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +113,12 @@ public class Capturista extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel bienvenido_lb;
+    private javax.swing.JLabel fechaActual_lb;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JLabel horaActual_lb;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
