@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Carlos Hernandez
@@ -16,6 +18,7 @@ public class Capturista extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setFormaCerrar();
         setMensajeBienvenida();
+        fechaFooter();
     }
 
     /**
@@ -184,5 +187,13 @@ public class Capturista extends javax.swing.JFrame {
     private void setMensajeBienvenida() {
         String username = Login.usuario;
         bienvenido_lb.setText("Bienvenido: " + username);
+    }
+    
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 }
