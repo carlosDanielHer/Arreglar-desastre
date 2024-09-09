@@ -1,10 +1,12 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -12,10 +14,12 @@ import javax.imageio.ImageIO;
  */
 public class RegistrarClientes extends javax.swing.JFrame {
 
+    private String usuario;
+
     public RegistrarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        usuario = Login.usuario;
         setIcon();
         fechaFooter();
 
@@ -191,5 +195,23 @@ public class RegistrarClientes extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+
+    private void registrarClientes() {
+        String nombre = nombreCompleto_txt.getText().trim(),
+                dni = dni_txt.getText().trim(),
+                correo = correo_txt.getText().trim(),
+                telefono = telefono_txt.getText().trim();
+
+        if (!nombre.isEmpty() && !dni.isEmpty() && !correo.isEmpty() &&!telefono.isEmpty() && usuario != null) {
+            
+        }else{
+            nombreCompleto_lb.setForeground(new Color(148, 23, 25));
+            dni_lb.setForeground(new Color(148, 23, 25));
+            correo_lb.setForeground(new Color(148, 23, 25));
+            telefono_lb.setForeground(new Color(148, 23, 25));
+         
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+        }
     }
 }
