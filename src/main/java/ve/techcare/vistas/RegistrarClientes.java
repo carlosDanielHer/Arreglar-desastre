@@ -222,7 +222,18 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
                 if (rs1.next()) {
                     idUsuario = rs1.getInt("id");
-                    System.out.println(idUsuario);
+                }
+
+                ps2.setString(1, nombre);
+                ps2.setString(2, dni);
+                ps2.setString(3, correo);
+                ps2.setString(4, telefono);
+                ps2.setInt(5, idUsuario);
+                
+                int respuesta= ps2.executeUpdate();
+                
+                if(respuesta >0){
+                    JOptionPane.showMessageDialog(null, "Cliente Registrado exitosamente");
                 }
 
             } catch (Exception e) {
