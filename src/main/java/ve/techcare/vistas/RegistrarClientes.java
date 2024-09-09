@@ -1,10 +1,16 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -12,10 +18,12 @@ import javax.imageio.ImageIO;
  */
 public class RegistrarClientes extends javax.swing.JFrame {
 
+    private String usuario;
+
     public RegistrarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-
+        usuario = Login.usuario;
         setIcon();
         fechaFooter();
 
@@ -120,7 +128,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
-
+        registrarClientes();
     }//GEN-LAST:event_registrar_bttActionPerformed
 
     /**
@@ -191,5 +199,54 @@ public class RegistrarClientes extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+
+    private void registrarClientes() {
+        String nombre = nombreCompleto_txt.getText().trim(),
+                dni = dni_txt.getText().trim(),
+                correo = correo_txt.getText().trim(),
+                telefono = telefono_txt.getText().trim();
+
+        String sql1 = "SELECT id FROM users WHERE username=?",
+                sql2 = "INSERT INTO clients (full_name, dni, email, phone, modified)VALUES(?,?,?,?,?)";
+
+        int idUsuario = 0;
+
+        if (!nombre.isEmpty() && !dni.isEmpty() && !correo.isEmpty() && !telefono.isEmpty() && usuario != null) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(sql1); PreparedStatement ps2 = con.prepareStatement(sql2)) {
+
+                ps1.setString(1, usuario);
+
+                ResultSet rs1 = ps1.executeQuery();
+
+                if (rs1.next()) {
+                    idUsuario = rs1.getInt("id");
+                }
+
+                ps2.setString(1, nombre);
+                ps2.setString(2, dni);
+                ps2.setString(3, correo);
+                ps2.setString(4, telefono);
+                ps2.setInt(5, idUsuario);
+                
+                int respuesta= ps2.executeUpdate();
+                
+                if(respuesta >0){
+                    JOptionPane.showMessageDialog(null, "Cliente Registrado exitosamente");
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en registrar Cliente");
+            }
+
+        } else {
+            nombreCompleto_lb.setForeground(new Color(148, 23, 25));
+            dni_lb.setForeground(new Color(148, 23, 25));
+            correo_lb.setForeground(new Color(148, 23, 25));
+            telefono_lb.setForeground(new Color(148, 23, 25));
+
+            JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+        }
     }
 }
