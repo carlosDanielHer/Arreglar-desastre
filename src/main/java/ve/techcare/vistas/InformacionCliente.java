@@ -37,6 +37,9 @@ public class InformacionCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaEquipos_tbl = new javax.swing.JTable();
         equiposRegistrados_lb = new javax.swing.JLabel();
+        registrarEquipo_btt = new javax.swing.JButton();
+        actualizar_btt = new javax.swing.JButton();
+        imprimirDatos_btt = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,6 +138,36 @@ public class InformacionCliente extends javax.swing.JFrame {
         equiposRegistrados_lb.setText("Equipos Registrados");
         panelFondo.add(equiposRegistrados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
 
+        registrarEquipo_btt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        registrarEquipo_btt.setForeground(new java.awt.Color(0, 0, 0));
+        registrarEquipo_btt.setText("REGISTRAR EQUIPOS");
+        registrarEquipo_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarEquipo_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(registrarEquipo_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 170, 70));
+
+        actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        actualizar_btt.setText("ACTUALIZAR");
+        actualizar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 170, 70));
+
+        imprimirDatos_btt.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        imprimirDatos_btt.setForeground(new java.awt.Color(0, 0, 0));
+        imprimirDatos_btt.setText("IMPRIMIR DATOS");
+        imprimirDatos_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                imprimirDatos_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(imprimirDatos_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 470, 170, 70));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,6 +185,18 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void registrarEquipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEquipo_bttActionPerformed
+       
+    }//GEN-LAST:event_registrarEquipo_bttActionPerformed
+
+    private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
+        
+    }//GEN-LAST:event_actualizar_bttActionPerformed
+
+    private void imprimirDatos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirDatos_bttActionPerformed
+        
+    }//GEN-LAST:event_imprimirDatos_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -189,12 +234,14 @@ public class InformacionCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_btt;
     private javax.swing.JLabel correo_lb;
     private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
     private javax.swing.JLabel equiposRegistrados_lb;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JButton imprimirDatos_btt;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable listaEquipos_tbl;
     private javax.swing.JLabel nombreCompleto_lb;
@@ -202,6 +249,7 @@ public class InformacionCliente extends javax.swing.JFrame {
     private javax.swing.JPanel panelFondo;
     private javax.swing.JLabel registradoPor_lb;
     private javax.swing.JTextField registradoPor_txt;
+    private javax.swing.JButton registrarEquipo_btt;
     private javax.swing.JLabel telefono_lb;
     private javax.swing.JTextField telefono_txt;
     private javax.swing.JLabel titulo_lb;
