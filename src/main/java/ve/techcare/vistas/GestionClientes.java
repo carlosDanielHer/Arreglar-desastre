@@ -1,13 +1,38 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
+import static ve.techcare.vistas.GestionEquipos.id;
+
 /**
  *
  * @author Carlos Hernandez
  */
 public class GestionClientes extends javax.swing.JFrame {
 
+    public static int idCliente;
+
     public GestionClientes() {
         initComponents();
+        this.setLocationRelativeTo(null);
+
+        llenarTabla();
+        hacerCliqueableTabla();
+        setIcon();
+        fechaFooter();
     }
 
     /**
@@ -145,4 +170,69 @@ public class GestionClientes extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+
+    private void llenarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) listaClientes_tbl.getModel();
+        modelo.setRowCount(0);
+
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT id, full_name, dni, email, phone FROM clients"); ResultSet rs = ps.executeQuery();) {
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int cantidadDeColumnas = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadDeColumnas];
+
+                for (int i = 0; i < cantidadDeColumnas; i++) {
+
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelo.addRow(filas);
+
+                listaClientes_tbl.setModel(modelo);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
+
+        }
+    }
+
+    private void hacerCliqueableTabla() {
+
+        listaClientes_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                int fila = listaClientes_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+
+                if (fila > -1) {
+                    idCliente = (int) listaClientes_tbl.getModel().getValueAt(fila, columna);
+
+                    JOptionPane.showMessageDialog(null, idCliente);
+                }
+            }
+        });
+    }
 }
