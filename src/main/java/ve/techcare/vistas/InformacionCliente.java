@@ -22,12 +22,74 @@ public class InformacionCliente extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
+        nombreCompleto_lb = new javax.swing.JLabel();
+        nombreCompleto_txt = new javax.swing.JTextField();
+        dni_lb = new javax.swing.JLabel();
+        dni_txt = new javax.swing.JTextField();
+        correo_lb = new javax.swing.JLabel();
+        correo_txt = new javax.swing.JTextField();
+        telefono_lb = new javax.swing.JLabel();
+        telefono_txt = new javax.swing.JTextField();
+        registradoPor_txt = new javax.swing.JTextField();
+        registradoPor_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Informacion del Usuario");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 280, 40));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 640, 240, 20));
+
+        nombreCompleto_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        nombreCompleto_lb.setForeground(new java.awt.Color(0, 0, 0));
+        nombreCompleto_lb.setText("Nombre Completo");
+        panelFondo.add(nombreCompleto_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+
+        dni_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dni_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dni_lb.setText("DNI (Cedula, Identificacion Nacional)");
+        panelFondo.add(dni_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        dni_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(dni_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, 370, 60));
+
+        correo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        correo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        correo_lb.setText("Correo Electronico");
+        panelFondo.add(correo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, -1, -1));
+
+        correo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(correo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 370, 60));
+
+        telefono_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        telefono_lb.setForeground(new java.awt.Color(0, 0, 0));
+        telefono_lb.setText("Número de Telefono");
+        panelFondo.add(telefono_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, -1, -1));
+
+        telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 60));
+
+        registradoPor_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 370, 60));
+
+        registradoPor_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        registradoPor_lb.setForeground(new java.awt.Color(0, 0, 0));
+        registradoPor_lb.setText("Registrado / modificado por");
+        panelFondo.add(registradoPor_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -83,7 +145,19 @@ public class InformacionCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel correo_lb;
+    private javax.swing.JTextField correo_txt;
+    private javax.swing.JLabel dni_lb;
+    private javax.swing.JTextField dni_txt;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JLabel nombreCompleto_lb;
+    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel registradoPor_lb;
+    private javax.swing.JTextField registradoPor_txt;
+    private javax.swing.JLabel telefono_lb;
+    private javax.swing.JTextField telefono_txt;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
