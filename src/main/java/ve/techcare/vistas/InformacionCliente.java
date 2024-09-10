@@ -34,6 +34,9 @@ public class InformacionCliente extends javax.swing.JFrame {
         telefono_txt = new javax.swing.JTextField();
         registradoPor_txt = new javax.swing.JTextField();
         registradoPor_lb = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listaEquipos_tbl = new javax.swing.JTable();
+        equiposRegistrados_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +46,7 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
-        titulo_lb.setText("Informacion del Usuario");
+        titulo_lb.setText("Informacion del Equipo");
         panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 280, 40));
 
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
@@ -84,12 +87,53 @@ public class InformacionCliente extends javax.swing.JFrame {
         panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 60));
 
         registradoPor_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 120, 370, 60));
+        panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
         registradoPor_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         registradoPor_lb.setForeground(new java.awt.Color(0, 0, 0));
         registradoPor_lb.setText("Registrado / modificado por");
-        panelFondo.add(registradoPor_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
+        panelFondo.add(registradoPor_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 110, -1, -1));
+
+        listaEquipos_tbl.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        listaEquipos_tbl.setForeground(new java.awt.Color(0, 0, 0));
+        listaEquipos_tbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Nro", "Tipos", "Marcas", "Estatus"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        listaEquipos_tbl.setRowHeight(28);
+        jScrollPane1.setViewportView(listaEquipos_tbl);
+
+        panelFondo.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 210, 520, 230));
+
+        equiposRegistrados_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        equiposRegistrados_lb.setForeground(new java.awt.Color(0, 0, 0));
+        equiposRegistrados_lb.setText("Equipos Registrados");
+        panelFondo.add(equiposRegistrados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,7 +193,10 @@ public class InformacionCliente extends javax.swing.JFrame {
     private javax.swing.JTextField correo_txt;
     private javax.swing.JLabel dni_lb;
     private javax.swing.JTextField dni_txt;
+    private javax.swing.JLabel equiposRegistrados_lb;
     private javax.swing.JLabel footer_lb;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable listaEquipos_tbl;
     private javax.swing.JLabel nombreCompleto_lb;
     private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JPanel panelFondo;
