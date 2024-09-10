@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -8,18 +10,22 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
+import static ve.techcare.vistas.GestionEquipos.id;
 
 /**
  *
  * @author Carlos Hernandez
  */
 public class GestionClientes extends javax.swing.JFrame {
+
+    public static int idCliente;
     
     public GestionClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         llenarTabla();
+        hacerCliqueableTabla();
     }
 
     /**
@@ -162,8 +168,7 @@ public class GestionClientes extends javax.swing.JFrame {
         modelo.setRowCount(0);
 
         try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
-                "SELECT id, full_name, dni, email, phone FROM clients");
-                ResultSet rs = ps.executeQuery();) {
+                "SELECT id, full_name, dni, email, phone FROM clients"); ResultSet rs = ps.executeQuery();) {
 
             ResultSetMetaData metaData = rs.getMetaData();
             int cantidadDeColumnas = metaData.getColumnCount();
@@ -185,5 +190,23 @@ public class GestionClientes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
 
         }
+    }
+
+    private void hacerCliqueableTabla() {
+
+        listaClientes_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                int fila = listaClientes_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+
+                if (fila > -1) {
+                    idCliente = (int) listaClientes_tbl.getModel().getValueAt(fila, columna);
+
+                    JOptionPane.showMessageDialog(null, idCliente);
+                }
+            }
+        });
     }
 }
