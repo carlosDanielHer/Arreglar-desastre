@@ -1,13 +1,25 @@
 package ve.techcare.vistas;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
+
 /**
  *
  * @author Carlos Hernandez
  */
 public class GestionClientes extends javax.swing.JFrame {
-
+    
     public GestionClientes() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
+        llenarTabla();
     }
 
     /**
@@ -145,4 +157,33 @@ public class GestionClientes extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void llenarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) listaClientes_tbl.getModel();
+        modelo.setRowCount(0);
+
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT id, full_name, dni, email, phone FROM clients");
+                ResultSet rs = ps.executeQuery();) {
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int cantidadDeColumnas = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadDeColumnas];
+
+                for (int i = 0; i < cantidadDeColumnas; i++) {
+
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelo.addRow(filas);
+
+                listaClientes_tbl.setModel(modelo);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
+
+        }
+    }
 }
