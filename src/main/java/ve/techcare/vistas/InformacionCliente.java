@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -31,6 +34,7 @@ public class InformacionCliente extends javax.swing.JFrame {
         fechaFooter();
         setIcon();
         llenarInformacion();
+        llenarTabla();
     }
 
     /**
@@ -321,6 +325,41 @@ public class InformacionCliente extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en llenar informacion de los equipos, contacte el desarrolador");
       
+        }
+    }
+    
+    private void llenarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
+        modelo.setRowCount(0);
+
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT e.id, t.name, b.name, e.status FROM equipments e "
+                + "INNER JOIN types t ON t.id=e.type "
+                + "INNER JOIN brands b ON b.id=e.brand WHERE e.id_client=?"); ) {
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+
+            ResultSetMetaData metaData = rs.getMetaData();
+            int cantidadDeColumnas = metaData.getColumnCount();
+
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadDeColumnas];
+
+                for (int i = 0; i < cantidadDeColumnas; i++) {
+
+                    filas[i] = rs.getObject(i + 1);
+
+                }
+                modelo.addRow(filas);
+
+                listaEquipos_tbl.setModel(modelo);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
+            
         }
     }
 }
