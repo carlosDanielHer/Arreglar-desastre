@@ -3,8 +3,13 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -15,12 +20,17 @@ public class InformacionCliente extends javax.swing.JFrame {
     /**
      * Creates new form InformacionCliente
      */
+    private int id;
+
     public InformacionCliente() {
         initComponents();
 
+        id= GestionClientes.idCliente;
+        
         this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
+        llenarInformacion();
     }
 
     /**
@@ -282,6 +292,35 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void llenarInformacion() {
+
+        String sql = "SELECT c.full_name, c.dni, c.email, c.phone, u.full_name as user_name FROM clients c"
+                + " INNER JOIN users u ON u.id=c.modified WHERE c.id= ?";
+
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+               nombreCompleto_txt.setText(rs.getString("full_name"));
+               dni_txt.setText(rs.getString("dni"));
+               correo_txt.setText(rs.getString("email"));
+               telefono_txt.setText(rs.getString("phone"));
+               registradoPor_txt.setText(rs.getString("user_name"));
+               
+            } else {
+                JOptionPane.showMessageDialog(null, "Sin registros, Agregue al menos un equipo");
+                this.dispose();
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en llenar informacion de los equipos, contacte el desarrolador");
+      
         }
     }
 }
