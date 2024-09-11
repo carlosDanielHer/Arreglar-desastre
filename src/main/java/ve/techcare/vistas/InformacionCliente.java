@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
-import static ve.techcare.vistas.GestionEquipos.id;
 
 /**
  *
@@ -26,14 +25,16 @@ public class InformacionCliente extends javax.swing.JFrame {
     /**
      * Creates new form InformacionCliente
      */
-    private int id;
-    public static  int id_equipo;
+    private int id; // id del cliente
+    public static int id_equipo;
+    private String user_name;
 
     public InformacionCliente() {
         initComponents();
 
-        id= GestionClientes.idCliente;
-        
+        id = GestionClientes.idCliente;
+        user_name = Login.usuario;
+
         this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
@@ -119,6 +120,7 @@ public class InformacionCliente extends javax.swing.JFrame {
         telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 60));
 
+        registradoPor_txt.setEditable(false);
         registradoPor_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
@@ -221,7 +223,7 @@ public class InformacionCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarEquipo_bttActionPerformed
 
     private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
-
+        actualizarCliente();
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void imprimirDatos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirDatos_bttActionPerformed
@@ -316,12 +318,12 @@ public class InformacionCliente extends javax.swing.JFrame {
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
-               nombreCompleto_txt.setText(rs.getString("full_name"));
-               dni_txt.setText(rs.getString("dni"));
-               correo_txt.setText(rs.getString("email"));
-               telefono_txt.setText(rs.getString("phone"));
-               registradoPor_txt.setText(rs.getString("user_name"));
-               
+                nombreCompleto_txt.setText(rs.getString("full_name"));
+                dni_txt.setText(rs.getString("dni"));
+                correo_txt.setText(rs.getString("email"));
+                telefono_txt.setText(rs.getString("phone"));
+                registradoPor_txt.setText(rs.getString("user_name"));
+
             } else {
                 JOptionPane.showMessageDialog(null, "Sin registros, Agregue al menos un equipo");
                 this.dispose();
@@ -329,10 +331,10 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en llenar informacion de los equipos, contacte el desarrolador");
-      
+
         }
     }
-    
+
     private void llenarTabla() {
         DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
         modelo.setRowCount(0);
@@ -340,10 +342,10 @@ public class InformacionCliente extends javax.swing.JFrame {
         try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
                 "SELECT e.id, t.name, b.name, e.status FROM equipments e "
                 + "INNER JOIN types t ON t.id=e.type "
-                + "INNER JOIN brands b ON b.id=e.brand WHERE e.id_client=?"); ) {
-            
+                + "INNER JOIN brands b ON b.id=e.brand WHERE e.id_client=?");) {
+
             ps.setInt(1, id);
-            
+
             ResultSet rs = ps.executeQuery();
 
             ResultSetMetaData metaData = rs.getMetaData();
@@ -364,10 +366,10 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
-            
+
         }
     }
-    
+
     private void hacerCliqueableTabla() {
 
         listaEquipos_tbl.addMouseListener(new MouseAdapter() {
@@ -384,5 +386,52 @@ public class InformacionCliente extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    private void actualizarCliente() {
+
+        String nombre = nombreCompleto_txt.getText().trim(),
+                dni = dni_txt.getText().trim(),
+                correo = correo_txt.getText().trim(),
+                telefono = telefono_txt.getText().trim();
+
+        String sql1 = "SELECT id FROM users WHERE username=?",
+                sql2 = "UPDATE clients SET full_name=?, dni=?, email=?, phone=?, modified=? WHERE id=?";
+
+        int idUser = 0;
+
+        if (!nombre.isEmpty() && !dni.isEmpty() && !correo.isEmpty() && !telefono.isEmpty() && !user_name.isEmpty()) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(sql1); PreparedStatement ps2 = con.prepareStatement(sql2);) {
+
+                ps1.setString(1, user_name);
+
+                ResultSet rs1 = ps1.executeQuery();
+
+                if (rs1.next()) {
+                    idUser = rs1.getInt("id");
+                }
+
+                ps2.setString(1, nombre);
+                ps2.setString(2, dni);
+                ps2.setString(3, correo);
+                ps2.setString(4, telefono);       
+                ps2.setInt(5,idUser);
+                ps2.setInt(6, id);
+
+                int respuesta = ps2.executeUpdate();
+
+                if (respuesta > 0) {
+                    JOptionPane.showMessageDialog(null, "Cliente Actualizado correctamente");
+                }
+
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error al actualizar Cliente, contacte al desarrollador");
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos requeridos");
+        }
     }
 }
