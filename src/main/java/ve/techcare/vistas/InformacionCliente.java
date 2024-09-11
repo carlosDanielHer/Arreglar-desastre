@@ -1,6 +1,8 @@
 package ve.techcare.vistas;
 
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
+import static ve.techcare.vistas.GestionEquipos.id;
 
 /**
  *
@@ -24,6 +27,7 @@ public class InformacionCliente extends javax.swing.JFrame {
      * Creates new form InformacionCliente
      */
     private int id;
+    public static  int id_equipo;
 
     public InformacionCliente() {
         initComponents();
@@ -35,6 +39,7 @@ public class InformacionCliente extends javax.swing.JFrame {
         setIcon();
         llenarInformacion();
         llenarTabla();
+        hacerCliqueableTabla();
     }
 
     /**
@@ -361,5 +366,23 @@ public class InformacionCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
             
         }
+    }
+    
+    private void hacerCliqueableTabla() {
+
+        listaEquipos_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+                int fila = listaEquipos_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+
+                if (fila > -1) {
+                    id_equipo = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
+
+                    new InformacionEquipo(id_equipo).setVisible(true);
+                }
+            }
+        });
     }
 }
