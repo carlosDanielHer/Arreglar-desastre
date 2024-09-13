@@ -11,9 +11,15 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -227,7 +233,7 @@ public class InformacionCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void imprimirDatos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirDatos_bttActionPerformed
-
+        imprimirInformacionCliente();
     }//GEN-LAST:event_imprimirDatos_bttActionPerformed
 
     /**
@@ -415,8 +421,8 @@ public class InformacionCliente extends javax.swing.JFrame {
                 ps2.setString(1, nombre);
                 ps2.setString(2, dni);
                 ps2.setString(3, correo);
-                ps2.setString(4, telefono);       
-                ps2.setInt(5,idUser);
+                ps2.setString(4, telefono);
+                ps2.setInt(5, idUser);
                 ps2.setInt(6, id);
 
                 int respuesta = ps2.executeUpdate();
@@ -432,6 +438,31 @@ public class InformacionCliente extends javax.swing.JFrame {
 
         } else {
             JOptionPane.showMessageDialog(null, "Llene todos los campos requeridos");
+        }
+    }
+
+    private void imprimirInformacionCliente() {
+
+        String reportePath = "src/main/resources/reportes/InformacionCliente.jasper",
+                imegenPath = "src/main/resources/imagenes/icono_reporte_99px_87px.png";
+
+        Map<String, Object> parametros = new HashMap<>();  //CREAR LOS PARAMETROS CON UN MAP, ES ESTE CASO ES LA IMAGEN
+        ImageIcon icon = new ImageIcon(imegenPath);
+        parametros.put("imagen", icon.getImage());
+        System.out.println("Id del cliente: "+id);
+        parametros.put("idCliente", id);
+
+        try (Connection con = ConexionBaseDatos.conectar();) {  //CONEXION A LA BASE DE DATOS
+
+            // SE CREA EL REPORTE
+            JasperPrint print = JasperFillManager.fillReport(reportePath, parametros, con);
+            JasperViewer vista = new JasperViewer(print, false); // SE MUESTRA EL REPORTE
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            vista.setVisible(true);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en crear Reporte Informacion Cliente");
+            System.out.println(e);
         }
     }
 }
