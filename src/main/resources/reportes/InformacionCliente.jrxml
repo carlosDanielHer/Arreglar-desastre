@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.20.6  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92d842bb-a1fc-4d62-8b1e-eb89ed3ba36d">
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="225"/>
+	<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="761"/>
 	<style name="Table_TH" mode="Opaque" backcolor="#FFFFFF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
@@ -58,10 +60,16 @@
 		</box>
 	</style>
 	<subDataset name="TABLA" uuid="e5fcd61b-5f1b-4878-aba2-832155cfb33f">
-		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.sql.tables">
+			<![CDATA[dXNlcnMgLDExMywyNCw0MDIyYjIxNC0wNzhlLTRiZjUtYjEzMy1hZDAxZmE4ZWU0Mjc7ZXF1aXBt
+ZW50cyAsMzk1LDEzNiw3NWM3N2RlNS1mZmQ2LTQ5ZmYtYTZiMS01NjBjYWM4ZTNhNWU7Y2xpZW50
+cyAsMjU4LDE1LGYzNTMyMWJiLTExYmEtNDllYS04Zjg5LWYwYzlkMWJkMmQ3ZTticmFuZHMgLDE1
+LDM0NywyNDNiNmFmOS05N2Q2LTRlOGUtODk2ZS02NDY1YzQ5ZjliZmY7dHlwZXMgLDI1OCwyNzYs
+NmRjOTUwYjUtNzEzNi00MTBjLTkzZmMtMGEwZjkxN2IwOGNkOw==]]>
+		</property>
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (2)"/>
-		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="617"/>
-		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="369"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w1" value="247"/>
+		<property name="com.jaspersoft.studio.property.dataset.dialog.DatasetDialog.sash.w2" value="739"/>
 		<queryString language="SQL">
 			<![CDATA[SELECT e.*,
 	t.name AS tyep_name,
@@ -73,126 +81,126 @@ FROM equipments e
 	INNER JOIN types t ON 
 	 t.id = e.type 
 	INNER JOIN brands b ON 
-	 b.id = e.brand
-	 INNER JOIN users u ON
-	 u.id=c.modified]]>
+	 b.id = e.brand 
+	INNER JOIN users u ON 
+	 u.id = c.modified]]>
 		</queryString>
-		<field name="id" class="java.lang.Object">
+		<field name="id" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="id"/>
 			<property name="com.jaspersoft.studio.field.label" value="id"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="id_client" class="java.lang.Object">
+		<field name="id_client" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="id_client"/>
 			<property name="com.jaspersoft.studio.field.label" value="id_client"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="type" class="java.lang.Object">
+		<field name="type" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="type"/>
 			<property name="com.jaspersoft.studio.field.label" value="type"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="brand" class="java.lang.Object">
+		<field name="brand" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="brand"/>
 			<property name="com.jaspersoft.studio.field.label" value="brand"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="model" class="java.lang.Object">
+		<field name="model" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="model"/>
 			<property name="com.jaspersoft.studio.field.label" value="model"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="serial" class="java.lang.Object">
+		<field name="serial" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="serial"/>
 			<property name="com.jaspersoft.studio.field.label" value="serial"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="date_entry" class="java.lang.Object">
+		<field name="date_entry" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="date_entry"/>
 			<property name="com.jaspersoft.studio.field.label" value="date_entry"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="observations" class="java.lang.Object">
+		<field name="observations" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="observations"/>
 			<property name="com.jaspersoft.studio.field.label" value="observations"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="tecnical_observations" class="java.lang.Object">
+		<field name="tecnical_observations" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="tecnical_observations"/>
 			<property name="com.jaspersoft.studio.field.label" value="tecnical_observations"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="status" class="java.lang.Object">
+		<field name="status" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="status"/>
 			<property name="com.jaspersoft.studio.field.label" value="status"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="person_modified" class="java.lang.Object">
+		<field name="person_modified" class="java.lang.Integer">
 			<property name="com.jaspersoft.studio.field.name" value="person_modified"/>
 			<property name="com.jaspersoft.studio.field.label" value="person_modified"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="last_date_modified" class="java.lang.Object">
+		<field name="last_date_modified" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="last_date_modified"/>
 			<property name="com.jaspersoft.studio.field.label" value="last_date_modified"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="equipments"/>
 		</field>
-		<field name="tyep_name" class="java.lang.Object">
+		<field name="tyep_name" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="tyep_name"/>
 			<property name="com.jaspersoft.studio.field.label" value="tyep_name"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="types"/>
 		</field>
-		<field name="brand_name" class="java.lang.Object">
+		<field name="brand_name" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="brand_name"/>
 			<property name="com.jaspersoft.studio.field.label" value="brand_name"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="brands"/>
 		</field>
-		<field name="user_name" class="java.lang.Object">
+		<field name="user_name" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="user_name"/>
 			<property name="com.jaspersoft.studio.field.label" value="user_name"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
 		</field>
 	</subDataset>
-	<parameter name="imagen" class="java.lang.String"/>
+	<parameter name="imagen" class="java.awt.Image"/>
 	<queryString language="SQL">
 		<![CDATA[select c.*, u.full_name as user_name from clients c inner join users u on u.id=c.modified]]>
 	</queryString>
-	<field name="id" class="java.lang.Object">
+	<field name="id" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="id"/>
 		<property name="com.jaspersoft.studio.field.label" value="id"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="full_name" class="java.lang.Object">
+	<field name="full_name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="full_name"/>
 		<property name="com.jaspersoft.studio.field.label" value="full_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="dni" class="java.lang.Object">
+	<field name="dni" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="dni"/>
 		<property name="com.jaspersoft.studio.field.label" value="dni"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="email" class="java.lang.Object">
+	<field name="email" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="email"/>
 		<property name="com.jaspersoft.studio.field.label" value="email"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="phone" class="java.lang.Object">
+	<field name="phone" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="phone"/>
 		<property name="com.jaspersoft.studio.field.label" value="phone"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="address" class="java.lang.Object">
+	<field name="address" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="address"/>
 		<property name="com.jaspersoft.studio.field.label" value="address"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="modified" class="java.lang.Object">
+	<field name="modified" class="java.lang.Integer">
 		<property name="com.jaspersoft.studio.field.name" value="modified"/>
 		<property name="com.jaspersoft.studio.field.label" value="modified"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="clients"/>
 	</field>
-	<field name="user_name" class="java.lang.Object">
+	<field name="user_name" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.name" value="user_name"/>
 		<property name="com.jaspersoft.studio.field.label" value="user_name"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="users"/>
