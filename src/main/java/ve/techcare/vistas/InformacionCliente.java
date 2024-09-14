@@ -31,7 +31,7 @@ public class InformacionCliente extends javax.swing.JFrame {
     /**
      * Creates new form InformacionCliente
      */
-    private int id; // id del cliente
+    public static int id; // id del cliente
     public static int id_equipo;
     private String user_name;
 

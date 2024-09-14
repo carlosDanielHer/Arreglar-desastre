@@ -8,7 +8,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
@@ -20,12 +23,17 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     /**
      * Creates new form RegistrarEquipos
      */
+    
+    private int idCliente;
     public RegistrarEquipos() {
         initComponents();
+        idCliente=InformacionCliente.id;
+        
         this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
         llenarCombobox();
+        traerCliente();
     }
 
     /**
@@ -41,7 +49,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         titulo_lb = new javax.swing.JLabel();
         titulo_lb1 = new javax.swing.JLabel();
         cliente_lb = new javax.swing.JLabel();
-        nombreCompleto_txt = new javax.swing.JTextField();
+        cliente_txt = new javax.swing.JTextField();
         tipoEquipos_lb = new javax.swing.JLabel();
         tipoEquipos_cbx = new javax.swing.JComboBox<>();
         marca_lb = new javax.swing.JLabel();
@@ -79,9 +87,9 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         cliente_lb.setText("Cliente");
         panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
-        nombreCompleto_txt.setEditable(false);
-        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+        cliente_txt.setEditable(false);
+        cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
 
         tipoEquipos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -235,6 +243,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     private javax.swing.JButton agregarMarca_btt;
     private javax.swing.JButton agregarTipo_btt;
     private javax.swing.JLabel cliente_lb;
+    private javax.swing.JTextField cliente_txt;
     private javax.swing.JLabel dañosReportados_lb;
     private javax.swing.JTextArea dañosReportados_txa;
     private javax.swing.JLabel footer_lb;
@@ -243,7 +252,6 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> marcas_cbx;
     private javax.swing.JLabel modelo_lb;
     private javax.swing.JTextField modelo_txt;
-    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel numeroSerie_lb;
     private javax.swing.JTextField numeroSerie_txt;
     private javax.swing.JPanel panelFondo;
@@ -292,8 +300,29 @@ public class RegistrarEquipos extends javax.swing.JFrame {
             }
             
         } catch (SQLException e) {
-            System.out.println("Error en llenar ComboBox (Panel ResgistroDeEquipos): " + e);
+            JOptionPane.showMessageDialog(null,"Error en llenar ComboBox Registro de equipos ");
+            System.out.println("Error en llenar ComboBox Registro de equipos " + e);
         }
         
+    }
+    
+    private void traerCliente(){
+        
+        try(Connection con = ConexionBaseDatos.conectar();
+                PreparedStatement ps = con.prepareStatement("SELECT full_name FROM clients WHERE id=?");){
+            
+            ps.setInt(1, idCliente);
+            
+            ResultSet rs=ps.executeQuery();
+            
+            if(rs.next()){
+                cliente_txt.setText(rs.getString("full_name"));
+                   
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error en encontrar nombre del cliente: Registrar equipo");
+            Logger.getLogger(RegistrarEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
