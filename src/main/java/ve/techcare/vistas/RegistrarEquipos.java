@@ -3,8 +3,13 @@ package ve.techcare.vistas;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -17,9 +22,10 @@ public class RegistrarEquipos extends javax.swing.JFrame {
      */
     public RegistrarEquipos() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
+        llenarCombobox();
     }
 
     /**
@@ -251,7 +257,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
         String fechaFormateada = String.valueOf(year);
-
+        
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
     
@@ -260,9 +266,34 @@ public class RegistrarEquipos extends javax.swing.JFrame {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
             this.setIconImage(scaledImage);
-
+            
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    private void llenarCombobox() {
+        String sql1 = "SELECT name FROM types";
+        String sql2 = "SELECT name FROM brands";
+        
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(
+                sql1); PreparedStatement ps2 = con.prepareStatement(sql2)) {
+            
+            ResultSet rs1 = ps1.executeQuery();
+            ResultSet rs2 = ps2.executeQuery();
+            
+            while (rs2.next()) {
+                marcas_cbx.addItem(rs2.getString("name"));
+                
+            }
+            
+            while (rs1.next()) {
+                tipoEquipos_cbx.addItem(rs1.getString("name"));
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("Error en llenar ComboBox (Panel ResgistroDeEquipos): " + e);
+        }
+        
     }
 }
