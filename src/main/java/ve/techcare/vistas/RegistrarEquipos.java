@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Carlos Hernandez
@@ -11,6 +13,8 @@ public class RegistrarEquipos extends javax.swing.JFrame {
      */
     public RegistrarEquipos() {
         initComponents();
+        
+        fechaFooter();
     }
 
     /**
@@ -238,4 +242,11 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb1;
     // End of variables declaration//GEN-END:variables
 
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
 }
