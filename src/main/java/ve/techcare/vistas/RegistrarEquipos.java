@@ -23,12 +23,132 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        titulo_lb = new javax.swing.JLabel();
+        titulo_lb1 = new javax.swing.JLabel();
+        cliente_lb = new javax.swing.JLabel();
+        nombreCompleto_txt = new javax.swing.JTextField();
+        tipoEquipos_lb = new javax.swing.JLabel();
+        tipoEquipos_cbx = new javax.swing.JComboBox<>();
+        marca_lb = new javax.swing.JLabel();
+        marcas_cbx = new javax.swing.JComboBox<>();
+        modelo_lb = new javax.swing.JLabel();
+        modelo_txt = new javax.swing.JTextField();
+        numeroSerie_lb = new javax.swing.JLabel();
+        numeroSerie_txt = new javax.swing.JTextField();
+        dañosReportados_lb = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        dañosReportados_txa = new javax.swing.JTextArea();
+        actualizar_btt = new javax.swing.JButton();
+        agregarTipo_btt = new javax.swing.JButton();
+        agregarMarca_btt = new javax.swing.JButton();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 655));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Informacion del Equipo");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 280, 40));
+
+        titulo_lb1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb1.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb1.setText("Informacion del Equipo");
+        panelFondo.add(titulo_lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 280, 40));
+
+        cliente_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        cliente_lb.setForeground(new java.awt.Color(0, 0, 0));
+        cliente_lb.setText("Cliente");
+        panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
+
+        nombreCompleto_txt.setEditable(false);
+        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+
+        tipoEquipos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
+        tipoEquipos_lb.setText("Tipo de Equipos");
+        panelFondo.add(tipoEquipos_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, -1, -1));
+
+        tipoEquipos_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        tipoEquipos_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
+        panelFondo.add(tipoEquipos_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 220, 370, 60));
+
+        marca_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        marca_lb.setForeground(new java.awt.Color(0, 0, 0));
+        marca_lb.setText("Marcas");
+        panelFondo.add(marca_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, -1, -1));
+
+        marcas_cbx.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        marcas_cbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona" }));
+        panelFondo.add(marcas_cbx, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 370, 60));
+
+        modelo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        modelo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        modelo_lb.setText("Modelo");
+        panelFondo.add(modelo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 390, -1, -1));
+
+        modelo_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(modelo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 370, 60));
+
+        numeroSerie_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        numeroSerie_lb.setForeground(new java.awt.Color(0, 0, 0));
+        numeroSerie_lb.setText("Numero de Serie");
+        panelFondo.add(numeroSerie_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
+
+        numeroSerie_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(numeroSerie_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 510, 370, 60));
+
+        dañosReportados_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        dañosReportados_lb.setForeground(new java.awt.Color(0, 0, 0));
+        dañosReportados_lb.setText("Daños Reportados");
+        panelFondo.add(dañosReportados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
+
+        dañosReportados_txa.setEditable(false);
+        dañosReportados_txa.setColumns(20);
+        dañosReportados_txa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        dañosReportados_txa.setRows(5);
+        jScrollPane2.setViewportView(dañosReportados_txa);
+
+        panelFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 430, 320));
+
+        actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        actualizar_btt.setText("REGISTRAR");
+        actualizar_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizar_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 150, 70));
+
+        agregarTipo_btt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        agregarTipo_btt.setForeground(new java.awt.Color(0, 0, 0));
+        agregarTipo_btt.setText("AGREGAR TIPO");
+        agregarTipo_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarTipo_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(agregarTipo_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 470, 150, 70));
+
+        agregarMarca_btt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        agregarMarca_btt.setForeground(new java.awt.Color(0, 0, 0));
+        agregarMarca_btt.setText("AGREGAR MARCA");
+        agregarMarca_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarMarca_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(agregarMarca_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 560, 150, 70));
+
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 630, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,6 +167,18 @@ public class RegistrarEquipos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
+        
+    }//GEN-LAST:event_actualizar_bttActionPerformed
+
+    private void agregarTipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTipo_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarTipo_bttActionPerformed
+
+    private void agregarMarca_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMarca_bttActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarMarca_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,7 +216,26 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton actualizar_btt;
+    private javax.swing.JButton agregarMarca_btt;
+    private javax.swing.JButton agregarTipo_btt;
+    private javax.swing.JLabel cliente_lb;
+    private javax.swing.JLabel dañosReportados_lb;
+    private javax.swing.JTextArea dañosReportados_txa;
+    private javax.swing.JLabel footer_lb;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel marca_lb;
+    private javax.swing.JComboBox<String> marcas_cbx;
+    private javax.swing.JLabel modelo_lb;
+    private javax.swing.JTextField modelo_txt;
+    private javax.swing.JTextField nombreCompleto_txt;
+    private javax.swing.JLabel numeroSerie_lb;
+    private javax.swing.JTextField numeroSerie_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JComboBox<String> tipoEquipos_cbx;
+    private javax.swing.JLabel tipoEquipos_lb;
+    private javax.swing.JLabel titulo_lb;
+    private javax.swing.JLabel titulo_lb1;
     // End of variables declaration//GEN-END:variables
 
 }
