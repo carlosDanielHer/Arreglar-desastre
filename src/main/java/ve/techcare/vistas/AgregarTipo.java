@@ -1,5 +1,11 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import javax.imageio.ImageIO;
+
 /**
  *
  * @author Carlos Hernandez
@@ -11,6 +17,10 @@ public class AgregarTipo extends javax.swing.JFrame {
      */
     public AgregarTipo() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        setIcon();
+        fechaFooter();
     }
 
     /**
@@ -30,7 +40,7 @@ public class AgregarTipo extends javax.swing.JFrame {
         info_lb = new javax.swing.JLabel();
         info_lb2 = new javax.swing.JLabel();
         acceder_btt = new javax.swing.JButton();
-        footer_lb1 = new javax.swing.JLabel();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,18 +78,18 @@ public class AgregarTipo extends javax.swing.JFrame {
 
         acceder_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
         acceder_btt.setForeground(new java.awt.Color(0, 0, 0));
-        acceder_btt.setText("Acceder");
+        acceder_btt.setText("REGISTRAR");
         acceder_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 acceder_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(acceder_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, 60));
+        panelFondo.add(acceder_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 150, 60));
 
-        footer_lb1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
-        footer_lb1.setForeground(new java.awt.Color(0, 0, 0));
-        footer_lb1.setText("TechCare® System ");
-        panelFondo.add(footer_lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 240, 20));
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,7 +110,7 @@ public class AgregarTipo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-     
+
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     /**
@@ -142,7 +152,7 @@ public class AgregarTipo extends javax.swing.JFrame {
     private javax.swing.JButton acceder_btt;
     private javax.swing.JLabel agregarTipo_lb;
     private javax.swing.JTextField agregarTipo_txt;
-    private javax.swing.JLabel footer_lb1;
+    private javax.swing.JLabel footer_lb;
     private javax.swing.JLabel info_lb;
     private javax.swing.JLabel info_lb2;
     private javax.swing.JLabel info_lb3;
@@ -150,4 +160,22 @@ public class AgregarTipo extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+
+    private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
