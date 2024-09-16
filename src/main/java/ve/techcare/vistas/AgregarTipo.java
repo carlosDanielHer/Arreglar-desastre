@@ -50,7 +50,7 @@ public class AgregarTipo extends javax.swing.JFrame {
         acceder_btt = new javax.swing.JButton();
         footer_lb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(393, 489));
@@ -201,7 +201,7 @@ public class AgregarTipo extends javax.swing.JFrame {
                 if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Tipo registrado exitosamente");
                     agregarTipo_lb.setForeground(new Color(0,0,0));
-                    agregarTipo_txt.setText("");
+                    agregarTipo_txt.setText(""); 
                 }
 
             } catch (SQLException ex) {

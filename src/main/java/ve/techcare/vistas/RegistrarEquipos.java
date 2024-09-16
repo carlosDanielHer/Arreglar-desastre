@@ -200,7 +200,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrar_bttActionPerformed
 
     private void agregarTipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTipo_bttActionPerformed
-        // TODO add your handling code here:
+        new AgregarTipo().setVisible(true);
     }//GEN-LAST:event_agregarTipo_bttActionPerformed
 
     private void agregarMarca_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMarca_bttActionPerformed
