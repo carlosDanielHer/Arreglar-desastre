@@ -23,12 +23,63 @@ public class AgregarTipo extends javax.swing.JFrame {
     private void initComponents() {
 
         panelFondo = new javax.swing.JPanel();
+        agregarTipo_txt = new javax.swing.JTextField();
+        agregarTipo_lb = new javax.swing.JLabel();
+        titulo_lb = new javax.swing.JLabel();
+        info_lb3 = new javax.swing.JLabel();
+        info_lb = new javax.swing.JLabel();
+        info_lb2 = new javax.swing.JLabel();
+        acceder_btt = new javax.swing.JButton();
+        footer_lb1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(393, 489));
         panelFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        agregarTipo_txt.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        panelFondo.add(agregarTipo_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 320, 60));
+
+        agregarTipo_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        agregarTipo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        agregarTipo_lb.setText("Agrega el Tipo de equipo aquí");
+        panelFondo.add(agregarTipo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, -1));
+
+        titulo_lb.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        titulo_lb.setForeground(new java.awt.Color(0, 0, 0));
+        titulo_lb.setText("Agregar Tipos");
+        panelFondo.add(titulo_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 0, 170, 30));
+
+        info_lb3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        info_lb3.setForeground(new java.awt.Color(0, 0, 0));
+        info_lb3.setText("movil, ect.");
+        panelFondo.add(info_lb3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 290, -1));
+
+        info_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        info_lb.setForeground(new java.awt.Color(0, 0, 0));
+        info_lb.setText("El Tipo se refiere a la forma del equipo  ");
+        panelFondo.add(info_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 300, -1));
+
+        info_lb2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        info_lb2.setForeground(new java.awt.Color(0, 0, 0));
+        info_lb2.setText("y a su funcionalidad, por ejemplo, Laptos,");
+        panelFondo.add(info_lb2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 290, -1));
+
+        acceder_btt.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        acceder_btt.setForeground(new java.awt.Color(0, 0, 0));
+        acceder_btt.setText("Acceder");
+        acceder_btt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceder_bttActionPerformed(evt);
+            }
+        });
+        panelFondo.add(acceder_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, 60));
+
+        footer_lb1.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb1.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb1.setText("TechCare® System ");
+        panelFondo.add(footer_lb1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 240, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -47,6 +98,10 @@ public class AgregarTipo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
+     
+    }//GEN-LAST:event_acceder_bttActionPerformed
 
     /**
      * @param args the command line arguments
@@ -84,7 +139,15 @@ public class AgregarTipo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton acceder_btt;
+    private javax.swing.JLabel agregarTipo_lb;
+    private javax.swing.JTextField agregarTipo_txt;
+    private javax.swing.JLabel footer_lb1;
+    private javax.swing.JLabel info_lb;
+    private javax.swing.JLabel info_lb2;
+    private javax.swing.JLabel info_lb3;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
 }
