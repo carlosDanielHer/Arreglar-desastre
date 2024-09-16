@@ -23,9 +23,22 @@ public class AgregarTipo extends javax.swing.JFrame {
     /**
      * Creates new form AgregarTipo
      */
+    
+    private Subject subject;
+    
     public AgregarTipo() {
         initComponents();
 
+        this.setLocationRelativeTo(null);
+        setIcon();
+        fechaFooter();
+    }
+    
+  
+    public AgregarTipo(Subject subject) {
+        this.subject=subject;
+        initComponents();
+      
         this.setLocationRelativeTo(null);
         setIcon();
         fechaFooter();
@@ -201,7 +214,8 @@ public class AgregarTipo extends javax.swing.JFrame {
                 if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Tipo registrado exitosamente");
                     agregarTipo_lb.setForeground(new Color(0,0,0));
-                    agregarTipo_txt.setText(""); 
+                    agregarTipo_txt.setText("");
+                    subject.notifyObservers();
                 }
 
             } catch (SQLException ex) {

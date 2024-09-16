@@ -20,7 +20,7 @@ import ve.techcare.servicios.utilidades.ConexionBaseDatos;
  *
  * @author Carlos Hernandez
  */
-public class RegistrarEquipos extends javax.swing.JFrame {
+public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
     /**
      * Creates new form RegistrarEquipos
@@ -32,7 +32,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         initComponents();
         idCliente = InformacionCliente.id;
         user_name = Login.usuario;
-        
+
         dañosReportados_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
         fechaFooter();
@@ -200,7 +200,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     }//GEN-LAST:event_registrar_bttActionPerformed
 
     private void agregarTipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTipo_bttActionPerformed
-        new AgregarTipo().setVisible(true);
+        mostrarVentanaAgregarTipo();
     }//GEN-LAST:event_agregarTipo_bttActionPerformed
 
     private void agregarMarca_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMarca_bttActionPerformed
@@ -375,9 +375,9 @@ public class RegistrarEquipos extends javax.swing.JFrame {
                         modelo_txt.setText("");
                         numeroSerie_txt.setText("");
                         dañosReportados_txa.setText("");
-                        tipoEquipos_lb.setForeground(new Color(0,0,0));
-                        marca_lb.setForeground(new Color(0,0,0));
-                        dañosReportados_lb.setForeground(new Color(0,0,0));
+                        tipoEquipos_lb.setForeground(new Color(0, 0, 0));
+                        marca_lb.setForeground(new Color(0, 0, 0));
+                        dañosReportados_lb.setForeground(new Color(0, 0, 0));
                     }
 
                 }
@@ -399,5 +399,17 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         fechaHoraString = fechaHora.format(formato);
         return fechaHoraString;
+    }
+
+    private void mostrarVentanaAgregarTipo() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        AgregarTipo agregarTipo = new AgregarTipo(subject);
+        agregarTipo.setVisible(true);
+    }
+
+    @Override
+    public void actualizar() {
+        llenarCombobox();
     }
 }
