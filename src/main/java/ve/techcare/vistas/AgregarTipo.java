@@ -1,10 +1,18 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -17,7 +25,7 @@ public class AgregarTipo extends javax.swing.JFrame {
      */
     public AgregarTipo() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         setIcon();
         fechaFooter();
@@ -89,7 +97,7 @@ public class AgregarTipo extends javax.swing.JFrame {
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
-        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, 240, 20));
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, 200, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,7 +118,7 @@ public class AgregarTipo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-
+        registrarTipo();
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     /**
@@ -176,6 +184,31 @@ public class AgregarTipo extends javax.swing.JFrame {
 
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private void registrarTipo() {
+        String tipo = agregarTipo_txt.getText().trim();
+
+        if (!tipo.isEmpty()) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("INSERT INTO types(name) VALUES(?)");) {
+
+                ps.setString(1, tipo);
+
+                int respuesta = ps.executeUpdate();
+
+                if (respuesta > 0) {
+                    JOptionPane.showMessageDialog(null, "Tipo registrado exitosamente");
+                    agregarTipo_lb.setForeground(new Color(0,0,0));
+                    agregarTipo_txt.setText("");
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(AgregarTipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            agregarTipo_lb.setForeground(new Color(148, 23, 25));
         }
     }
 }
