@@ -1,25 +1,44 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
  * @author Carlos Hernandez
  */
-public class RegistrarEquipos extends javax.swing.JFrame {
+public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
     /**
      * Creates new form RegistrarEquipos
      */
+    private int idCliente;
+    private String user_name;
+
     public RegistrarEquipos() {
         initComponents();
-        
+        idCliente = InformacionCliente.id;
+        user_name = Login.usuario;
+
+        dañosReportados_txa.setLineWrap(true);
+        this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
+        llenarCombobox();
+        traerCliente();
     }
 
     /**
@@ -35,7 +54,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         titulo_lb = new javax.swing.JLabel();
         titulo_lb1 = new javax.swing.JLabel();
         cliente_lb = new javax.swing.JLabel();
-        nombreCompleto_txt = new javax.swing.JTextField();
+        cliente_txt = new javax.swing.JTextField();
         tipoEquipos_lb = new javax.swing.JLabel();
         tipoEquipos_cbx = new javax.swing.JComboBox<>();
         marca_lb = new javax.swing.JLabel();
@@ -47,12 +66,12 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         dañosReportados_lb = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         dañosReportados_txa = new javax.swing.JTextArea();
-        actualizar_btt = new javax.swing.JButton();
+        registrar_btt = new javax.swing.JButton();
         agregarTipo_btt = new javax.swing.JButton();
         agregarMarca_btt = new javax.swing.JButton();
         footer_lb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 655));
@@ -73,9 +92,9 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         cliente_lb.setText("Cliente");
         panelFondo.add(cliente_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
-        nombreCompleto_txt.setEditable(false);
-        nombreCompleto_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        panelFondo.add(nombreCompleto_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
+        cliente_txt.setEditable(false);
+        cliente_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        panelFondo.add(cliente_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 130, 370, 60));
 
         tipoEquipos_lb.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tipoEquipos_lb.setForeground(new java.awt.Color(0, 0, 0));
@@ -116,7 +135,6 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         dañosReportados_lb.setText("Daños Reportados");
         panelFondo.add(dañosReportados_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 110, -1, -1));
 
-        dañosReportados_txa.setEditable(false);
         dañosReportados_txa.setColumns(20);
         dañosReportados_txa.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         dañosReportados_txa.setRows(5);
@@ -124,15 +142,15 @@ public class RegistrarEquipos extends javax.swing.JFrame {
 
         panelFondo.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 430, 320));
 
-        actualizar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        actualizar_btt.setForeground(new java.awt.Color(0, 0, 0));
-        actualizar_btt.setText("REGISTRAR");
-        actualizar_btt.addActionListener(new java.awt.event.ActionListener() {
+        registrar_btt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        registrar_btt.setForeground(new java.awt.Color(0, 0, 0));
+        registrar_btt.setText("REGISTRAR");
+        registrar_btt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actualizar_bttActionPerformed(evt);
+                registrar_bttActionPerformed(evt);
             }
         });
-        panelFondo.add(actualizar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 150, 70));
+        panelFondo.add(registrar_btt, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 470, 150, 70));
 
         agregarTipo_btt.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         agregarTipo_btt.setForeground(new java.awt.Color(0, 0, 0));
@@ -177,16 +195,16 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
-        
-    }//GEN-LAST:event_actualizar_bttActionPerformed
+    private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
+        registrarEquipo();
+    }//GEN-LAST:event_registrar_bttActionPerformed
 
     private void agregarTipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarTipo_bttActionPerformed
-        // TODO add your handling code here:
+        mostrarVentanaAgregarTipo();
     }//GEN-LAST:event_agregarTipo_bttActionPerformed
 
     private void agregarMarca_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMarca_bttActionPerformed
-        // TODO add your handling code here:
+        mostrarVentanaAgregarMarca();
     }//GEN-LAST:event_agregarMarca_bttActionPerformed
 
     /**
@@ -225,10 +243,10 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actualizar_btt;
     private javax.swing.JButton agregarMarca_btt;
     private javax.swing.JButton agregarTipo_btt;
     private javax.swing.JLabel cliente_lb;
+    private javax.swing.JTextField cliente_txt;
     private javax.swing.JLabel dañosReportados_lb;
     private javax.swing.JTextArea dañosReportados_txa;
     private javax.swing.JLabel footer_lb;
@@ -237,10 +255,10 @@ public class RegistrarEquipos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> marcas_cbx;
     private javax.swing.JLabel modelo_lb;
     private javax.swing.JTextField modelo_txt;
-    private javax.swing.JTextField nombreCompleto_txt;
     private javax.swing.JLabel numeroSerie_lb;
     private javax.swing.JTextField numeroSerie_txt;
     private javax.swing.JPanel panelFondo;
+    private javax.swing.JButton registrar_btt;
     private javax.swing.JComboBox<String> tipoEquipos_cbx;
     private javax.swing.JLabel tipoEquipos_lb;
     private javax.swing.JLabel titulo_lb;
@@ -254,7 +272,7 @@ public class RegistrarEquipos extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
+
     private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
@@ -264,5 +282,141 @@ public class RegistrarEquipos extends javax.swing.JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void llenarCombobox() {
+        String sql1 = "SELECT name FROM types";
+        String sql2 = "SELECT name FROM brands";
+
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(
+                sql1); PreparedStatement ps2 = con.prepareStatement(sql2)) {
+
+            ResultSet rs1 = ps1.executeQuery();
+            ResultSet rs2 = ps2.executeQuery();
+
+            while (rs2.next()) {
+                marcas_cbx.addItem(rs2.getString("name"));
+
+            }
+
+            while (rs1.next()) {
+                tipoEquipos_cbx.addItem(rs1.getString("name"));
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error en llenar ComboBox Registro de equipos ");
+            System.out.println("Error en llenar ComboBox Registro de equipos " + e);
+        }
+
+    }
+
+    private void traerCliente() {
+
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("SELECT full_name FROM clients WHERE id=?");) {
+
+            ps.setInt(1, idCliente);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                cliente_txt.setText(rs.getString("full_name"));
+
+            }
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error en encontrar nombre del cliente: Registrar equipo");
+            Logger.getLogger(RegistrarEquipos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void registrarEquipo() {
+
+        String modelo = modelo_txt.getText().trim(),
+                serial = numeroSerie_txt.getText().trim(),
+                daños = dañosReportados_txa.getText().trim();
+
+        int tipo = tipoEquipos_cbx.getSelectedIndex(),
+                marca = marcas_cbx.getSelectedIndex();
+
+        if (tipo != 0 && marca != 0 && !daños.isEmpty()) {
+
+            String sql1 = "INSERT INTO equipments (id_client, type, brand, model, serial, date_entry, "
+                    + "observations, tecnical_observations, status, person_modified, last_date_modified)"
+                    + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                    sql2 = "SELECT id FROM users WHERE username=?";
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(sql1); PreparedStatement ps2 = con.prepareStatement(sql2)) {
+
+                ps2.setString(1, user_name);
+                ResultSet rs = ps2.executeQuery();
+
+                if (rs.next()) {
+                    int idUser = rs.getInt("id");
+
+                    ps1.setInt(1, idCliente);
+                    ps1.setInt(2, tipo);
+                    ps1.setInt(3, marca);
+                    ps1.setString(4, modelo);
+                    ps1.setString(5, serial);
+                    ps1.setString(6, getFechaYHora());
+                    ps1.setString(7, daños);
+                    ps1.setString(8, "Sin Observaciones Tecnicas");
+                    ps1.setString(9, "Nuevo Ingreso");
+                    ps1.setInt(10, idUser);
+                    ps1.setString(11, "Sin Historial");
+
+                    int respuesta = ps1.executeUpdate();
+
+                    if (respuesta > 0) {
+                        JOptionPane.showMessageDialog(null, "Equipo registrado exitosamente");
+
+                        tipoEquipos_cbx.setSelectedIndex(0);
+                        marcas_cbx.setSelectedIndex(0);
+                        modelo_txt.setText("");
+                        numeroSerie_txt.setText("");
+                        dañosReportados_txa.setText("");
+                        tipoEquipos_lb.setForeground(new Color(0, 0, 0));
+                        marca_lb.setForeground(new Color(0, 0, 0));
+                        dañosReportados_lb.setForeground(new Color(0, 0, 0));
+                    }
+
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarEquipos.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene los campos requeridos");
+            tipoEquipos_lb.setForeground(new Color(148, 23, 25));
+            marca_lb.setForeground(new Color(148, 23, 25));
+            dañosReportados_lb.setForeground(new Color(148, 23, 25));
+        }
+    }
+
+    private String getFechaYHora() {
+        String fechaHoraString = "";
+        LocalDateTime fechaHora = LocalDateTime.now();
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+        fechaHoraString = fechaHora.format(formato);
+        return fechaHoraString;
+    }
+
+    private void mostrarVentanaAgregarTipo() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        AgregarTipo agregarTipo = new AgregarTipo(subject);
+        agregarTipo.setVisible(true);
+    }
+    
+    private void mostrarVentanaAgregarMarca() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        AgregarMarca agregarMarca = new AgregarMarca(subject);
+        agregarMarca.setVisible(true);
+    }
+
+    @Override
+    public void actualizar() {
+        llenarCombobox();
     }
 }
