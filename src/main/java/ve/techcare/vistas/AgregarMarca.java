@@ -1,6 +1,10 @@
 package ve.techcare.vistas;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 import java.time.LocalDateTime;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -16,6 +20,7 @@ public class AgregarMarca extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         fechaFooter();
+        setIcon();
     }
 
     /**
@@ -140,5 +145,16 @@ public class AgregarMarca extends javax.swing.JFrame {
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+    
+     private void setIcon() {
+        try {
+            BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
+            Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
+            this.setIconImage(scaledImage);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
