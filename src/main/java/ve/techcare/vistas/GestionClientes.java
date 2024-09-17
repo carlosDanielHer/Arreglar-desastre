@@ -50,7 +50,7 @@ public class GestionClientes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         listaClientes_tbl = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 655));
@@ -230,7 +230,7 @@ public class GestionClientes extends javax.swing.JFrame {
                 if (fila > -1) {
                     idCliente = (int) listaClientes_tbl.getModel().getValueAt(fila, columna);
 
-                    JOptionPane.showMessageDialog(null, idCliente);
+                    new InformacionCliente().setVisible(true);
                 }
             }
         });
