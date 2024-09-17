@@ -204,7 +204,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
     }//GEN-LAST:event_agregarTipo_bttActionPerformed
 
     private void agregarMarca_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarMarca_bttActionPerformed
-        // TODO add your handling code here:
+        mostrarVentanaAgregarMarca();
     }//GEN-LAST:event_agregarMarca_bttActionPerformed
 
     /**
@@ -406,6 +406,13 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         subject.addObserver(this);
         AgregarTipo agregarTipo = new AgregarTipo(subject);
         agregarTipo.setVisible(true);
+    }
+    
+    private void mostrarVentanaAgregarMarca() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        AgregarMarca agregarMarca = new AgregarMarca(subject);
+        agregarMarca.setVisible(true);
     }
 
     @Override

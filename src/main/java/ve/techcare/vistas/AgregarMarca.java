@@ -1,10 +1,18 @@
 package ve.techcare.vistas;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -15,9 +23,18 @@ public class AgregarMarca extends javax.swing.JFrame {
     /**
      * Creates new form AgregarMarca
      */
+    private Subject subject;
+
     public AgregarMarca() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
+        fechaFooter();
+        setIcon();
+    }
+
+    public AgregarMarca(Subject subject) {
+        initComponents();
+        this.subject = subject;
         this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
@@ -39,7 +56,7 @@ public class AgregarMarca extends javax.swing.JFrame {
         acceder_btt = new javax.swing.JButton();
         footer_lb = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(393, 489));
@@ -92,7 +109,7 @@ public class AgregarMarca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-
+        registrarMarca();
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     /**
@@ -146,8 +163,8 @@ public class AgregarMarca extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
-     private void setIcon() {
+
+    private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
@@ -157,4 +174,31 @@ public class AgregarMarca extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
+    private void registrarMarca() {
+        String marca = agregarMarca_txt.getText().trim();
+
+        if (!marca.isEmpty()) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("INSERT INTO brands(name) VALUES(?)");) {
+
+                ps.setString(1, marca);
+
+                int respuesta = ps.executeUpdate();
+
+                if (respuesta > 0) {
+                    JOptionPane.showMessageDialog(null, "Marca registrada exitosamente");
+                    agregarMarca_lb.setForeground(new Color(0, 0, 0));
+                    agregarMarca_txt.setText("");
+                    subject.notifyObservers();
+                }
+
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null, "Error al agregar marca");
+            }
+        } else {
+            agregarMarca_lb.setForeground(new Color(148, 23, 25));
+        }
+    }
+
 }
