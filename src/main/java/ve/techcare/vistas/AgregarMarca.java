@@ -1,5 +1,7 @@
 package ve.techcare.vistas;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author Carlos Hernandez
@@ -11,6 +13,9 @@ public class AgregarMarca extends javax.swing.JFrame {
      */
     public AgregarMarca() {
         initComponents();
+        
+        this.setLocationRelativeTo(null);
+        fechaFooter();
     }
 
     /**
@@ -82,7 +87,7 @@ public class AgregarMarca extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void acceder_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceder_bttActionPerformed
-        
+
     }//GEN-LAST:event_acceder_bttActionPerformed
 
     /**
@@ -129,4 +134,11 @@ public class AgregarMarca extends javax.swing.JFrame {
     private javax.swing.JLabel titulo_lb;
     // End of variables declaration//GEN-END:variables
 
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
 }
