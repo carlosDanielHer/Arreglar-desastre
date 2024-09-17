@@ -135,7 +135,7 @@ public class Capturista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GestionarClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarClientes_bttActionPerformed
-
+          new GestionClientes().setVisible(true);
     }//GEN-LAST:event_GestionarClientes_bttActionPerformed
 
     private void imprimirClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirClientes_bttActionPerformed

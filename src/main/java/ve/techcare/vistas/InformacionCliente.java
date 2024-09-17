@@ -1,10 +1,26 @@
 package ve.techcare.vistas;
 
 import java.awt.Image;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 
 /**
  *
@@ -15,12 +31,22 @@ public class InformacionCliente extends javax.swing.JFrame {
     /**
      * Creates new form InformacionCliente
      */
+    public static int id; // id del cliente
+    public static int id_equipo;
+    private String user_name;
+    
     public InformacionCliente() {
         initComponents();
-
+        
+        id = GestionClientes.idCliente;
+        user_name = Login.usuario;
+        
         this.setLocationRelativeTo(null);
         fechaFooter();
         setIcon();
+        llenarInformacion();
+        llenarTabla();
+        hacerCliqueableTabla();
     }
 
     /**
@@ -52,7 +78,7 @@ public class InformacionCliente extends javax.swing.JFrame {
         actualizar_btt = new javax.swing.JButton();
         imprimirDatos_btt = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panelFondo.setBackground(new java.awt.Color(255, 255, 255));
         panelFondo.setPreferredSize(new java.awt.Dimension(1040, 665));
@@ -100,6 +126,7 @@ public class InformacionCliente extends javax.swing.JFrame {
         telefono_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 370, 60));
 
+        registradoPor_txt.setEditable(false);
         registradoPor_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         panelFondo.add(registradoPor_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
@@ -198,15 +225,15 @@ public class InformacionCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarEquipo_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarEquipo_bttActionPerformed
-
+        new RegistrarEquipos().setVisible(true);
     }//GEN-LAST:event_registrarEquipo_bttActionPerformed
 
     private void actualizar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizar_bttActionPerformed
-
+        actualizarCliente();
     }//GEN-LAST:event_actualizar_bttActionPerformed
 
     private void imprimirDatos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirDatos_bttActionPerformed
-
+        imprimirInformacionCliente();
     }//GEN-LAST:event_imprimirDatos_bttActionPerformed
 
     /**
@@ -270,18 +297,171 @@ public class InformacionCliente extends javax.swing.JFrame {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
         String fechaFormateada = String.valueOf(year);
-
+        
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-
+    
     private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades
             this.setIconImage(scaledImage);
-
+            
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private void llenarInformacion() {
+        
+        String sql = "SELECT c.full_name, c.dni, c.email, c.phone, u.full_name as user_name FROM clients c"
+                + " INNER JOIN users u ON u.id=c.modified WHERE c.id= ?";
+        
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                nombreCompleto_txt.setText(rs.getString("full_name"));
+                dni_txt.setText(rs.getString("dni"));
+                correo_txt.setText(rs.getString("email"));
+                telefono_txt.setText(rs.getString("phone"));
+                registradoPor_txt.setText(rs.getString("user_name"));
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Sin registros, Agregue al menos un equipo");
+                this.dispose();
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en llenar informacion de los equipos, contacte el desarrolador");
+            
+        }
+    }
+    
+    private void llenarTabla() {
+        DefaultTableModel modelo = (DefaultTableModel) listaEquipos_tbl.getModel();
+        modelo.setRowCount(0);
+        
+        try (Connection conexion = ConexionBaseDatos.conectar(); PreparedStatement ps = conexion.prepareStatement(
+                "SELECT e.id, t.name, b.name, e.status FROM equipments e "
+                + "INNER JOIN types t ON t.id=e.type "
+                + "INNER JOIN brands b ON b.id=e.brand WHERE e.id_client=?");) {
+            
+            ps.setInt(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            ResultSetMetaData metaData = rs.getMetaData();
+            int cantidadDeColumnas = metaData.getColumnCount();
+            
+            while (rs.next()) {
+                Object[] filas = new Object[cantidadDeColumnas];
+                
+                for (int i = 0; i < cantidadDeColumnas; i++) {
+                    
+                    filas[i] = rs.getObject(i + 1);
+                    
+                }
+                modelo.addRow(filas);
+                
+                listaEquipos_tbl.setModel(modelo);
+            }
+            
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al llenar tabla: en GestionEquipos, contacte al desarrollador");
+            
+        }
+    }
+    
+    private void hacerCliqueableTabla() {
+        
+        listaEquipos_tbl.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                
+                int fila = listaEquipos_tbl.rowAtPoint(e.getPoint());
+                int columna = 0;
+                
+                if (fila > -1) {
+                    id_equipo = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
+                    
+                    new InformacionEquipo(id_equipo).setVisible(true);
+                }
+            }
+        });
+    }
+    
+    private void actualizarCliente() {
+        
+        String nombre = nombreCompleto_txt.getText().trim(),
+                dni = dni_txt.getText().trim(),
+                correo = correo_txt.getText().trim(),
+                telefono = telefono_txt.getText().trim();
+        
+        String sql1 = "SELECT id FROM users WHERE username=?",
+                sql2 = "UPDATE clients SET full_name=?, dni=?, email=?, phone=?, modified=? WHERE id=?";
+        
+        int idUser = 0;
+        
+        if (!nombre.isEmpty() && !dni.isEmpty() && !correo.isEmpty() && !telefono.isEmpty() && !user_name.isEmpty()) {
+            
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement(sql1); PreparedStatement ps2 = con.prepareStatement(sql2);) {
+                
+                ps1.setString(1, user_name);
+                
+                ResultSet rs1 = ps1.executeQuery();
+                
+                if (rs1.next()) {
+                    idUser = rs1.getInt("id");
+                }
+                
+                ps2.setString(1, nombre);
+                ps2.setString(2, dni);
+                ps2.setString(3, correo);
+                ps2.setString(4, telefono);
+                ps2.setInt(5, idUser);
+                ps2.setInt(6, id);
+                
+                int respuesta = ps2.executeUpdate();
+                
+                if (respuesta > 0) {
+                    JOptionPane.showMessageDialog(null, "Cliente Actualizado correctamente");
+                }
+                
+            } catch (Exception e) {
+                System.out.println(e);
+                JOptionPane.showMessageDialog(null, "Error al actualizar Cliente, contacte al desarrollador");
+            }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Llene todos los campos requeridos");
+        }
+    }
+    
+    private void imprimirInformacionCliente() {
+        
+        String reportePath = "src/main/resources/reportes/InformacionCliente.jasper",
+                imegenPath = "src/main/resources/imagenes/icono_reporte_99px_87px.png";
+        
+        Map<String, Object> parametros = new HashMap<>();  //CREAR LOS PARAMETROS CON UN MAP, ES ESTE CASO ES LA IMAGEN
+        ImageIcon icon = new ImageIcon(imegenPath);
+        parametros.put("imagen", icon.getImage());
+        parametros.put("idCliente", id);
+        
+        try (Connection con = ConexionBaseDatos.conectar();) {  //CONEXION A LA BASE DE DATOS
+
+            // SE CREA EL REPORTE
+            JasperPrint print = JasperFillManager.fillReport(reportePath, parametros, con);
+            JasperViewer vista = new JasperViewer(print, false); // SE MUESTRA EL REPORTE
+            vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            vista.setVisible(true);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en crear Reporte Informacion Cliente");
+            System.out.println(e);
         }
     }
 }
