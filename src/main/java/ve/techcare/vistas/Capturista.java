@@ -5,12 +5,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import ve.techcare.servicios.utilidades.ConexionBaseDatos;
+import static ve.techcare.vistas.InformacionCliente.id;
 
 /**
  *
@@ -22,10 +35,12 @@ public class Capturista extends javax.swing.JFrame {
      * Creates new form Capturista
      */
     private int bandera = 0;
+    private String usuario = "";
 
     public Capturista() {
         initComponents();
-        bandera= Administrador.bandera;
+        bandera = Administrador.bandera;
+        usuario = Login.usuario;
 
         this.setLocationRelativeTo(null);
         setFormaCerrar();
@@ -135,15 +150,15 @@ public class Capturista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void GestionarClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GestionarClientes_bttActionPerformed
-          new GestionClientes().setVisible(true);
+        new GestionClientes().setVisible(true);
     }//GEN-LAST:event_GestionarClientes_bttActionPerformed
 
     private void imprimirClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_imprimirClientes_bttActionPerformed
-
+        imprimirClientes();
     }//GEN-LAST:event_imprimirClientes_bttActionPerformed
 
     private void registrarClientes_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarClientes_bttActionPerformed
-          new RegistrarClientes().setVisible(true);
+        new RegistrarClientes().setVisible(true);
     }//GEN-LAST:event_registrarClientes_bttActionPerformed
 
     /**
@@ -203,7 +218,7 @@ public class Capturista extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void setFormaCerrar() {
         if (bandera > 0) {
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -243,5 +258,40 @@ public class Capturista extends javax.swing.JFrame {
         horaActual.setInitialDelay(0);
         horaActual.start();
 
+    }
+
+    private void imprimirClientes() {
+        String reportePath = "src/main/resources/reportes/Clientes.jasper",
+                imegenPath = "src/main/resources/imagenes/icono_reporte_99px_87px.png";
+
+        Map<String, Object> parametros = new HashMap<>();  //CREAR LOS PARAMETROS CON UN MAP, ES ESTE CASO ES LA IMAGEN
+        ImageIcon icon = new ImageIcon(imegenPath);
+        parametros.put("imagenP", icon.getImage());
+
+        try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("SELECT full_name, dni, email, phone FROM users "
+                + "WHERE username=?");) {  //CONEXION A LA BASE DE DATOS
+
+            ps.setString(1, usuario);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                parametros.put("nombreUsuario", rs.getString("full_name"));
+                parametros.put("dniUsuario", rs.getString("dni"));
+                parametros.put("correoUsuario", rs.getString("email"));
+                parametros.put("telefono", rs.getString("phone"));
+
+                // SE CREA EL REPORTE
+                JasperPrint print = JasperFillManager.fillReport(reportePath, parametros, con);
+                JasperViewer vista = new JasperViewer(print, false); // SE MUESTRA EL REPORTE
+                vista.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                vista.setVisible(true);
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en crear Reporte Informacion Cliente");
+            System.out.println(e);
+        }
     }
 }
