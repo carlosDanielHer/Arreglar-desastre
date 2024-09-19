@@ -107,7 +107,7 @@ INNER JOIN users u ON u.id=c.modified]]>
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="189" y="28" width="190" height="16" uuid="0a9c8c5d-eaa2-4aa5-80c2-aacf8a2997da">
+				<reportElement x="190" y="26" width="190" height="16" uuid="0a9c8c5d-eaa2-4aa5-80c2-aacf8a2997da">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
