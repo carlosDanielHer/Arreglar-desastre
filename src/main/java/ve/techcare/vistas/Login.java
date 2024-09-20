@@ -31,6 +31,7 @@ public class Login extends javax.swing.JFrame {
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         setIcon();  // Establece el icono en la interfaz
         mostrarOcultarLabelRegistrarseLB(); // Muestra o no la etiqueta de registrarse_lb
