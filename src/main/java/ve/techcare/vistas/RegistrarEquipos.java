@@ -285,6 +285,15 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
     }
 
     private void llenarCombobox() {
+
+        marcas_cbx.removeAllItems();
+        marcas_cbx.addItem("Selecciona");
+        marcas_cbx.setSelectedIndex(0);
+
+        tipoEquipos_cbx.removeAllItems();
+        tipoEquipos_cbx.addItem("Selecciona");
+        tipoEquipos_cbx.setSelectedIndex(0);
+
         String sql1 = "SELECT name FROM types";
         String sql2 = "SELECT name FROM brands";
 
@@ -407,7 +416,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         AgregarTipo agregarTipo = new AgregarTipo(subject);
         agregarTipo.setVisible(true);
     }
-    
+
     private void mostrarVentanaAgregarMarca() {
         Subject subject = new Subject();
         subject.addObserver(this);
