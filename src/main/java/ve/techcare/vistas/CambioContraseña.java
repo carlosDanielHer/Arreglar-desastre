@@ -170,7 +170,7 @@ public class CambioContraseña extends javax.swing.JFrame {
                         PreparedStatement ps= con.prepareStatement("UPDATE users SET password = ? WHERE id = ?");){
                     
                     ps.setString(1, nuevaContraseña);
-                    ps.setInt(1, id);
+                    ps.setInt(2, id);
                     
                     int respuesta = ps.executeUpdate();
                     
