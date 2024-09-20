@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
@@ -33,6 +34,7 @@ public class Login extends javax.swing.JFrame {
 
         setIcon();  // Establece el icono en la interfaz
         mostrarOcultarLabelRegistrarseLB(); // Muestra o no la etiqueta de registrarse_lb
+        fechaFooter();
     }
 
     /**
@@ -53,6 +55,7 @@ public class Login extends javax.swing.JFrame {
         nombreUsuario_txt = new javax.swing.JTextField();
         contraseña_txt = new javax.swing.JTextField();
         acceder_btt = new javax.swing.JButton();
+        footer_lb = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -102,6 +105,10 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
+        footer_lb.setForeground(new java.awt.Color(0, 0, 0));
+        footer_lb.setText("TechCare® System ");
+
         javax.swing.GroupLayout panelDeFondoLayout = new javax.swing.GroupLayout(panelDeFondo);
         panelDeFondo.setLayout(panelDeFondoLayout);
         panelDeFondoLayout.setHorizontalGroup(
@@ -127,7 +134,10 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(contraseña_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
                         .addComponent(acceder_btt, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(131, 131, 131))))
+                        .addGap(131, 131, 131))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelDeFondoLayout.createSequentialGroup()
+                        .addComponent(footer_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(98, 98, 98))))
         );
         panelDeFondoLayout.setVerticalGroup(
             panelDeFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +158,9 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(registrarse_lb)
                 .addGap(18, 18, 18)
                 .addComponent(acceder_btt, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addComponent(footer_lb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,9 +171,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelDeFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(panelDeFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -286,6 +296,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton acceder_btt;
     private javax.swing.JLabel contraseña_lb;
     private javax.swing.JTextField contraseña_txt;
+    private javax.swing.JLabel footer_lb;
     private javax.swing.JLabel inicioDeSesion_lb;
     private javax.swing.JLabel nombreUsuario_lb;
     private javax.swing.JTextField nombreUsuario_txt;
@@ -338,6 +349,14 @@ public class Login extends javax.swing.JFrame {
             System.out.println(e);
             System.out.println("Clase: Login");
         }
+    }
+    
+    private void fechaFooter() {
+        LocalDateTime fechaHora = LocalDateTime.now();
+        int year = fechaHora.getYear();
+        String fechaFormateada = String.valueOf(year);
+
+        footer_lb.setText("TechCare® System " + fechaFormateada);
     }
 
 }
