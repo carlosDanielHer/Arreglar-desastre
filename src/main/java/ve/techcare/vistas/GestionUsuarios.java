@@ -34,6 +34,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
         hacerCliqueableTabla();
         setIcon();
         setNoEditableTabla();
+        fechaFooter();
     }
 
     /**
