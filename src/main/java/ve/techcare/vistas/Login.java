@@ -206,6 +206,7 @@ public class Login extends javax.swing.JFrame {
                         case "admin" -> {
                             if (status.equals("activo")) {
                                 new Administrador().setVisible(true);
+                                this.dispose();
                             } else {
                                 JOptionPane.showMessageDialog(null, "Usuario inactivo");
                             }
@@ -214,6 +215,7 @@ public class Login extends javax.swing.JFrame {
                         case "captu" -> {
                             if (status.equals("activo")) {
                                 new Capturista().setVisible(true);
+                                this.dispose();
                             } else {
                                 JOptionPane.showMessageDialog(null, "Usuario inactivo");
                             }
@@ -222,6 +224,7 @@ public class Login extends javax.swing.JFrame {
                         case "tec" -> {
                             if (status.equals("activo")) {
                                 new Tecnico().setVisible(true);
+                                this.dispose();
                             } else {
                                 JOptionPane.showMessageDialog(null, "Usuario inactivo");
                             }
@@ -236,6 +239,7 @@ public class Login extends javax.swing.JFrame {
                 }
 
             } catch (HeadlessException | SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al acceder al sistema");
                 System.out.println("Errro en el Boton Acceder de  la clase Login: " + e);
             }
             
