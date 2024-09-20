@@ -229,11 +229,21 @@ public class RegistrarClientes extends javax.swing.JFrame {
                 ps2.setString(3, correo);
                 ps2.setString(4, telefono);
                 ps2.setInt(5, idUsuario);
-                
-                int respuesta= ps2.executeUpdate();
-                
-                if(respuesta >0){
+
+                int respuesta = ps2.executeUpdate();
+
+                if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Cliente Registrado exitosamente");
+                    
+                    nombreCompleto_txt.setText("");
+                    dni_txt.setText("");
+                    correo_txt.setText("");
+                    telefono_txt.setText("");
+                    
+                    nombreCompleto_lb.setForeground(new Color(0,0,0));
+                    dni_lb.setForeground(new Color(0,0,0));
+                    correo_lb.setForeground(new Color(0,0,0));
+                    telefono_lb.setForeground(new Color(0,0,0));
                 }
 
             } catch (Exception e) {
