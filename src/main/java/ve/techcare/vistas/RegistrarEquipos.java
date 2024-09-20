@@ -347,7 +347,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         int tipo = tipoEquipos_cbx.getSelectedIndex(),
                 marca = marcas_cbx.getSelectedIndex();
 
-        if (tipo != 0 && marca != 0 && !daños.isEmpty()) {
+        if (tipo != 0 && marca != 0) {
 
             String sql1 = "INSERT INTO equipments (id_client, type, brand, model, serial, date_entry, "
                     + "observations, tecnical_observations, status, person_modified, last_date_modified)"

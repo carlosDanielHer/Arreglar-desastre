@@ -421,8 +421,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
                 estatus = (String) estatus_cbx.getSelectedItem(),
                 comentariosTecnicos = comentariosTecnicos_txa.getText().trim();
 
-        if (tipo != 0 && marca != 0 && !modelo.isEmpty() && !serie.isEmpty()
-                && !ultimaModificacion.isEmpty() && !estatus.equals("Selecciona") && !comentariosTecnicos.isEmpty()) {
+        if (tipo != 0 && marca != 0 && !estatus.equals("Selecciona")) {
 
             try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement("SELECT id FROM users WHERE username= ?"); PreparedStatement ps2 = con.prepareStatement(
                     "UPDATE equipments SET type= ?, brand= ?, model=?, serial =?, tecnical_observations =?, status = ?,"
