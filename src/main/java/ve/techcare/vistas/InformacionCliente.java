@@ -407,7 +407,7 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
                 if (fila > -1) {
                     id_equipo = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
 
-                    new InformacionEquipo(id_equipo).setVisible(true);
+                    mostrarVentanaImformacionEquipo(id_equipo);
                 }
             }
         });
@@ -495,5 +495,12 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
         subject.addObserver(this);
         RegistrarEquipos registrarEquipos = new RegistrarEquipos(subject);
         registrarEquipos.setVisible(true);
+    }
+    
+    private void mostrarVentanaImformacionEquipo(int id) {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        InformacionEquipo informacionEquipo = new InformacionEquipo(id,subject);
+        informacionEquipo.setVisible(true);
     }
 }
