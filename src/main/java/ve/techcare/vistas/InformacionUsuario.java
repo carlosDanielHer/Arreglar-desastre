@@ -20,6 +20,7 @@ import ve.techcare.servicios.utilidades.ConexionBaseDatos;
 public class InformacionUsuario extends javax.swing.JFrame {
 
     public static int id;
+    private Subject subject;
 
     public InformacionUsuario() {
         initComponents();
@@ -32,6 +33,20 @@ public class InformacionUsuario extends javax.swing.JFrame {
         fechaFooter();
         traerInfoUsuario();
     }
+    
+    public InformacionUsuario(Subject subject) {
+        initComponents();
+        registradoPor_txt.setEditable(false);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.subject=subject;
+
+        id = GestionUsuarios.id;
+        setIcon();
+        fechaFooter();
+        traerInfoUsuario();
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -335,6 +350,7 @@ public class InformacionUsuario extends javax.swing.JFrame {
 
                 if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Usuario actualizado con exito");
+                    subject.notifyObservers();
                 }
 
             } catch (Exception e) {
