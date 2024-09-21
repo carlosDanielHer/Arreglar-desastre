@@ -15,19 +15,19 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
-import static ve.techcare.vistas.GestionEquipos.id;
 
 /**
  *
  * @author Carlos Hernandez
  */
-public class GestionClientes extends javax.swing.JFrame {
+public class GestionClientes extends javax.swing.JFrame implements Observador {
 
     public static int idCliente;
 
     public GestionClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         llenarTabla();
         hacerCliqueableTabla();
@@ -229,10 +229,21 @@ public class GestionClientes extends javax.swing.JFrame {
 
                 if (fila > -1) {
                     idCliente = (int) listaClientes_tbl.getModel().getValueAt(fila, columna);
-
-                    new InformacionCliente().setVisible(true);
+                    mostrarVentanaInformacionCliente();
                 }
             }
         });
+    }
+
+    @Override
+    public void actualizar() {
+        llenarTabla();
+    }
+
+    private void mostrarVentanaInformacionCliente() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        InformacionCliente informacionCliente = new InformacionCliente(subject);
+        informacionCliente.setVisible(true);
     }
 }
