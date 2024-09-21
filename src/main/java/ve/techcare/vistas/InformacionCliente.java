@@ -34,12 +34,28 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
     public static int id; // id del cliente
     public static int id_equipo;
     private String user_name;
+    private Subject subject;
 
     public InformacionCliente() {
         initComponents();
 
         id = GestionClientes.idCliente;
         user_name = Login.usuario;
+
+        this.setLocationRelativeTo(null);
+        fechaFooter();
+        setIcon();
+        llenarInformacion();
+        llenarTabla();
+        hacerCliqueableTabla();
+    }
+    
+     public InformacionCliente(Subject subject) {
+        initComponents();
+
+        id = GestionClientes.idCliente;
+        user_name = Login.usuario;
+        this.subject = subject;
 
         this.setLocationRelativeTo(null);
         fechaFooter();
@@ -429,6 +445,7 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
 
                 if (respuesta > 0) {
                     JOptionPane.showMessageDialog(null, "Cliente Actualizado correctamente");
+                    subject.notifyObservers();
                 }
 
             } catch (Exception e) {
