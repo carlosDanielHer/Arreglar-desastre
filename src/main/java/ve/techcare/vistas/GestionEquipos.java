@@ -15,13 +15,12 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
-import static ve.techcare.vistas.GestionUsuarios.id;
 
 /**
  *
  * @author Carlos Hernandez
  */
-public class GestionEquipos extends javax.swing.JFrame {
+public class GestionEquipos extends javax.swing.JFrame implements Observador{
 
     static int id;
 
@@ -31,6 +30,8 @@ public class GestionEquipos extends javax.swing.JFrame {
     public GestionEquipos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         hacerCliqueableTabla();
@@ -224,7 +225,7 @@ public class GestionEquipos extends javax.swing.JFrame {
                 if (fila > -1) {
                     id = (int) listaEquipos_tbl.getModel().getValueAt(fila, columna);
 
-                    new InformacionEquipo().setVisible(true);
+                    mostrarVentanaInformacionEquipo();
                 }
             }
         });
@@ -327,5 +328,17 @@ public class GestionEquipos extends javax.swing.JFrame {
             }
 
         }
+    }
+
+    @Override
+    public void actualizar() {
+        llenarTabla();
+    }
+    
+    private void mostrarVentanaInformacionEquipo() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        InformacionEquipo informacionEquipo = new InformacionEquipo(subject);
+        informacionEquipo.setVisible(true);
     }
 }

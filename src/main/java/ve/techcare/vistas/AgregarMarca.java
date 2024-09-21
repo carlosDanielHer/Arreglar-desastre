@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
@@ -28,6 +26,8 @@ public class AgregarMarca extends javax.swing.JFrame {
     public AgregarMarca() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
     }
@@ -36,6 +36,8 @@ public class AgregarMarca extends javax.swing.JFrame {
         initComponents();
         this.subject = subject;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
     }

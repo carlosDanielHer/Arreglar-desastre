@@ -34,6 +34,8 @@ public class GraficaEstatus extends javax.swing.JFrame {
     public GraficaEstatus() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         graficarEstatus();
         fechaFooter();
         setIcon();
@@ -170,7 +172,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
             System.out.println("Error en Obtener Cantidades de equipos segun su estatus");
             System.out.println(e);
         }
-  // CREACION DEL GRAFICO DE BARRAS
+        // CREACION DEL GRAFICO DE BARRAS
         DefaultCategoryDataset datosGraficos = new DefaultCategoryDataset();
 
         // Establecer los datos traidos desde la base de datos al data set
@@ -179,13 +181,13 @@ public class GraficaEstatus extends javax.swing.JFrame {
         datosGraficos.setValue(reparado, "Reparado", "Reparado");
         datosGraficos.setValue(noReparado, "No Reparado", "No Reparado");
         datosGraficos.setValue(entregado, "Entregado", "Entregado");
-        
+
         JFreeChart grafico = ChartFactory.createBarChart(
                 "Grafica de Estatus",
                 "Valores",
                 "Cantidades",
                 datosGraficos);
-        
+
         BarRenderer renderer = (BarRenderer) grafico.getCategoryPlot()
                 .getRenderer();
 
@@ -200,7 +202,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
 
         NumberAxis rangeAxis = (NumberAxis) grafico.getCategoryPlot().getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-        
+
         ChartPanel panel = new ChartPanel(grafico);
         panel.setPreferredSize(new Dimension(980, 520));
 
@@ -209,7 +211,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
         panelFondo.repaint();
 
     }
-    
+
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
@@ -217,7 +219,7 @@ public class GraficaEstatus extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
+
     private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));

@@ -24,6 +24,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
      */
     private int id;
     private String username;
+    private Subject subject;
 
     public InformacionEquipo() {
         initComponents();
@@ -33,6 +34,24 @@ public class InformacionEquipo extends javax.swing.JFrame {
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        setIcon();
+        fechaFooter();
+        llenarCombobox();
+        llenarInformacion();
+    }
+
+    public InformacionEquipo(Subject subject) {
+        initComponents();
+
+        username = Login.usuario;
+        this.id = GestionEquipos.id;
+        dañosReportados_txa.setLineWrap(true);
+        comentariosTecnicos_txa.setLineWrap(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.subject = subject;
 
         setIcon();
         fechaFooter();
@@ -44,9 +63,10 @@ public class InformacionEquipo extends javax.swing.JFrame {
      * Constructor que inicializa con el id del equipo.
      *
      * @param id El id del equipo seleccionado en la tabla.
+     * @param subject
      *
      */
-    public InformacionEquipo(int id) {
+    public InformacionEquipo(int id, Subject subject) {
         initComponents();
         username = Login.usuario;
 
@@ -54,6 +74,8 @@ public class InformacionEquipo extends javax.swing.JFrame {
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.subject = subject;
 
         setIcon();
         fechaFooter();
@@ -421,8 +443,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
                 estatus = (String) estatus_cbx.getSelectedItem(),
                 comentariosTecnicos = comentariosTecnicos_txa.getText().trim();
 
-        if (tipo != 0 && marca != 0 && !modelo.isEmpty() && !serie.isEmpty()
-                && !ultimaModificacion.isEmpty() && !estatus.equals("Selecciona") && !comentariosTecnicos.isEmpty()) {
+        if (tipo != 0 && marca != 0 && !estatus.equals("Selecciona")) {
 
             try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps1 = con.prepareStatement("SELECT id FROM users WHERE username= ?"); PreparedStatement ps2 = con.prepareStatement(
                     "UPDATE equipments SET type= ?, brand= ?, model=?, serial =?, tecnical_observations =?, status = ?,"
@@ -450,6 +471,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
 
                     if (respuesta > 0) {
                         JOptionPane.showMessageDialog(null, "Actualizado exitosamente");
+                        subject.notifyObservers();
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "No existe ningun Usuario con este Nombre de Usuario");

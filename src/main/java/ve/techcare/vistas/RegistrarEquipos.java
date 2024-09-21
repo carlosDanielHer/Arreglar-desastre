@@ -27,6 +27,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
      */
     private int idCliente;
     private String user_name;
+    private Subject subject;
 
     public RegistrarEquipos() {
         initComponents();
@@ -35,6 +36,24 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
         dañosReportados_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
+        fechaFooter();
+        setIcon();
+        llenarCombobox();
+        traerCliente();
+    }
+
+    public RegistrarEquipos(Subject subject) {
+        initComponents();
+        idCliente = InformacionCliente.id;
+        user_name = Login.usuario;
+        this.subject = subject;
+
+        dañosReportados_txa.setLineWrap(true);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         llenarCombobox();
@@ -285,6 +304,15 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
     }
 
     private void llenarCombobox() {
+
+        marcas_cbx.removeAllItems();
+        marcas_cbx.addItem("Selecciona");
+        marcas_cbx.setSelectedIndex(0);
+
+        tipoEquipos_cbx.removeAllItems();
+        tipoEquipos_cbx.addItem("Selecciona");
+        tipoEquipos_cbx.setSelectedIndex(0);
+
         String sql1 = "SELECT name FROM types";
         String sql2 = "SELECT name FROM brands";
 
@@ -338,7 +366,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         int tipo = tipoEquipos_cbx.getSelectedIndex(),
                 marca = marcas_cbx.getSelectedIndex();
 
-        if (tipo != 0 && marca != 0 && !daños.isEmpty()) {
+        if (tipo != 0 && marca != 0) {
 
             String sql1 = "INSERT INTO equipments (id_client, type, brand, model, serial, date_entry, "
                     + "observations, tecnical_observations, status, person_modified, last_date_modified)"
@@ -369,6 +397,8 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
                     if (respuesta > 0) {
                         JOptionPane.showMessageDialog(null, "Equipo registrado exitosamente");
+
+                        subject.notifyObservers();
 
                         tipoEquipos_cbx.setSelectedIndex(0);
                         marcas_cbx.setSelectedIndex(0);
@@ -407,7 +437,7 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         AgregarTipo agregarTipo = new AgregarTipo(subject);
         agregarTipo.setVisible(true);
     }
-    
+
     private void mostrarVentanaAgregarMarca() {
         Subject subject = new Subject();
         subject.addObserver(this);

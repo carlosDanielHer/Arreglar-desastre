@@ -6,7 +6,11 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -24,6 +28,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     public RegistrarUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         setIcon();
         fechaFooter();
     }
@@ -120,6 +126,11 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jPanel1.add(telefono_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 520, 370, 60));
 
         nombreUsuario_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        nombreUsuario_txt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                nombreUsuario_txtKeyReleased(evt);
+            }
+        });
         jPanel1.add(nombreUsuario_txt, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 130, 370, 60));
 
         contraseña_txt.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
@@ -160,6 +171,10 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void registrar_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrar_bttActionPerformed
         registrarUsuario();
     }//GEN-LAST:event_registrar_bttActionPerformed
+
+    private void nombreUsuario_txtKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreUsuario_txtKeyReleased
+        verificarNombreUsuario();
+    }//GEN-LAST:event_nombreUsuario_txtKeyReleased
 
     /**
      * @param args the command line arguments
@@ -222,7 +237,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         String dni = dni_txt.getText().trim();
         String correo = correo_txt.getText().trim();
         String telefono = telefono_txt.getText().trim();
-        String nombreUsuario = nombreUsuario_txt.getText().trim();
+        String nombreUsuario = verificarNombreUsuario();
         String contraseña = contraseña_txt.getText().trim();
         String rol = getRoles(roles_cbx);
         String status = "activo";
@@ -265,7 +280,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             nombreUsuario_lb.setForeground(new Color(148, 23, 25));
             contraseña_lb.setForeground(new Color(148, 23, 25));
             roles_lb.setForeground(new Color(148, 23, 25));
-            JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
+            JOptionPane.showMessageDialog(null, "Llene todos los campos y revise el nombre de usuario");
         }
     }
 
@@ -304,7 +319,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         contraseña_lb.setForeground(Color.BLACK);
         roles_lb.setForeground(Color.BLACK);
     }
-    
+
     private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
@@ -315,11 +330,43 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
         String fechaFormateada = String.valueOf(year);
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
+    }
+
+    private String verificarNombreUsuario() {
+
+        String usuario = null;
+
+        if (!nombreUsuario_txt.getText().isEmpty()) {
+
+            usuario = nombreUsuario_txt.getText().trim();
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("SELECT COUNT(username) FROM users WHERE username = ?");) {
+
+                ps.setString(1, usuario);
+
+                ResultSet rs = ps.executeQuery();
+
+                int resultado = rs.getInt(1);
+
+                if (resultado > 0) {
+                    nombreUsuario_txt.setForeground(Color.red);
+                    return "";
+                } else {
+                    nombreUsuario_txt.setForeground(new Color(3, 160, 1));
+                    return usuario;
+                }
+
+            } catch (SQLException ex) {
+                Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return "";
     }
 }
