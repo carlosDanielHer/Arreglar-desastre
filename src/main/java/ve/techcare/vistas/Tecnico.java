@@ -21,12 +21,14 @@ public class Tecnico extends javax.swing.JFrame {
     /**
      * Creates new form Tecnico
      */
-    
-    private int bandera=0;
+    private int bandera = 0;
+
     public Tecnico() {
         initComponents();
         this.setLocationRelativeTo(null);
-        bandera= Administrador.bandera;
+        this.setResizable(false);
+
+        bandera = Administrador.bandera;
         setIcon();
         setMensajeBienvenida();
         fechaFooter();
@@ -145,7 +147,7 @@ public class Tecnico extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gestionarEquipos_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gestionarEquipos_bttActionPerformed
-         new GestionEquipos().setVisible(true);
+        new GestionEquipos().setVisible(true);
     }//GEN-LAST:event_gestionarEquipos_bttActionPerformed
 
     private void graficaEstatus_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_graficaEstatus_bttActionPerformed
@@ -223,7 +225,7 @@ public class Tecnico extends javax.swing.JFrame {
         String username = Login.usuario;
         bienvenido_lb.setText("Bienvenido: " + username);
     }
-    
+
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
@@ -231,14 +233,14 @@ public class Tecnico extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
+
     private void fechaActal() {
         LocalDateTime fechaHora = LocalDateTime.now();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String fechaFormateada = fechaHora.format(formato);
         fechaActual_lb.setText("Hoy es: " + fechaFormateada);
     }
-    
+
     private void horaActual() {
 
         Timer horaActual = new Timer(1000, new ActionListener() {
@@ -253,9 +255,9 @@ public class Tecnico extends javax.swing.JFrame {
         horaActual.start();
 
     }
-    
-    private void setFormaCerrar(){
-        if(bandera > 0){
+
+    private void setFormaCerrar() {
+        if (bandera > 0) {
             this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         }
     }

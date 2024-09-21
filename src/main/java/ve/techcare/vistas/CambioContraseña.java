@@ -20,10 +20,13 @@ public class CambioContraseña extends javax.swing.JFrame {
      * Creates new form CambioContraseña
      */
     private static int id;
+
     public CambioContraseña() {
         initComponents();
-        id= InformacionUsuario.id;
+        id = InformacionUsuario.id;
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         setIcon();
     }
 
@@ -100,7 +103,7 @@ public class CambioContraseña extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void restablecer_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restablecer_bttActionPerformed
-         restablecerContraseña();
+        restablecerContraseña();
     }//GEN-LAST:event_restablecer_bttActionPerformed
 
     /**
@@ -166,21 +169,20 @@ public class CambioContraseña extends javax.swing.JFrame {
         if (!nuevaContraseña.isEmpty() && !confirmarContraseña.isEmpty()) {
             if (nuevaContraseña.equals(confirmarContraseña)) {
 
-                try (Connection con = ConexionBaseDatos.conectar();
-                        PreparedStatement ps= con.prepareStatement("UPDATE users SET password = ? WHERE id = ?");){
-                    
+                try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("UPDATE users SET password = ? WHERE id = ?");) {
+
                     ps.setString(1, nuevaContraseña);
                     ps.setInt(2, id);
-                    
+
                     int respuesta = ps.executeUpdate();
-                    
-                    if(respuesta>0){
+
+                    if (respuesta > 0) {
                         JOptionPane.showMessageDialog(null, "Restablecida Correctamente");
                         this.dispose();
                     }
-                    
+
                 } catch (Exception e) {
-                      JOptionPane.showMessageDialog(null, "Ocurrio un error al restablecer contraceña, contacte al desarrolladoro");
+                    JOptionPane.showMessageDialog(null, "Ocurrio un error al restablecer contraceña, contacte al desarrolladoro");
                 }
             } else {
                 nuevaContraseña_lb.setForeground(new Color(148, 23, 25));

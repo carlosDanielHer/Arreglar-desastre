@@ -20,7 +20,7 @@ import ve.techcare.servicios.utilidades.ConexionBaseDatos;
  *
  * @author Carlos Hernandez
  */
-public class GestionUsuarios extends javax.swing.JFrame {
+public class GestionUsuarios extends javax.swing.JFrame implements Observador{
 
     /**
      * Creates new form GestionUsuarios
@@ -30,6 +30,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
     public GestionUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         llenarTabla();
         hacerCliqueableTabla();
         setIcon();
@@ -240,7 +242,7 @@ public class GestionUsuarios extends javax.swing.JFrame {
                 if (fila > -1) {
                     id = (int) listaUsuarios_tbl.getModel().getValueAt(fila, columna);
 
-                    new InformacionUsuario().setVisible(true);
+                    mostrarVentanaInformacionUsuario();
                 }
             }
         });
@@ -287,6 +289,18 @@ public class GestionUsuarios extends javax.swing.JFrame {
 
         // Asignar el nuevo modelo a la tabla
         listaUsuarios_tbl.setModel(model);
+    }
+
+    @Override
+    public void actualizar() {
+        llenarTabla();
+    }
+    
+    private void mostrarVentanaInformacionUsuario() {
+        Subject subject = new Subject();
+        subject.addObserver(this);
+        InformacionUsuario informacionUsuario = new InformacionUsuario(subject);
+        informacionUsuario.setVisible(true);
     }
 
 }

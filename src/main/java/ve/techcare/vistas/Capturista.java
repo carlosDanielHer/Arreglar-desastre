@@ -99,7 +99,7 @@ public class Capturista extends javax.swing.JFrame {
         footer_lb.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         footer_lb.setForeground(new java.awt.Color(0, 0, 0));
         footer_lb.setText("TechCare® System ");
-        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 600, 240, 20));
+        panelFondo.add(footer_lb, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 630, 240, 20));
 
         GestionarClientes_btt.setFont(new java.awt.Font("Segoe UI", 1, 17)); // NOI18N
         GestionarClientes_btt.setForeground(new java.awt.Color(0, 0, 0));
