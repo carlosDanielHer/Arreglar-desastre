@@ -24,6 +24,8 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
     public RegistrarPrimerUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         setIcon();
         fechaFooter();
     }
@@ -258,8 +260,8 @@ public class RegistrarPrimerUsuario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Ingrese todos los datos requeridos");
         }
     }
-    
-     private void setIcon() {
+
+    private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
             Image scaledImage = originalImage.getScaledInstance(27, 27, Image.SCALE_SMOOTH); // Cambia el tamaño según tus necesidades

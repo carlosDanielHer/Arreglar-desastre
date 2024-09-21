@@ -34,6 +34,7 @@ public class GraficaMarca extends javax.swing.JFrame {
     public GraficaMarca() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         setIcon();
         fechaFooter();
@@ -146,9 +147,9 @@ public class GraficaMarca extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
-    private void graficarMarcas(){
-         List<Integer> datos = new ArrayList<>();
+
+    private void graficarMarcas() {
+        List<Integer> datos = new ArrayList<>();
         List<String> nombres = new ArrayList<>();
 
         try (Connection cn = ConexionBaseDatos.conectar(); PreparedStatement ps = cn.prepareStatement(
@@ -181,9 +182,8 @@ public class GraficaMarca extends javax.swing.JFrame {
         } catch (SQLException e) {
             System.out.println("Error en obtener Marcas y sus cantidades: " + e);
         }
-        
+
         // CREACION DEL GRAFICO
-        
         DefaultCategoryDataset datosGraficos = new DefaultCategoryDataset();
 
         for (int i = 0; i < datos.size(); i++) {

@@ -33,6 +33,7 @@ public class GraficaTipos extends javax.swing.JFrame {
     public GraficaTipos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         setIcon();
         fechaFooter();

@@ -30,6 +30,8 @@ public class GestionUsuarios extends javax.swing.JFrame {
     public GestionUsuarios() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         llenarTabla();
         hacerCliqueableTabla();
         setIcon();

@@ -28,6 +28,8 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     public RegistrarUsuario() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         setIcon();
         fechaFooter();
     }
@@ -317,7 +319,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         contraseña_lb.setForeground(Color.BLACK);
         roles_lb.setForeground(Color.BLACK);
     }
-    
+
     private void setIcon() {
         try {
             BufferedImage originalImage = ImageIO.read(getClass().getResource("/imagenes/icono.png"));
@@ -328,6 +330,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+
     private void fechaFooter() {
         LocalDateTime fechaHora = LocalDateTime.now();
         int year = fechaHora.getYear();
@@ -335,33 +338,32 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
         footer_lb.setText("TechCare® System " + fechaFormateada);
     }
-    
-    private String verificarNombreUsuario(){
-        
-        String usuario= null;
-        
-        if(!nombreUsuario_txt.getText().isEmpty()){
-            
+
+    private String verificarNombreUsuario() {
+
+        String usuario = null;
+
+        if (!nombreUsuario_txt.getText().isEmpty()) {
+
             usuario = nombreUsuario_txt.getText().trim();
-            
-           try(Connection con = ConexionBaseDatos.conectar();
-                   PreparedStatement ps= con.prepareStatement("SELECT COUNT(username) FROM users WHERE username = ?");){
-               
-               ps.setString(1, usuario);
-               
-               ResultSet rs =ps.executeQuery();
-               
-               int resultado= rs.getInt(1);
-               
-               if(resultado>0){
-                   nombreUsuario_txt.setForeground(Color.red);
-                   return "";
-               }else{
-                   nombreUsuario_txt.setForeground(new Color(3,160,1));
-                   return usuario;
-               }
-               
-           } catch (SQLException ex) {
+
+            try (Connection con = ConexionBaseDatos.conectar(); PreparedStatement ps = con.prepareStatement("SELECT COUNT(username) FROM users WHERE username = ?");) {
+
+                ps.setString(1, usuario);
+
+                ResultSet rs = ps.executeQuery();
+
+                int resultado = rs.getInt(1);
+
+                if (resultado > 0) {
+                    nombreUsuario_txt.setForeground(Color.red);
+                    return "";
+                } else {
+                    nombreUsuario_txt.setForeground(new Color(3, 160, 1));
+                    return usuario;
+                }
+
+            } catch (SQLException ex) {
                 Logger.getLogger(RegistrarUsuario.class.getName()).log(Level.SEVERE, null, ex);
             }
         }

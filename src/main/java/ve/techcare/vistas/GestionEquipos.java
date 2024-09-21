@@ -15,7 +15,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
-import static ve.techcare.vistas.GestionUsuarios.id;
 
 /**
  *
@@ -31,6 +30,8 @@ public class GestionEquipos extends javax.swing.JFrame {
     public GestionEquipos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         hacerCliqueableTabla();

@@ -33,6 +33,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         setIcon();
         fechaFooter();
@@ -54,6 +55,7 @@ public class InformacionEquipo extends javax.swing.JFrame {
         dañosReportados_txa.setLineWrap(true);
         comentariosTecnicos_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         setIcon();
         fechaFooter();

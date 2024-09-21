@@ -21,10 +21,13 @@ public class Administrador extends javax.swing.JFrame {
     /**
      * Creates new form Administrador
      */
-    public static int bandera=0;
+    public static int bandera = 0;
+
     public Administrador() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         fechaActal();
         horaActual();
@@ -147,12 +150,12 @@ public class Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_gestionUsuarios_bttActionPerformed
 
     private void tecnico_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tecnico_bttActionPerformed
-        bandera=1;
+        bandera = 1;
         new Tecnico().setVisible(true);
     }//GEN-LAST:event_tecnico_bttActionPerformed
 
     private void capturista_bttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_capturista_bttActionPerformed
-        bandera= 1;
+        bandera = 1;
         new Capturista().setVisible(true);
     }//GEN-LAST:event_capturista_bttActionPerformed
 
@@ -244,9 +247,9 @@ public class Administrador extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
-    
-    private void setMensajeBienvenida(){
-        String username=Login.usuario;
-        bienvenido_lb.setText("Bienvenido: "+username);
+
+    private void setMensajeBienvenida() {
+        String username = Login.usuario;
+        bienvenido_lb.setText("Bienvenido: " + username);
     }
 }
