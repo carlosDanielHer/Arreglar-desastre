@@ -27,11 +27,26 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
      */
     private int idCliente;
     private String user_name;
+    private Subject subject;
 
     public RegistrarEquipos() {
         initComponents();
         idCliente = InformacionCliente.id;
         user_name = Login.usuario;
+
+        dañosReportados_txa.setLineWrap(true);
+        this.setLocationRelativeTo(null);
+        fechaFooter();
+        setIcon();
+        llenarCombobox();
+        traerCliente();
+    }
+
+    public RegistrarEquipos(Subject subject) {
+        initComponents();
+        idCliente = InformacionCliente.id;
+        user_name = Login.usuario;
+        this.subject=subject;
 
         dañosReportados_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
@@ -378,7 +393,9 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
                     if (respuesta > 0) {
                         JOptionPane.showMessageDialog(null, "Equipo registrado exitosamente");
-
+                        
+                        subject.notifyObservers();
+                        
                         tipoEquipos_cbx.setSelectedIndex(0);
                         marcas_cbx.setSelectedIndex(0);
                         modelo_txt.setText("");
