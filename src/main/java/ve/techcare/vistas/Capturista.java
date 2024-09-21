@@ -23,7 +23,6 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.view.JasperViewer;
 import ve.techcare.servicios.utilidades.ConexionBaseDatos;
-import static ve.techcare.vistas.InformacionCliente.id;
 
 /**
  *
@@ -43,6 +42,7 @@ public class Capturista extends javax.swing.JFrame {
         usuario = Login.usuario;
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         setFormaCerrar();
         setMensajeBienvenida();
         fechaFooter();

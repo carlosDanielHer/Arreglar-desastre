@@ -43,14 +43,15 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
         user_name = Login.usuario;
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         fechaFooter();
         setIcon();
         llenarInformacion();
         llenarTabla();
         hacerCliqueableTabla();
     }
-    
-     public InformacionCliente(Subject subject) {
+
+    public InformacionCliente(Subject subject) {
         initComponents();
 
         id = GestionClientes.idCliente;
@@ -58,6 +59,8 @@ public class InformacionCliente extends javax.swing.JFrame implements Observador
         this.subject = subject;
 
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         llenarInformacion();

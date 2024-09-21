@@ -23,6 +23,7 @@ public class RegistrarClientes extends javax.swing.JFrame {
     public RegistrarClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
         usuario = Login.usuario;
         setIcon();
         fechaFooter();

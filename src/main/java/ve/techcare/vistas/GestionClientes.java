@@ -27,6 +27,7 @@ public class GestionClientes extends javax.swing.JFrame implements Observador {
     public GestionClientes() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         llenarTabla();
         hacerCliqueableTabla();

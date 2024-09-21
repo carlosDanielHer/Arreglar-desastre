@@ -36,6 +36,8 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
         dañosReportados_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         llenarCombobox();
@@ -46,10 +48,12 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
         initComponents();
         idCliente = InformacionCliente.id;
         user_name = Login.usuario;
-        this.subject=subject;
+        this.subject = subject;
 
         dañosReportados_txa.setLineWrap(true);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
+
         fechaFooter();
         setIcon();
         llenarCombobox();
@@ -393,9 +397,9 @@ public class RegistrarEquipos extends javax.swing.JFrame implements Observador {
 
                     if (respuesta > 0) {
                         JOptionPane.showMessageDialog(null, "Equipo registrado exitosamente");
-                        
+
                         subject.notifyObservers();
-                        
+
                         tipoEquipos_cbx.setSelectedIndex(0);
                         marcas_cbx.setSelectedIndex(0);
                         modelo_txt.setText("");
